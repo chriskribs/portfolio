@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="signal">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chris Kribs · Marketing strategist</title>
-<meta name="description" content="Chris Kribs: B2B marketing strategist in Greenville, SC. I ask what the goal is before I make the thing.">
+<title>Chris Kribs · B2B marketing</title>
+<meta name="description" content="Chris Kribs: B2B marketing manager in Greenville, SC. Pipeline, demos and adoption, with the work to show for it.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0d1c43">
-<meta property="og:title" content="Chris Kribs · Marketing strategist">
-<meta property="og:description" content="Ask why first. Then make the thing.">
+<meta property="og:title" content="Chris Kribs · B2B marketing">
+<meta property="og:description" content="Marketing that shows up in the pipeline.">
 <meta property="og:image" content="/media/px/avatar.png">
 <link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
+<script>try{var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -24,165 +24,82 @@
     <span class="brand-name">Chris Kribs</span>
   </a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#approach">Approach</a>
-    <a href="#work">Work</a>
     <a href="#results">Results</a>
+    <a href="#work">Work</a>
     <a href="#about">About</a>
   </nav>
-  <a class="btn btn-sm" href="#contact">Say hi <span class="pi" data-icon="arrow"></span></a>
+  <a class="btn btn-sm" href="#contact">Get in touch</a>
 </header>
 
 <main id="top">
 
-<!-- HERO -->
 <section class="hero">
-  <div class="glow g1"></div><div class="glow g2"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="pi" data-icon="sparkle"></span> Marketing strategist · Greenville, SC</p>
-      <h1 class="hero-title">Ask why first.<br><span class="hl">Then make the thing.</span></h1>
-      <p class="lede">I'm Chris. Someone asks for a video, an email sequence, a booth. I ask what it's supposed to accomplish, find where things are actually stuck, then build the piece that moves that number. Usually I build it myself.</p>
+      <p class="eyebrow">B2B marketing · Greenville, SC</p>
+      <h1 class="hero-title">Marketing that shows up in the pipeline.</h1>
+      <p class="lede">I'm Chris Kribs. I plan and run B2B marketing, and I make a lot of it myself: campaigns, content, events and video. Here's what it's added up to.</p>
       <div class="hero-cta">
-        <a class="btn" href="#work">See the work <span class="pi" data-icon="arrow"></span></a>
-        <a class="btn btn-ghost" href="#approach">How I think</a>
+        <a class="btn" href="#results">See the results</a>
+        <a class="btn btn-ghost" href="#work">See the work</a>
       </div>
-      <dl class="hero-stats">
-        <div><dt class="num">120%</dt><dd>of the annual MQL goal, in 5 months</dd></div>
-        <div><dt class="num">$873K</dt><dd>active pipeline influenced</dd></div>
-        <div><dt class="num">+1,230%</dt><dd>organic traffic in 2 years</dd></div>
-      </dl>
     </div>
     <figure class="hero-card swap" tabindex="0" aria-label="Photo of Chris. Hover or tap to switch from pixel to photo.">
       <div class="swap-media">
         <img class="px-img" src="/media/px/avatar.png" alt="" width="560" height="560">
         <img class="real-img" src="/media/i/me-headshot.jpg" alt="Chris Kribs" width="387" height="440">
       </div>
-      <figcaption>
-        <span class="mono">CHRIS KRIBS</span>
-        <span class="mono dim">hover me</span>
-      </figcaption>
-      <span class="sticker s-pink">big thinker</span>
-      <span class="sticker s-yellow">detail person</span>
-      <span class="pi deco d1" data-icon="sparkle"></span>
-      <span class="pi deco d2" data-icon="plus"></span>
     </figure>
-  </div>
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track" id="ticker"></div>
   </div>
 </section>
 
-<!-- 01 APPROACH -->
-<section class="sec dark" id="approach">
+<section class="sec" id="results">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">01</span>
-      <div>
-        <h2 class="sec-title">The ask isn't always the answer.</h2>
-        <p class="sec-sub">Most requests show up with the solution already picked. I back up one step and ask what has to change in the business. Pick a real ask to see how it played out.</p>
-      </div>
-    </div>
-
-    <div class="asks-wrap">
-      <div class="asks" id="asks" role="tablist" aria-label="Real requests"></div>
-      <article class="ask-card" id="askCard" aria-live="polite">
-        <div class="ask-row"><span class="tag">The ask</span><p id="aAsk"></p></div>
-        <div class="ask-row"><span class="tag t-pink">I asked</span><p id="aWhy"></p></div>
-        <div class="ask-row"><span class="tag t-green">Real goal</span><p id="aGoal"></p></div>
-        <div class="ask-row"><span class="tag t-blue">What we did</span><p id="aMove"></p></div>
-        <div class="ask-result"><span class="pi" data-icon="check"></span><p id="aResult"></p></div>
-      </article>
-    </div>
-
-    <ol class="steps">
-      <li><span class="step-n">1</span><h3>Ask why</h3><p>What should be different when this works? Who has to do what?</p></li>
-      <li><span class="step-n">2</span><h3>Find the gap</h3><p>Read the data. Talk to sales, success and customers. Find where it's really stuck.</p></li>
-      <li><span class="step-n">3</span><h3>Pick the channel</h3><p>Video, mail, email, an event, a one-pager. Whatever fits the gap, not the habit.</p></li>
-      <li><span class="step-n">4</span><h3>Make it</h3><p>Write it, design it, shoot it, cut it, ship it. The details matter.</p></li>
-      <li><span class="step-n">5</span><h3>Measure it</h3><p>Pipeline, adoption, demos. The number we agreed on in step one.</p></li>
-    </ol>
-  </div>
-</section>
-
-<!-- 02 WORK -->
-<section class="sec" id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">02</span>
-      <div>
-        <h2 class="sec-title">Where I've done it.</h2>
-        <p class="sec-sub">Twice I've been the whole marketing department. At Courser I finally got a team of people who think the way I do. Before all that, agencies, where I learned to make things.</p>
-      </div>
-    </div>
-    <div class="cases" id="cases"></div>
-  </div>
-</section>
-
-<!-- 03 RESULTS -->
-<section class="sec tint" id="results">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">03</span>
-      <div>
-        <h2 class="sec-title">The numbers we agreed on.</h2>
-        <p class="sec-sub">Not views or likes. The measures leadership and sales actually cared about.</p>
-      </div>
+      <h2 class="sec-title">Results</h2>
     </div>
     <div class="metrics" id="metrics"></div>
   </div>
 </section>
 
-<!-- 04 VIDEO -->
-<section class="sec" id="video">
+<section class="sec alt" id="work">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">04</span>
-      <div>
-        <h2 class="sec-title">Sometimes it is a video.</h2>
-        <p class="sec-sub">When video is the right call, I write, shoot and cut it. Each one of these had a job to do.</p>
-      </div>
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Work</h2>
     </div>
+    <div class="cases" id="cases"></div>
   </div>
+  <div class="wrap reel-head"><h3 class="mono">Video</h3></div>
   <div class="reel" id="reel" tabindex="0" aria-label="Videos, scroll sideways"></div>
 </section>
 
-<!-- 05 ABOUT -->
 <section class="sec dark" id="about">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">05</span>
-      <div>
-        <h2 class="sec-title">Off the clock.</h2>
-        <p class="sec-sub">Hover or tap a picture to bring it into focus.</p>
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">About</h2>
       </div>
+      <p class="about-lede">People person. Big thinker who sweats the details. Drummer who grew up on metal. Husband, dad of twins, two dogs, and I'm in the gym most mornings.</p>
+      <ul class="traits" id="traits"></ul>
     </div>
-    <div class="about-grid">
-      <div class="photos">
-        <figure class="swap ph ph-wide" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/family.png" alt=""><img class="real-img" src="/media/i/me-family.jpg" alt="Chris with his family"></div><figcaption>Wife, twins, two dogs</figcaption></figure>
-        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris playing drums"></div><figcaption>Behind the kit</figcaption></figure>
-        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/stage.png" alt=""><img class="real-img" src="/media/i/me-stage.jpg" alt="Chris on stage"></div><figcaption>On stage</figcaption></figure>
-        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/gym.png" alt=""><img class="real-img" src="/media/i/me-gym.jpg" alt="Chris at the gym"></div><figcaption>Lifting</figcaption></figure>
-        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/snow.png" alt=""><img class="real-img" src="/media/i/me-snow.jpg" alt="Chris outside in the snow"></div><figcaption>Outside</figcaption></figure>
-      </div>
-      <div class="about-copy">
-        <p class="about-lede">I'm a people person who also likes a good spreadsheet. I'll talk big picture all day, then go fix the kerning.</p>
-        <ul class="traits" id="traits"></ul>
-        <h3 class="chips-title mono">What I bring</h3>
-        <div class="chips" id="chips"></div>
-      </div>
+    <div class="photos">
+      <figure class="swap ph ph-wide" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/family.png" alt=""><img class="real-img" src="/media/i/me-family.jpg" alt="Chris with his family"></div></figure>
+      <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris playing drums"></div></figure>
+      <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/gym.png" alt=""><img class="real-img" src="/media/i/me-gym.jpg" alt="Chris at the gym"></div></figure>
     </div>
   </div>
 </section>
 
-<!-- 06 CONTACT -->
 <section class="sec contact" id="contact">
   <div class="wrap">
     <div class="contact-card">
-      <span class="sec-num">06</span>
-      <h2 class="contact-title">Got an ask?<br>Let's find the goal.</h2>
-      <p class="contact-sub">I take on contract work with agencies and B2B teams: strategy, campaigns, content, and the making that goes with them.</p>
+      <h2 class="contact-title">Let's work together.</h2>
+      <p class="contact-sub">Open to contract work with agencies and B2B teams.</p>
       <div class="contact-row">
-        <a class="btn btn-paper" href="mailto:chrisekribs@gmail.com">Email me <span class="pi" data-icon="arrow"></span></a>
+        <a class="btn btn-inv" href="mailto:chrisekribs@gmail.com">chrisekribs@gmail.com</a>
         <button class="btn btn-line" type="button" id="copyEmail">Copy email</button>
         <a class="btn btn-line" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -195,12 +112,11 @@
 
 <footer class="foot">
   <div class="wrap foot-row">
-    <span class="mono">© <span id="year">2026</span> Chris Kribs · Greenville, SC</span>
-    <span class="mono dim">Made by hand. Pixels on purpose.</span>
+    <span class="mono">© <span id="year">2026</span> Chris Kribs</span>
+    <span class="mono dim">Greenville, SC</span>
   </div>
 </footer>
 
-<!-- Gallery / player -->
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="modal-box">
     <div class="modal-bar">
@@ -213,7 +129,6 @@
       <video id="mVid" controls playsinline preload="metadata" hidden></video>
       <button type="button" class="icon-btn nav-next" id="mNext" aria-label="Next">›</button>
     </div>
-    <p class="modal-note" id="mNote"></p>
     <div class="thumbs" id="mThumbs"></div>
   </div>
 </div>
