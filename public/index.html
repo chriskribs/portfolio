@@ -13,7 +13,7 @@
 <link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Permanent+Marker&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Reenie+Beanie&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
     <a href="#results">Results</a>
     <a href="#about">About</a>
   </nav>
-  <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-paper" href="#contact">Let's talk</a></span>
+  <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-paper" href="#contact">Let's talk <span class="chev" data-icon="chev"></span></a></span>
 </header>
 
 <main id="top">
@@ -40,12 +40,12 @@
   <div class="hero-shade"></div>
   <div class="hero-copy">
     <span class="tag red">B2B marketing · Greenville, SC</span>
-    <h1 class="hero-title ex"><span>Marketing that</span><span>shows up in</span><span class="hl">the pipeline.</span></h1>
+    <h1 class="hero-title"><span>Marketing that</span><span>shows up in</span><span class="hl"><span class="chev" data-icon="chev"></span>the pipeline.</span></h1>
     <div class="hero-row">
       <p class="hero-sub">I'm Chris. I plan the marketing, then make a lot of it myself: campaigns, content, events and video.</p>
       <div class="hero-actions">
-        <span class="btnx x-sm" style="--xc: var(--forest)"><a href="#work" class="btn btn-red">See the work</a></span>
-        <span class="btnx x-sm" style="--xc: var(--forest)"><button class="btn btn-volt" type="button" data-project="films">Watch the films <span class="pi" data-icon="play"></span></button></span>
+        <span class="btnx x-sm" style="--xc: var(--forest)"><a href="#work" class="btn btn-red">See the work <span class="chev" data-icon="chev"></span></a></span>
+        <span class="btnx x-sm" style="--xc: var(--forest)"><button class="btn btn-kick" type="button" data-project="films">Watch the films <span class="pi" data-icon="play"></span></button></span>
       </div>
     </div>
   </div>
@@ -57,15 +57,12 @@
   </ul>
 </section>
 
-<div class="tapes" aria-hidden="true">
-  <div class="tape-band a"><div class="tape-track" id="tapeA"></div></div>
-  <div class="tape-band b"><div class="tape-track" id="tapeB"></div></div>
-</div>
+<div class="ticker" aria-hidden="true"><div class="tick-track" id="ticker"></div></div>
 
 <section class="sec work" id="work">
   <div class="sec-head">
     <span class="kicker"><span class="px">01</span> Selected work</span>
-    <h2 class="display ex" style="--xc: var(--red)">The work. <span class="hl" style="color: var(--volt)">And what it did.</span></h2>
+    <h2 class="display" style="--xc: var(--red)">The work. <span class="hl" style="color: var(--kick)">And what it did.</span></h2>
     <span class="sec-note scrawl">hover to peek, click to open it up</span>
   </div>
   <ol class="index" id="index"></ol>
@@ -73,10 +70,10 @@
 </section>
 
 <section class="sec results" id="results">
-  <div class="results-op op" aria-hidden="true"></div>
+  <div class="results-tri tri-field on-red" aria-hidden="true"></div>
   <div class="sec-head" style="position: relative; z-index: 1">
     <span class="kicker"><span class="px">02</span> Results</span>
-    <h2 class="display ex" style="--xc: var(--paper)">Numbers, <span class="hl">not vibes.</span></h2>
+    <h2 class="display" style="--xc: var(--paper)">Numbers, <span class="hl">not vibes.</span></h2>
   </div>
   <div class="ledger" id="ledger"></div>
 </section>
@@ -96,7 +93,7 @@
       <p class="lead">I started at a creative agency in the edit bay, cutting, coloring and mixing other people's footage. Since then I've run marketing in-house for B2B tech companies, twice as a department of one, so every piece of creative I make has to earn a number someone cares about.</p>
       <p>People person. Big-picture thinker who sweats the details. Grew up on metal, still play drums. I'm in the gym most mornings, and every evening ends with my wife, our twins and two dogs.</p>
       <div class="route" aria-label="Career path">
-        <span class="tag">WeCreate Media</span><i></i><span class="tag">Vast Creative</span><i></i><span class="tag">PTG + Courser</span><i></i><span class="tag red">Wellzesta</span>
+        <span class="tag">WeCreate Media</span><span class="chev" data-icon="chev"></span><span class="tag">Vast Creative</span><span class="chev" data-icon="chev"></span><span class="tag">PTG + Courser</span><span class="chev" data-icon="chev"></span><span class="tag red">Wellzesta</span>
       </div>
       <div class="snaps">
         <figure class="swap x-sm" tabindex="0" style="--xc: var(--red)"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris on drums"></div></figure>
@@ -108,12 +105,12 @@
 </section>
 
 <section class="contact" id="contact">
-  <div class="contact-op op" aria-hidden="true"></div>
+  <div class="contact-chev chev-field" aria-hidden="true"></div>
   <span class="kicker"><span class="px">04</span> Contact</span>
-  <h2 class="contact-title ex"><a href="mailto:chrisekribs@gmail.com">Let's <span class="hl">talk.</span></a></h2>
+  <h2 class="contact-title"><a href="mailto:chrisekribs@gmail.com">Let's <span class="hl">talk</span><span class="chev" data-icon="chev"></span></a></h2>
   <p class="contact-sub">Open to contract work with agencies and B2B teams.</p>
   <div class="contact-row">
-    <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-volt" href="mailto:chrisekribs@gmail.com">chrisekribs@gmail.com</a></span>
+    <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-kick" href="mailto:chrisekribs@gmail.com">chrisekribs@gmail.com</a></span>
     <span class="btnx x-sm" style="--xc: var(--red)"><button class="btn btn-paper" type="button" id="copyEmail">Copy email</button></span>
     <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-paper" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a></span>
   </div>
@@ -130,12 +127,12 @@
   <div class="viewer-bar">
     <button type="button" class="v-btn" id="vClose">✕ Close</button>
     <span class="v-count" id="vCount"></span>
-    <button type="button" class="v-btn" id="vNext">Next project →</button>
+    <button type="button" class="v-btn" id="vNext">Next project <span class="chev" data-icon="chev"></span></button>
   </div>
   <div class="viewer-scroll" id="vScroll">
     <header class="v-head">
       <span class="kicker" id="vKicker"></span>
-      <h2 class="display ex" id="vTitle"></h2>
+      <h2 class="display" id="vTitle"></h2>
       <p class="v-sum" id="vSum"></p>
       <ul class="v-results" id="vResults"></ul>
     </header>

@@ -21,7 +21,8 @@
     sound: ['...#....', '..##..#.', '####.#.#', '####.#.#', '####.#.#', '..##..#.', '...#....'],
     mute: ['...#....', '..##....', '####.#.#', '####..#.', '####.#.#', '..##....', '...#....'],
     full: ['###.###', '#.....#', '#.....#', '.......', '#.....#', '#.....#', '###.###'],
-    star: ['...#...', '...#...', '..###..', '#######', '..###..', '...#...', '...#...']
+    star: ['...#...', '...#...', '..###..', '#######', '..###..', '...#...', '...#...'],
+    chev: ['##........', '..##......', '....##....', '......##..', '........##', '......##..', '....##....', '..##......', '##........']
   };
   const svg = g => {
     let r = '';
@@ -34,11 +35,10 @@
     $$('[data-icon]', root).forEach(el => { el.innerHTML = svg(ICONS[el.dataset.icon]); });
   };
 
-  /* ================= MARQUEE ================= */
-  const tapeA = ['Chris Kribs', 'B2B marketing', 'Greenville, SC', 'Strategy + making', 'Results on the board'];
-  const tapeB = ['Wellzesta', 'PTG', 'Courser', 'Union Club Hotel', 'Brush Creek Ranch', 'The Santiago Partnership', 'Weber Family Dentistry', 'Michigan City'];
-  const tape = a => { const h = a.map(t => `<span>${t}</span>${ic('star')}`).join(''); return h + h + h; };
-  $('#tapeA').innerHTML = tape(tapeA); $('#tapeB').innerHTML = tape(tapeB);
+  /* ================= TICKER ================= */
+  const names = ['Wellzesta', 'PTG', 'Courser', 'Relais & Châteaux', 'The Santiago Partnership', 'Weber Family Dentistry', 'Union Club Hotel', 'Brush Creek Ranch', 'Michigan City'];
+  const tick = names.map(t => `<span>${t}</span><span class="chev">${svg(ICONS.chev)}</span>`).join('');
+  $('#ticker').innerHTML = tick + tick;
 
   const ME = { name: 'Chris Kribs', img: '/media/i/me-headshot.jpg' };
 
@@ -58,13 +58,13 @@
     { id: 'wz-social', co: 'Wellzesta', title: 'Launches, social + events', type: 'LinkedIn · product launches · conferences', year: '2026',
       result: '15 demos + 3 opps from one playbook', sum: 'Feature launches, product motion and a conference playbook that runs the same way before, during and after every show.',
       results: ['15 net-new demos and 3 opportunities from the conference playbook', '3 demos sat and 2 deals moved forward from 25 ABM mailers'],
-      peek: ['wz-linkedin-8', 'wz-kyle-leadingage-va', 'wz-zesty'],
+      peek: ['wz-linkedin-8', 'wz-kyle-leadingage-va', 'wz-zesty-1'],
       blocks: [
         { t: 'feed', title: 'The feed', role: 'Marketing Manager at Wellzesta', stats: [['MQL goal', '120%'], ['Conference demos', '15'], ['Opportunities', '3']], posts: [
-          { carousel: ['wz-zesty', 'wz-zesty-2'], cap: 'Launch day. Zesty is the AI concierge we built for senior living communities, and this carousel is how we introduced it: what it does first, how it helps staff second.', tags: '#productlaunch #seniorliving', when: '2w' },
+          { carousel: ['wz-zesty-1', 'wz-zesty-2', 'wz-zesty-3', 'wz-zesty-4', 'wz-zesty-5', 'wz-zesty-6'], cap: 'Launch day. Search makes residents dig; a concierge does the task. Six slides on how Zesty works differently, built for senior living.', tags: '#productlaunch #seniorliving', when: '2w' },
           { img: 'wz-kyle-leadingage-va', cap: 'Headed to LeadingAge Virginia. Every show runs on the same before, during and after playbook now. So far it has produced 15 net-new demos and 3 opportunities.', tags: '#conferences #b2bmarketing', when: '1mo' },
           { vid: 'wz-linkedin-anim', img: 'p-wz-linkedin-anim', cap: 'Ten seconds of motion beats a paragraph of features. Made this loop to show everything residents can reach from one screen.', tags: '#motiondesign', when: '1mo' },
-          { carousel: ['wz-rollout-carousel', 'wz-rollout-carousel-2'], cap: 'Most app rollouts don\'t fail at launch. They stall in week three. Three reasons why, and what to do about each one.', tags: '#customermarketing', when: '2mo' },
+          { carousel: ['wz-rollout-1', 'wz-rollout-2', 'wz-rollout-3', 'wz-rollout-4', 'wz-rollout-5'], cap: 'Most app rollouts don\'t fail at launch. They stall in week three. Three reasons why, and what to do about each one.', tags: '#customermarketing', when: '2mo' },
           { vid: 'wz-expiration', img: 'p-wz-expiration', cap: 'Small feature, real problem solved: messages that clean up after themselves. Feature posts like this one keep existing customers using more of the product.', tags: '#adoption', when: '2mo' },
           { img: 'wz-vista-leadingage', cap: 'LeadingAge NJ/DE next. Same playbook, new booth.', tags: '#conferences', when: '3mo' },
           { vid: 'wz-wellness-chart', img: 'p-wz-wellness-chart', cap: 'Wellness data, at a glance. A product motion piece for sales decks and social.', tags: '#productmarketing', when: '3mo' },
@@ -123,10 +123,19 @@
         { t: 'board', title: 'Event posters', imgs: ['mc-stpats', 'mc-farmers', 'mc-arts'] },
         { t: 'deck', title: 'Pocket city guide', slides: ['mc-guide-1', 'mc-guide-2'] },
       ] },
-    { id: 'films', co: 'WeCreate Media', title: 'Three films I\'m proud of', type: 'Edit · color · sound design · mastering', year: '2018–20',
-      result: 'Edited, colored + mixed', sum: 'I don\'t shoot. I take the footage and do everything after: the edit, the color grade, the sound design and the master. These are the three I\'m proudest of.',
-      results: ['Edit', 'Color', 'Sound design', 'Mastering'], peek: ['p-brush-creek', 'p-santiago', 'p-weber'],
-      blocks: [{ t: 'player', title: 'Films', vids: [['brush-creek', 'Summer at the Ranch · Brush Creek Ranch, a Relais & Châteaux property'], ['santiago', 'The Santiago Partnership'], ['weber', 'Leave Smiling · Weber Family Dentistry']] }] }
+    { id: 'films', co: 'WeCreate Media', title: 'Films I finished', type: 'Edit · color · sound design · mastering', year: '2018–20',
+      result: 'Edited, colored + mixed', sum: 'I don\'t shoot. I take the footage and do everything after: the edit, the color grade, the sound design and the master. The first three are the ones I\'m proudest of.',
+      results: ['Edit', 'Color', 'Sound design', 'Mastering'], peek: ['p-delicious-journeys', 'p-santiago', 'p-weber'],
+      blocks: [{ t: 'player', title: 'The reel', top: 3, vids: [
+        ['delicious-journeys', 'What Does Delicious Mean to You? · Relais & Châteaux'],
+        ['santiago', 'The Santiago Partnership'],
+        ['weber', 'Leave Smiling · Weber Family Dentistry'],
+        ['brush-creek', 'Summer at the Ranch · Brush Creek Ranch'],
+        ['maxq', 'RSNA 2019 recap · MaxQ AI'],
+        ['venue-nd', 'Venue ND :30'],
+        ['michigan-city', 'Michigan City summer'],
+        ['better-than-rich', 'Better Than Rich · logo animation']
+      ] }] }
   ];
 
   /* index rows */
@@ -190,7 +199,7 @@
         <div class="pl-bar"><button type="button" class="pl-pp" aria-label="Play or pause">${ic('play')}</button><span class="pl-t">0:00</span>
           <div class="pl-track"><i class="pl-fill"></i></div><span class="pl-d">0:00</span>
           <button type="button" class="pl-mute" aria-label="Mute">${ic('sound')}</button><button type="button" class="pl-fs" aria-label="Full screen">${ic('full')}</button></div>
-        ${b.vids.length > 1 ? `<div class="pl-list">${b.vids.map(([v, t], k) => `<button type="button" data-k="${k}" class="${k ? '' : 'on'}"><img src="${I('p-' + v)}" alt="" loading="lazy"><span>${t}</span></button>`).join('')}</div>` : `<p class="pl-title">${b.vids[0][1]}</p>`}`;
+        ${b.vids.length > 1 ? `<div class="pl-list">${b.vids.map(([v, t], k) => `<button type="button" data-k="${k}" class="${k ? '' : 'on'}"><img src="${I('p-' + v)}" alt="" loading="lazy">${k < (b.top || 0) ? `<span class="top">Top pick ${k + 1}</span>` : ''}<span>${t}</span></button>`).join('')}</div>` : `<p class="pl-title">${b.vids[0][1]}</p>`}`;
       const v = $('video', el), fill = $('.pl-fill', el), pp = $('.pl-pp', el), big = $('.pl-big', el);
       const load = k => { const [id] = b.vids[k]; v.src = V(id); v.poster = I('p-' + id); $$('.pl-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
       load(0);
@@ -272,7 +281,7 @@
     book(b) {
       const el = document.createElement('div'); el.className = 'm-book';
       el.innerHTML = `<div class="book"><div class="pg left"></div><div class="pg right"></div></div>
-        <div class="book-nav"><button type="button" class="bk-prev">← Prev</button><span class="bk-n"></span><button type="button" class="bk-next">Next →</button></div>`;
+        <div class="book-nav"><button type="button" class="bk-prev">Prev</button><span class="bk-n"></span><button type="button" class="bk-next">Next <span class="chev">${svg(ICONS.chev)}</span></button></div>`;
       const book = $('.book', el), left = $('.left', el), right = $('.right', el), pages = b.pages;
       let i = 0, busy = false;
       const img = n => n ? `<img src="${I(n)}" alt="" loading="lazy">` : '';
