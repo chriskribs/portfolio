@@ -36,7 +36,7 @@
 
   /* ================= MARQUEE ================= */
   const tapeA = ['Chris Kribs', 'B2B marketing', 'Greenville, SC', 'Strategy + making', 'Results on the board'];
-  const tapeB = ['Wellzesta', 'PTG', 'Courser', 'Union Club Hotel', 'Brush Creek Ranch', 'Michigan City', 'MaxQ AI', 'Venue ND'];
+  const tapeB = ['Wellzesta', 'PTG', 'Courser', 'Union Club Hotel', 'Brush Creek Ranch', 'The Santiago Partnership', 'Weber Family Dentistry', 'Michigan City'];
   const tape = a => { const h = a.map(t => `<span>${t}</span>${ic('star')}`).join(''); return h + h + h; };
   $('#tapeA').innerHTML = tape(tapeA); $('#tapeB').innerHTML = tape(tapeB);
 
@@ -74,7 +74,7 @@
       ] },
     { id: 'wz-video', co: 'Wellzesta', title: 'Video with real residents', type: 'Explainer · testimonial · onboarding', year: '2026',
       result: 'One interview, three uses', sum: 'One afternoon with real residents became a sales testimonial, a resident onboarding video and a social cut. Plus a 45-second explainer sales sends before the first call.',
-      results: ['1 shoot → 3 assets', 'Sales, adoption and social covered'], peek: ['wz-source', 'p-wz-immanuel', 'p-wz-explainer'],
+      results: ['1 interview → 3 edits', 'Sales, adoption and social covered'], peek: ['wz-source', 'p-wz-immanuel', 'p-wz-explainer'],
       blocks: [
         { t: 'oneclip', title: 'One clip, three uses', src: 'wz-source', srcCap: 'One resident interview at a customer community.', uses: [
           ['wz-immanuel', 'For sales', 'Testimonial film', 'Peer proof for buyers who trust other communities more than vendors.', true],
@@ -115,19 +115,18 @@
       results: [], peek: ['uc-latte', 'uc-cocktails', 'uc-smoothie'],
       blocks: [{ t: 'stories', title: 'Stories', handle: 'Union Club Hotel', imgs: ['uc-latte', 'uc-spirits', 'uc-loyalty', 'uc-smoothie', 'uc-bar-bites', 'uc-green-juice', 'uc-cocktails', 'uc-pastries', 'uc-juices', 'uc-bar-bites-2', 'uc-boiler-up'] },
         { t: 'feed', title: 'Feed posts', role: 'Social Media Manager at Vast Creative', posts: [{ img: 'uc-whiskey', cap: 'Whiskey Wednesday at the hotel bar. One of the weekly posts I made for the Union Club Hotel.', tags: '#hospitality', when: '5y' }, { img: 'uc-chow-now', cap: 'Order ahead, skip the line. Built to get people ordering.', tags: '#socialmedia', when: '5y' }] }] },
-    { id: 'mc', co: 'Michigan City · WeCreate Media', title: 'Destination campaign', type: 'Social · posters · city guide · video', year: '2019',
-      result: 'Restaurants, events, guide, film', sum: 'A restaurant series, event posters, a pocket city guide and a summer film for a Lake Michigan town.',
+    { id: 'mc', co: 'Michigan City · WeCreate Media', title: 'Destination campaign', type: 'Social · posters · city guide', year: '2019',
+      result: 'Restaurants, events, city guide', sum: 'A restaurant series, event posters and a pocket city guide for a Lake Michigan town.',
       results: [], peek: ['mc-discover-1', 'mc-stpats', 'mc-guide-1'],
       blocks: [
         { t: 'feed', title: 'Discover series', role: 'Account Manager at WeCreate Media', posts: [{ carousel: ['mc-discover-1', 'mc-discover-2', 'mc-discover-3', 'mc-discover-4', 'mc-discover-5'], square: true, cap: 'The Discover series: one local restaurant at a time, so a weekend visit has a plan before anyone leaves home.', tags: '#destinationmarketing', when: '6y' }] },
         { t: 'board', title: 'Event posters', imgs: ['mc-stpats', 'mc-farmers', 'mc-arts'] },
         { t: 'deck', title: 'Pocket city guide', slides: ['mc-guide-1', 'mc-guide-2'] },
-        { t: 'player', title: 'Summer film', vids: [['michigan-city', 'Michigan City summer']] }
       ] },
-    { id: 'films', co: 'Agency + in-house', title: 'Brand films + spots', type: 'Directed · shot · edited', year: '2018–26',
-      result: '7 films, written, shot + cut', sum: 'Brand films, :30 spots and event recaps. I write, shoot and cut them.',
-      results: [], peek: ['p-brush-creek', 'p-venue-nd', 'p-santiago'],
-      blocks: [{ t: 'player', title: 'Films', vids: [['brush-creek', 'Summer at the Ranch · Brush Creek Ranch'], ['venue-nd', 'Venue ND :30'], ['weber', 'Leave Smiling · Weber Family Dentistry'], ['santiago', 'The Santiago Partnership'], ['maxq', 'RSNA 2019 recap · MaxQ AI'], ['delicious-journeys', 'Delicious Journeys'], ['better-than-rich', 'Better Than Rich · logo animation']] }] }
+    { id: 'films', co: 'WeCreate Media', title: 'Three films I\'m proud of', type: 'Edit · color · sound design · mastering', year: '2018–20',
+      result: 'Edited, colored + mixed', sum: 'I don\'t shoot. I take the footage and do everything after: the edit, the color grade, the sound design and the master. These are the three I\'m proudest of.',
+      results: ['Edit', 'Color', 'Sound design', 'Mastering'], peek: ['p-brush-creek', 'p-santiago', 'p-weber'],
+      blocks: [{ t: 'player', title: 'Films', vids: [['brush-creek', 'Summer at the Ranch · Brush Creek Ranch, a Relais & Châteaux property'], ['santiago', 'The Santiago Partnership'], ['weber', 'Leave Smiling · Weber Family Dentistry']] }] }
   ];
 
   /* index rows */
@@ -241,7 +240,7 @@
     oneclip(b) {
       const el = document.createElement('div'); el.className = 'oneclip';
       el.innerHTML = `<div class="oc-src"><figure class="x" style="--xc: var(--red)"><img class="cut" src="${I(b.src)}" alt=""></figure>
-          <figcaption>${b.srcCap}</figcaption><span class="scrawl">one shoot → three jobs</span></div>
+          <figcaption>${b.srcCap}</figcaption><span class="scrawl">one interview → three edits</span></div>
         <div class="oc-uses">${b.uses.map(([v, tag, t, note, wide], k) => `<div class="oc-use${wide ? ' wide' : ''}">
           <span class="tag ${['red', 'volt', ''][k]}">${k + 1} · ${tag}</span>
           <video src="${V(v)}" poster="${I('p-' + v)}" controls playsinline preload="metadata"></video>
