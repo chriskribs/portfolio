@@ -4,18 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chris Kribs · B2B marketing</title>
-<meta name="description" content="Chris Kribs: B2B marketing manager in Greenville, SC. Pipeline, demos and adoption, with the work to show for it.">
+<meta name="description" content="Chris Kribs: B2B marketing in Greenville, SC. Pipeline, demos and adoption, and the work behind them.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#004f46">
 <meta property="og:title" content="Chris Kribs · B2B marketing">
 <meta property="og:description" content="Marketing that shows up in the pipeline.">
-<meta property="og:image" content="/media/px/avatar.png">
+<meta property="og:image" content="/media/i/p-reel.jpg">
 <link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+
+<div class="grain" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Chris Kribs, home">
@@ -24,101 +27,119 @@
   </a>
   <nav class="nav-links" aria-label="Sections">
     <a href="#work">Work</a>
+    <a href="#results">Results</a>
     <a href="#about">About</a>
   </nav>
-  <a class="btn btn-sm" href="#contact">Get in touch</a>
+  <a class="nav-cta" href="#contact">Let's talk</a>
 </header>
 
 <main id="top">
 
-<section class="hero">
-  <video class="hero-video" src="/media/v/reel.mp4" poster="/media/i/p-reel.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+<!-- HERO -->
+<section class="hero" aria-label="Intro">
+  <video class="hero-reel" src="/media/v/reel.mp4" poster="/media/i/p-reel.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="hero-shade"></div>
-  <div class="wrap hero-inner">
-    <div class="hero-copy">
-      <p class="eyebrow">B2B marketing · Greenville, SC</p>
-      <h1 class="hero-title">Marketing that shows up in the pipeline.</h1>
-      <p class="lede">I'm Chris Kribs. I plan and run B2B marketing, and I make a lot of it myself: campaigns, content, events and video.</p>
-      <div class="hero-cta">
-        <a class="btn btn-accent" href="#work">See the work</a>
-        <button class="btn btn-line" type="button" data-gal="video" data-i="0">Watch video <span class="pi" data-icon="play"></span></button>
+  <div class="hero-copy">
+    <p class="kicker">B2B marketing · Greenville, SC</p>
+    <h1 class="hero-title">Marketing that shows up <em>in the pipeline.</em></h1>
+    <p class="hero-sub">I'm Chris. I plan the marketing, then make a lot of it myself: campaigns, content, events and video.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-jasper">See the work</a>
+      <button class="btn btn-ghost" type="button" data-project="films">Watch the reel <span class="pi" data-icon="play"></span></button>
+    </div>
+  </div>
+  <ul class="hero-stats" aria-label="Top results">
+    <li><span class="pi" data-icon="target"></span><b>120%</b><span>of the annual MQL goal, hit in five months</span></li>
+    <li><span class="pi" data-icon="bars"></span><b>$873K</b><span>active pipeline influenced in five months</span></li>
+    <li><span class="pi" data-icon="up"></span><b>+1,230%</b><span>organic web traffic in two years</span></li>
+  </ul>
+</section>
+
+<div class="marquee" aria-label="Brands I've worked on">
+  <div class="marquee-track" id="marquee"></div>
+</div>
+
+<!-- WORK INDEX -->
+<section class="sec work" id="work">
+  <div class="sec-head">
+    <p class="kicker"><span class="px">01</span> Selected work</p>
+    <h2 class="display">The work, <em>and what it did.</em></h2>
+    <p class="sec-note">Hover a project to peek. Click to open it the way it was meant to be seen.</p>
+  </div>
+  <ol class="index" id="index"></ol>
+  <div class="peek" id="peek" aria-hidden="true"></div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec results" id="results">
+  <div class="sec-head">
+    <p class="kicker"><span class="px">02</span> Results</p>
+    <h2 class="display">Numbers I'm <em>proud of.</em></h2>
+  </div>
+  <div class="ledger" id="ledger"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="about-grid">
+    <figure class="about-photo swap" tabindex="0">
+      <div class="swap-media">
+        <img class="px-img" src="/media/px/family.png" alt="">
+        <img class="real-img" src="/media/i/me-family.jpg" alt="Chris with his wife and twins">
+      </div>
+      <figcaption>fig. 1 · the crew (hover for the real thing)</figcaption>
+    </figure>
+    <div class="about-copy">
+      <p class="kicker"><span class="px">03</span> About</p>
+      <h2 class="display">Hey there, <em>I'm Chris.</em></h2>
+      <p class="lead">I started at a creative agency with a camera in my hand. Since then I've run marketing in-house for B2B tech companies, twice as a department of one, which taught me to tie every piece of creative to a number someone cares about.</p>
+      <p>I'm a people person, a big-picture thinker and a stickler for details. I grew up on metal and still play drums. Most mornings start at the gym, and every evening ends with my wife, our twins and two dogs.</p>
+      <div class="route" aria-label="Career path">
+        <span>WeCreate Media</span><i></i><span>Vast Creative</span><i></i><span>PTG + Courser</span><i></i><span class="now">Wellzesta</span>
+      </div>
+      <div class="snaps">
+        <figure class="swap" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris on drums"></div></figure>
+        <figure class="swap" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/gym.png" alt=""><img class="real-img" src="/media/i/me-gym.jpg" alt="Chris at the gym"></div></figure>
+        <figure class="swap" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/snow.png" alt=""><img class="real-img" src="/media/i/me-snow.jpg" alt="Chris outside with the dogs"></div></figure>
       </div>
     </div>
-    <ul class="hero-stats" aria-label="Top results">
-      <li><span class="stat-ico" data-icon="target"></span><span class="num">120%</span><span class="stat-l">of the annual MQL goal, hit in 5 months</span></li>
-      <li><span class="stat-ico" data-icon="bars"></span><span class="num">$873K</span><span class="stat-l">active pipeline influenced in 5 months</span></li>
-      <li><span class="stat-ico" data-icon="up"></span><span class="num">+1,230%</span><span class="stat-l">organic web traffic in 2 years</span></li>
-    </ul>
   </div>
 </section>
 
-<section class="sec" id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">01</span>
-      <h2 class="sec-title">Work + results</h2>
-    </div>
-    <div class="filters" id="filters" role="tablist" aria-label="Filter work"></div>
-    <p class="filter-note" id="filterNote" aria-live="polite"></p>
-    <div class="bento" id="bento"></div>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="kicker"><span class="px">04</span> Contact</p>
+  <h2 class="contact-title"><a href="mailto:chrisekribs@gmail.com">Let's <em>talk.</em></a></h2>
+  <p class="contact-sub">Open to contract work with agencies and B2B teams.</p>
+  <div class="contact-row">
+    <a class="btn btn-jasper" href="mailto:chrisekribs@gmail.com">chrisekribs@gmail.com</a>
+    <button class="btn btn-ghost" type="button" id="copyEmail">Copy email</button>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-</section>
-
-<section class="sec dark" id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="sec-head">
-        <span class="sec-num">02</span>
-        <h2 class="sec-title">About</h2>
-      </div>
-      <p class="about-lede">People person. Big thinker who sweats the details. Drummer who grew up on metal. Husband, dad of twins, two dogs, and I'm in the gym most mornings.</p>
-      <ul class="traits" id="traits"></ul>
-    </div>
-    <div class="photos">
-      <figure class="swap ph ph-wide" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/family.png" alt=""><img class="real-img" src="/media/i/me-family.jpg" alt="Chris with his family"></div></figure>
-      <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris playing drums"></div></figure>
-      <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/gym.png" alt=""><img class="real-img" src="/media/i/me-gym.jpg" alt="Chris at the gym"></div></figure>
-    </div>
-  </div>
-</section>
-
-<section class="sec contact" id="contact">
-  <div class="wrap">
-    <div class="contact-card">
-      <h2 class="contact-title">Let's work together.</h2>
-      <p class="contact-sub">Open to contract work with agencies and B2B teams.</p>
-      <div class="contact-row">
-        <a class="btn btn-inv" href="mailto:chrisekribs@gmail.com">chrisekribs@gmail.com</a>
-        <button class="btn btn-line" type="button" id="copyEmail">Copy email</button>
-        <a class="btn btn-line" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <span class="mark mark-xl" data-mark aria-hidden="true"></span>
-    </div>
-  </div>
+  <footer class="foot">
+    <span class="mark" data-mark aria-hidden="true"></span>
+    <span>© <span id="year">2026</span> Chris Kribs · Greenville, SC</span>
+    <a href="/palette.html">Colors</a>
+  </footer>
 </section>
 
 </main>
 
-<footer class="foot">
-  <div class="wrap foot-row">
-    <span class="mono">© <span id="year">2026</span> Chris Kribs</span>
-    <span class="mono dim">Greenville, SC</span>
+<!-- PROJECT VIEWER -->
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
+  <div class="viewer-bar">
+    <button type="button" class="v-btn" id="vClose">✕ Close</button>
+    <span class="v-count" id="vCount"></span>
+    <button type="button" class="v-btn" id="vNext">Next project →</button>
   </div>
-</footer>
-
-<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
-  <div class="modal-box">
-    <div class="modal-bar">
-      <div><p class="mono dim" id="mKicker"></p><h3 id="mTitle"></h3></div>
-      <button type="button" class="icon-btn" id="mClose" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-stage">
-      <button type="button" class="icon-btn nav-prev" id="mPrev" aria-label="Previous">‹</button>
-      <img id="mImg" alt="" hidden>
-      <video id="mVid" controls playsinline preload="metadata" hidden></video>
-      <button type="button" class="icon-btn nav-next" id="mNext" aria-label="Next">›</button>
-    </div>
-    <div class="thumbs" id="mThumbs"></div>
+  <div class="viewer-scroll" id="vScroll">
+    <header class="v-head">
+      <p class="kicker" id="vKicker"></p>
+      <h2 class="display" id="vTitle"></h2>
+      <p class="v-sum" id="vSum"></p>
+      <ul class="v-results" id="vResults"></ul>
+    </header>
+    <div class="v-blocks" id="vBlocks"></div>
   </div>
 </div>
 

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colors · Chris Kribs</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Instrument+Sans:wght@400;600&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  body { background: var(--paper); color: var(--slate); }
+  .pal { padding: 56px var(--gut) 100px; max-width: 1240px; }
+  .pal h1 { font: 400 clamp(44px, 7vw, 96px)/.95 var(--serif); font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144; margin: 14px 0 10px; }
+  .pal h1 em { color: var(--jasper); font-weight: 300; }
+  .pal .kicker { color: var(--dusky); }
+  .pal > p { max-width: 640px; }
+  .pal h2 { font: 700 13px/1 var(--type); text-transform: uppercase; letter-spacing: .06em; margin: 56px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--dusky-16); }
+  .sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .sw.big { grid-template-columns: repeat(3, 1fr); }
+  .chip { border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 var(--dusky-16); }
+  .chip i { display: block; height: 110px; }
+  .big .chip i { height: 200px; }
+  .chip div { padding: 12px 14px; font-size: 14px; line-height: 1.35; }
+  .chip b { display: block; font: 400 20px/1.1 var(--serif); }
+  .chip code { font: 400 13px/1 var(--type); opacity: .7; }
+  .ramp { display: grid; grid-template-columns: 140px repeat(9, 1fr); gap: 6px; align-items: center; margin-bottom: 8px; font: 400 12px/1 var(--type); }
+  .ramp span { height: 56px; border-radius: 6px; display: grid; place-items: end start; padding: 6px; color: var(--slate); }
+  .grads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .grads div { height: 150px; border-radius: 12px; padding: 16px; display: flex; align-items: flex-end; font: 700 13px/1.3 var(--type); color: var(--paper); }
+  .pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .pairs div { padding: 26px; border-radius: 12px; font: 400 30px/1.1 var(--serif); }
+  .pairs small { display: block; margin-top: 10px; font: 400 12px/1.3 var(--type); opacity: .8; }
+  @media (max-width: 700px) { .sw.big, .grads, .pairs { grid-template-columns: 1fr; } .ramp { grid-template-columns: 90px repeat(9, 1fr); } }
+</style>
+</head>
+<body>
+<main class="pal">
+  <a href="/" class="kicker">← Back to the site</a>
+  <h1>Colors, <em>by Wada Sanzo.</em></h1>
+  <p>The primaries are Classic combination 219 from Sanzo Wada's <em>A Dictionary of Color Combinations</em>. The secondaries come from combinations that share a color with 219, so they belong to the same family.</p>
+
+  <h2>Primaries · combination 219</h2>
+  <div class="sw big">
+    <div class="chip"><i style="background:var(--jasper)"></i><div><b>Jasper Red</b><code>#EB5324</code><br>Accent: emphasis, buttons, key numbers</div></div>
+    <div class="chip"><i style="background:var(--chromium)"></i><div><b>Chromium Green</b><code>#719470</code><br>Support: tags, data, quiet highlights</div></div>
+    <div class="chip"><i style="background:var(--dusky)"></i><div><b>Dusky Green</b><code>#004F46</code><br>Base: backgrounds, headers, type on light</div></div>
+  </div>
+
+  <h2>Secondaries</h2>
+  <div class="sw">
+    <div class="chip"><i style="background:var(--slate)"></i><div><b>Deep Slate Green</b><code>#112F2C</code><br>Ink, darkest surface (combo 318)</div></div>
+    <div class="chip"><i style="background:var(--ivory)"></i><div><b>Ivory Buff</b><code>#EBD3A2</code><br>Warm paper (combo 94)</div></div>
+    <div class="chip"><i style="background:var(--paper)"></i><div><b>Paper</b><code>#F5ECD9</code><br>Ivory Buff, lifted for pages</div></div>
+    <div class="chip"><i style="background:var(--seashell)"></i><div><b>Seashell Pink</b><code>#FDD4BD</code><br>Soft warmth (combo 194, with Jasper)</div></div>
+    <div class="chip"><i style="background:var(--cream)"></i><div><b>Cream Yellow</b><code>#FDBF68</code><br>Highlight on dark (combo 278)</div></div>
+    <div class="chip"><i style="background:var(--olive)"></i><div><b>Olive Buff</b><code>#C1C494</code><br>Muted support (combo 200)</div></div>
+  </div>
+
+  <h2>Opacity variations</h2>
+  <div id="ramps"></div>
+
+  <h2>Gradients</h2>
+  <div class="grads">
+    <div style="background:var(--g-forest)">Forest · Dusky → Chromium</div>
+    <div style="background:var(--g-ember)">Ember · Jasper → Cream Yellow</div>
+    <div style="background:var(--g-dusk)">Dusk · Deep Slate → Dusky</div>
+    <div style="background:var(--g-blush);color:var(--slate)">Blush · Seashell → Ivory Buff</div>
+  </div>
+
+  <h2>Pairings</h2>
+  <div class="pairs">
+    <div style="background:var(--dusky);color:var(--paper)">Paper on Dusky<small>Default dark surface</small></div>
+    <div style="background:var(--paper);color:var(--dusky)">Dusky on Paper<small>Default light surface</small></div>
+    <div style="background:var(--jasper);color:var(--paper)">Paper on Jasper<small>Buttons, big moments</small></div>
+    <div style="background:var(--slate);color:var(--cream)">Cream on Slate<small>Labels on dark</small></div>
+    <div style="background:var(--seashell);color:var(--jasper)">Jasper on Seashell<small>Soft callouts</small></div>
+    <div style="background:var(--chromium);color:var(--slate)">Slate on Chromium<small>Data, tags</small></div>
+  </div>
+</main>
+<script>
+  const ramps = [['Jasper Red', '235 83 36'], ['Chromium Green', '113 148 112'], ['Dusky Green', '0 79 70']];
+  const steps = [8, 16, 24, 32, 48, 64, 80, 90, 100];
+  document.getElementById('ramps').innerHTML = ramps.map(([n, c]) => `<div class="ramp"><b>${n}</b>${steps.map(s => `<span style="background:rgb(${c} / ${s / 100});color:${s > 60 ? '#f5ecd9' : '#112f2c'}">${s}%</span>`).join('')}</div>`).join('');
+</script>
+</body>
+</html>
