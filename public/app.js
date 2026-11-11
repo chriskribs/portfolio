@@ -35,9 +35,12 @@
   };
 
   /* ================= MARQUEE ================= */
-  const brands = ['Wellzesta', 'PTG', 'Courser', 'Union Club Hotel', 'Brush Creek Ranch', 'Michigan City', 'MaxQ AI', 'Venue ND', 'Weber Family Dentistry', 'The Santiago Partnership'];
-  const mq = brands.map(b => `<span>${b}</span>${ic('star')}`).join('');
-  $('#marquee').innerHTML = mq + mq;
+  const tapeA = ['Chris Kribs', 'B2B marketing', 'Greenville, SC', 'Strategy + making', 'Results on the board'];
+  const tapeB = ['Wellzesta', 'PTG', 'Courser', 'Union Club Hotel', 'Brush Creek Ranch', 'Michigan City', 'MaxQ AI', 'Venue ND'];
+  const tape = a => { const h = a.map(t => `<span>${t}</span>${ic('star')}`).join(''); return h + h + h; };
+  $('#tapeA').innerHTML = tape(tapeA); $('#tapeB').innerHTML = tape(tapeB);
+
+  const ME = { name: 'Chris Kribs', img: '/media/i/me-headshot.jpg' };
 
   /* ================= PROJECTS ================= */
   const P = [
@@ -57,22 +60,29 @@
       results: ['15 net-new demos and 3 opportunities from the conference playbook', '3 demos sat and 2 deals moved forward from 25 ABM mailers'],
       peek: ['wz-linkedin-8', 'wz-kyle-leadingage-va', 'wz-zesty'],
       blocks: [
-        { t: 'feed', title: 'LinkedIn feed', handle: 'Wellzesta', posts: [
-          { img: 'wz-kyle-leadingage-va', cap: 'Meet us at LeadingAge Virginia. Book a demo with Kyle.' },
-          { carousel: ['wz-zesty', 'wz-zesty-2'], cap: 'Say hello to Zesty, your community\'s new assistant.', tall: true },
-          { vid: 'wz-linkedin-anim', img: 'p-wz-linkedin-anim', cap: 'Everything residents need, in one place.' },
-          { carousel: ['wz-rollout-carousel', 'wz-rollout-carousel-2'], cap: '3 reasons app rollouts stall, and how to fix them.', tall: true },
-          { img: 'wz-brookhaven-docs', cap: 'Documents, now one tap away for residents.' },
-          { vid: 'wz-expiration', img: 'p-wz-expiration', cap: 'New: messages that clean up after themselves.' },
-          { img: 'wz-vista-leadingage', cap: 'See you at LeadingAge NJ/DE.' },
-          { vid: 'wz-wellness-chart', img: 'p-wz-wellness-chart', cap: 'Wellness, at a glance.' },
-          { img: 'wz-linkedin-8', cap: 'Ask Zesty anything.' }
+        { t: 'feed', title: 'The feed', role: 'Marketing Manager at Wellzesta', stats: [['MQL goal', '120%'], ['Conference demos', '15'], ['Opportunities', '3']], posts: [
+          { carousel: ['wz-zesty', 'wz-zesty-2'], cap: 'Launch day. Zesty is the AI concierge we built for senior living communities, and this carousel is how we introduced it: what it does first, how it helps staff second.', tags: '#productlaunch #seniorliving', when: '2w' },
+          { img: 'wz-kyle-leadingage-va', cap: 'Headed to LeadingAge Virginia. Every show runs on the same before, during and after playbook now. So far it has produced 15 net-new demos and 3 opportunities.', tags: '#conferences #b2bmarketing', when: '1mo' },
+          { vid: 'wz-linkedin-anim', img: 'p-wz-linkedin-anim', cap: 'Ten seconds of motion beats a paragraph of features. Made this loop to show everything residents can reach from one screen.', tags: '#motiondesign', when: '1mo' },
+          { carousel: ['wz-rollout-carousel', 'wz-rollout-carousel-2'], cap: 'Most app rollouts don\'t fail at launch. They stall in week three. Three reasons why, and what to do about each one.', tags: '#customermarketing', when: '2mo' },
+          { vid: 'wz-expiration', img: 'p-wz-expiration', cap: 'Small feature, real problem solved: messages that clean up after themselves. Feature posts like this one keep existing customers using more of the product.', tags: '#adoption', when: '2mo' },
+          { img: 'wz-vista-leadingage', cap: 'LeadingAge NJ/DE next. Same playbook, new booth.', tags: '#conferences', when: '3mo' },
+          { vid: 'wz-wellness-chart', img: 'p-wz-wellness-chart', cap: 'Wellness data, at a glance. A product motion piece for sales decks and social.', tags: '#productmarketing', when: '3mo' },
+          { img: 'wz-brookhaven-docs', cap: 'Feature spotlight: documents, one tap away for residents.', tags: '#feature', when: '4mo' },
+          { img: 'wz-linkedin-8', cap: 'Ask Zesty anything.', tags: '#ai', when: '4mo' }
         ] }
       ] },
     { id: 'wz-video', co: 'Wellzesta', title: 'Video with real residents', type: 'Explainer · testimonial · onboarding', year: '2026',
-      result: 'Sent before first calls', sum: 'An explainer sales sends before the first call, a testimonial from a real community, and an onboarding video that helps residents actually start using the app.',
-      results: [], peek: ['p-wz-immanuel', 'p-wz-resident-intro', 'p-wz-explainer'],
-      blocks: [{ t: 'player', title: 'Video', vids: [['wz-explainer', 'Wellzesta in 45 seconds'], ['wz-immanuel', 'In their own words'], ['wz-resident-intro', 'Meet the app'], ['wz-marvella', 'A real resident']] }] },
+      result: 'One interview, three uses', sum: 'One afternoon with real residents became a sales testimonial, a resident onboarding video and a social cut. Plus a 45-second explainer sales sends before the first call.',
+      results: ['1 shoot → 3 assets', 'Sales, adoption and social covered'], peek: ['wz-source', 'p-wz-immanuel', 'p-wz-explainer'],
+      blocks: [
+        { t: 'oneclip', title: 'One clip, three uses', src: 'wz-source', srcCap: 'One resident interview at a customer community.', uses: [
+          ['wz-immanuel', 'For sales', 'Testimonial film', 'Peer proof for buyers who trust other communities more than vendors.', true],
+          ['wz-resident-intro', 'For adoption', 'Resident onboarding', 'Residents hear it from a neighbor, then try the app.'],
+          ['wz-marvella', 'For the feed', 'Captioned social cut', '15 seconds, square, captions on, made to stop the scroll.']
+        ] },
+        { t: 'player', title: 'Explainer', vids: [['wz-explainer', 'Wellzesta in 45 seconds']] }
+      ] },
     { id: 'courser', co: 'Courser', title: 'Multi-brand launches', type: 'Launch marketing · research · 11 brands', year: '2023–25',
       result: '80% adoption in one quarter', sum: 'My first team of people who think the way I do, alongside PTG. We shaped the strategy together and ran it across 11 brands.',
       results: ['201% of MQL goal', '80% launch adoption target hit within one quarter', '+9% ARR in three months'], peek: [], card: '201%' },
@@ -94,22 +104,22 @@
       results: [], peek: ['p-ptg-cyber', 'ptg-webinar-ad', 'p-ptg-clip'],
       blocks: [
         { t: 'phone', title: 'Vertical video', vids: [['ptg-cyber', 'Cyber insurance webinar promo'], ['ptg-clip', 'Leadership soundbites']] },
-        { t: 'feed', title: 'Paid + organic social', handle: 'PTG', posts: [
-          { img: 'ptg-webinar-ad', cap: 'Cyber insurance is changing. Join our panel.' },
-          { vid: 'ptg-social', img: 'p-ptg-clip', cap: 'Your IT team, in 10 seconds.' },
-          { img: 'ptg-essentials-ad', cap: 'IT essentials for growing businesses.' }
+        { t: 'feed', title: 'Paid + organic social', role: 'Marketing Manager at PTG', posts: [
+          { img: 'ptg-webinar-ad', cap: 'Cyber insurance requirements changed fast. We ran a panel webinar on what it meant for local businesses and promoted it with ads like this one.', tags: '#webinar #cybersecurity', when: '2y' },
+          { vid: 'ptg-social', img: 'p-ptg-clip', cap: 'Your IT team, in 10 seconds.', tags: '#managedIT', when: '2y' },
+          { img: 'ptg-essentials-ad', cap: 'IT essentials for growing businesses. A paid social ad for business owners.', tags: '#smallbusiness', when: '2y' }
         ] }
       ] },
     { id: 'union', co: 'Union Club Hotel · Vast Creative', title: 'Walk-in stories', type: 'Instagram stories · weekly', year: '2021',
       result: 'Weekly, for 3 outlets', sum: 'Weekly stories for a university hotel\'s restaurant, bar and coffee shop, for Marriott brands at Vast Creative.',
       results: [], peek: ['uc-latte', 'uc-cocktails', 'uc-smoothie'],
       blocks: [{ t: 'stories', title: 'Stories', handle: 'Union Club Hotel', imgs: ['uc-latte', 'uc-spirits', 'uc-loyalty', 'uc-smoothie', 'uc-bar-bites', 'uc-green-juice', 'uc-cocktails', 'uc-pastries', 'uc-juices', 'uc-bar-bites-2', 'uc-boiler-up'] },
-        { t: 'feed', title: 'Feed posts', handle: 'Union Club Hotel', posts: [{ img: 'uc-whiskey', cap: 'Whiskey Wednesday.' }, { img: 'uc-chow-now', cap: 'Order ahead, skip the line.' }] }] },
+        { t: 'feed', title: 'Feed posts', role: 'Social Media Manager at Vast Creative', posts: [{ img: 'uc-whiskey', cap: 'Whiskey Wednesday at the hotel bar. One of the weekly posts I made for the Union Club Hotel.', tags: '#hospitality', when: '5y' }, { img: 'uc-chow-now', cap: 'Order ahead, skip the line. Built to get people ordering.', tags: '#socialmedia', when: '5y' }] }] },
     { id: 'mc', co: 'Michigan City · WeCreate Media', title: 'Destination campaign', type: 'Social · posters · city guide · video', year: '2019',
       result: 'Restaurants, events, guide, film', sum: 'A restaurant series, event posters, a pocket city guide and a summer film for a Lake Michigan town.',
       results: [], peek: ['mc-discover-1', 'mc-stpats', 'mc-guide-1'],
       blocks: [
-        { t: 'feed', title: 'Discover series', handle: 'Michigan City', posts: ['mc-discover-1', 'mc-discover-2', 'mc-discover-3', 'mc-discover-4', 'mc-discover-5'].map(img => ({ img, cap: 'Discover Michigan City restaurants.' })) },
+        { t: 'feed', title: 'Discover series', role: 'Account Manager at WeCreate Media', posts: [{ carousel: ['mc-discover-1', 'mc-discover-2', 'mc-discover-3', 'mc-discover-4', 'mc-discover-5'], square: true, cap: 'The Discover series: one local restaurant at a time, so a weekend visit has a plan before anyone leaves home.', tags: '#destinationmarketing', when: '6y' }] },
         { t: 'board', title: 'Event posters', imgs: ['mc-stpats', 'mc-farmers', 'mc-arts'] },
         { t: 'deck', title: 'Pocket city guide', slides: ['mc-guide-1', 'mc-guide-2'] },
         { t: 'player', title: 'Summer film', vids: [['michigan-city', 'Michigan City summer']] }
@@ -133,14 +143,14 @@
     </${p.blocks ? 'button' : 'div'}></li>`).join('');
 
   /* peek that follows the cursor and flips through a few pieces */
-  const peek = $('#peek');
+  const peek = $('#peek'), peekIn = $('#peekIn');
   let peekT = null, px = 0, py = 0, tx = 0, ty = 0, peekOn = false;
   const showPeek = p => {
     clearInterval(peekT);
-    if (!p.peek.length) { peek.innerHTML = `<div class="peek-card"><b>${p.card}</b><span>${p.results[0]}</span></div>`; }
+    if (!p.peek.length) { peekIn.innerHTML = `<div class="peek-card"><b>${p.card}</b><span>${p.results[0]}</span></div>`; }
     else {
-      peek.innerHTML = p.peek.map((n, k) => `<img src="${I(n)}" alt="" class="${k === 0 ? 'on' : ''}">`).join('');
-      let k = 0; const imgs = $$('img', peek);
+      peekIn.innerHTML = p.peek.map((n, k) => `<img src="${I(n)}" alt="" class="${k === 0 ? 'on' : ''}">`).join('');
+      let k = 0; const imgs = $$('img', peekIn);
       peekT = setInterval(() => { imgs[k].classList.remove('on'); k = (k + 1) % imgs.length; imgs[k].classList.add('on'); }, 900);
     }
     peek.classList.add('on');
@@ -149,7 +159,7 @@
     idx.addEventListener('mouseover', e => { const r = e.target.closest('.row'); if (r && r.dataset.cur !== '1') { $$('.row', idx).forEach(x => x.dataset.cur = ''); r.dataset.cur = '1'; showPeek(P[+r.dataset.i]); } });
     idx.addEventListener('mouseleave', () => { peek.classList.remove('on'); clearInterval(peekT); $$('.row', idx).forEach(x => x.dataset.cur = ''); });
     addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; if (!peekOn) { px = tx; py = ty; peekOn = true; } });
-    const loop = () => { px += (tx - px) * .14; py += (ty - py) * .14; peek.style.transform = `translate(${px + 28}px, ${py - 120}px) rotate(-3deg)`; requestAnimationFrame(loop); };
+    const loop = () => { px += (tx - px) * .14; py += (ty - py) * .14; peek.style.transform = `translate(${px + 30}px, ${py - 130}px)`; requestAnimationFrame(loop); };
     loop();
   }
 
@@ -165,7 +175,7 @@
     ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser'],
     ['+1,230%', 'organic web traffic in two years', 'PTG']
   ];
-  $('#ledger').innerHTML = L.map(([n, l, s]) => `<div class="led"><b>${n}</b><span>${l}</span><small>${s}</small></div>`).join('');
+  $('#ledger').innerHTML = L.map(([n, l, s]) => `<div class="x"><div class="led cut"><b>${n}</b><span>${l}</span><small>${s}</small></div></div>`).join('');
 
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
@@ -205,31 +215,44 @@
       return el;
     },
     feed(b) {
-      const el = document.createElement('div'); el.className = 'm-phones';
-      const ini = b.handle.split(' ').map(w => w[0]).join('').slice(0, 2);
+      const el = document.createElement('div'); el.className = 'm-feed';
       const post = p => {
         const media = p.carousel
-          ? `<div class="car${p.tall ? ' tall' : ''}"><div class="car-track">${p.carousel.map(n => `<img src="${I(n)}" alt="" loading="lazy">`).join('')}</div><span class="car-dots">${p.carousel.map((_, k) => `<i class="${k ? '' : 'on'}"></i>`).join('')}</span><button type="button" class="car-next" aria-label="Next slide">›</button></div>`
+          ? `<div class="car"><div class="car-track">${p.carousel.map(n => `<img src="${I(n)}" alt="" loading="lazy"${p.square ? ' style="aspect-ratio:1"' : ''}>`).join('')}</div><span class="car-dots">${p.carousel.map((_, k) => `<i class="${k ? '' : 'on'}"></i>`).join('')}</span><button type="button" class="car-btn car-prev" aria-label="Previous slide">‹</button><button type="button" class="car-btn car-next" aria-label="Next slide">›</button></div>`
           : p.vid ? `<video src="${V(p.vid)}" poster="${I(p.img)}" muted loop playsinline preload="none"></video>` : `<img src="${I(p.img)}" alt="" loading="lazy">`;
-        return `<article class="post"><header><span class="av">${ini}</span><span><b>${b.handle}</b><small>Sponsored · 1d</small></span><span class="dots">···</span></header>
+        return `<article class="post"><header><img src="${ME.img}" alt=""><span><b>${ME.name}</b><small>${b.role}</small><small>${p.when || '1w'} · ${ic('star')}</small></span><span class="dots">···</span></header>
+          <p class="post-text">${p.cap}${p.tags ? ` <span class="hash">${p.tags}</span>` : ''}</p>
           <div class="post-media">${media}</div>
-          <div class="post-acts">${ic('heart')}${ic('chat')}${ic('send')}<span></span>${ic('save')}</div>
-          <p class="post-cap"><b>${b.handle}</b> ${p.cap}</p></article>`;
+          <div class="post-acts"><span>${ic('heart')} Like</span><span>${ic('chat')} Comment</span><span>${ic('send')} Share</span></div></article>`;
       };
-      el.innerHTML = `<div class="phone feed"><div class="phone-notch"></div><div class="feed-top"><span class="mark-sm">${b.handle}</span><span>${ic('heart')}${ic('send')}</span></div><div class="feed-scroll">${b.posts.map(post).join('')}</div></div><p class="m-hint">Scroll the feed. Tap the arrow on a post to swipe through a carousel.</p>`;
+      el.innerHTML = `<aside class="prof"><div class="prof-cover"></div><img src="${ME.img}" alt="Chris Kribs"><div><b>${ME.name}</b><span>${b.role}</span><span>Greenville, SC</span></div>
+        ${b.stats ? `<ul>${b.stats.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul>` : ''}</aside>
+        <div class="feed-col">${b.posts.map(post).join('')}</div>`;
       $$('.car', el).forEach(c => {
         let k = 0; const n = $$('img', c).length;
-        $('.car-next', c).addEventListener('click', () => { k = (k + 1) % n; $('.car-track', c).style.transform = `translateX(-${k * 100}%)`; $$('.car-dots i', c).forEach((d, j) => d.classList.toggle('on', j === k)); });
+        const go = d => { k = (k + d + n) % n; $('.car-track', c).style.transform = `translateX(-${k * 100}%)`; $$('.car-dots i', c).forEach((x, j) => x.classList.toggle('on', j === k)); };
+        $('.car-next', c).addEventListener('click', () => go(1)); $('.car-prev', c).addEventListener('click', () => go(-1));
       });
-      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { root: $('.feed-scroll', el), threshold: .6 });
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: .5 });
       $$('video', el).forEach(v => io.observe(v));
       cleanups.push(() => { io.disconnect(); $$('video', el).forEach(v => v.pause()); });
+      return el;
+    },
+    oneclip(b) {
+      const el = document.createElement('div'); el.className = 'oneclip';
+      el.innerHTML = `<div class="oc-src"><figure class="x" style="--xc: var(--red)"><img class="cut" src="${I(b.src)}" alt=""></figure>
+          <figcaption>${b.srcCap}</figcaption><span class="scrawl">one shoot → three jobs</span></div>
+        <div class="oc-uses">${b.uses.map(([v, tag, t, note, wide], k) => `<div class="oc-use${wide ? ' wide' : ''}">
+          <span class="tag ${['red', 'volt', ''][k]}">${k + 1} · ${tag}</span>
+          <video src="${V(v)}" poster="${I('p-' + v)}" controls playsinline preload="metadata"></video>
+          <b class="pl-title">${t}</b><p>${note}</p></div>`).join('')}</div>`;
+      cleanups.push(() => $$('video', el).forEach(v => v.pause()));
       return el;
     },
     stories(b) {
       const el = document.createElement('div'); el.className = 'm-phones';
       el.innerHTML = `<div class="phone story"><div class="story-bars">${b.imgs.map(() => '<i><b></b></i>').join('')}</div>
-        <div class="story-head"><span class="av">UC</span><b>${b.handle}</b><small>2h</small></div>
+        <div class="story-head"><b>${b.handle}</b><small>2h</small></div>
         ${b.imgs.map((n, k) => `<img src="${I(n)}" alt="" class="${k ? '' : 'on'}" loading="lazy">`).join('')}
         <button type="button" class="st-prev" aria-label="Previous story"></button><button type="button" class="st-next" aria-label="Next story"></button></div>
         <p class="m-hint">Tap the sides to skip. Stories advance on their own.</p>`;
@@ -309,7 +332,7 @@
     },
     board(b) {
       const el = document.createElement('div'); el.className = 'm-board';
-      el.innerHTML = b.imgs.map((n, k) => `<figure style="--r:${[-3, 2, -1.5, 3][k % 4]}deg"><span class="tape"></span><img src="${I(n)}" alt="" loading="lazy"></figure>`).join('');
+      el.innerHTML = b.imgs.map((n, k) => `<figure style="--r:${[-3, 2, -1.5, 3][k % 4]}deg"><span class="tp"></span><img src="${I(n)}" alt="" loading="lazy"></figure>`).join('');
       return el;
     }
   };
@@ -317,7 +340,7 @@
   const openProject = i => {
     cleanups.forEach(f => f()); cleanups = [];
     cur = i; const p = P[i];
-    $('#vKicker').textContent = `${p.co} · ${p.year}`;
+    $('#vKicker').innerHTML = `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`;
     $('#vTitle').textContent = p.title;
     $('#vSum').textContent = p.sum;
     $('#vResults').innerHTML = p.results.map(r => `<li>${r}</li>`).join('');
@@ -325,7 +348,7 @@
     vBlocks.innerHTML = '';
     p.blocks.forEach(b => {
       const sec = document.createElement('section'); sec.className = 'v-block';
-      sec.innerHTML = `<h3 class="v-label">${b.title}</h3>`;
+      sec.innerHTML = `<h3 class="v-label"><span class="tag">${b.title}</span></h3>`;
       sec.appendChild(mk[b.t](b));
       vBlocks.appendChild(sec);
     });

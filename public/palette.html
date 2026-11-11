@@ -3,85 +3,120 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Colors · Chris Kribs</title>
+<title>Brand system · Chris Kribs</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Instrument+Sans:wght@400;600&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Instrument+Sans:wght@400;500;600;700&family=Permanent+Marker&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <style>
-  body { background: var(--paper); color: var(--slate); }
-  .pal { padding: 56px var(--gut) 100px; max-width: 1240px; }
-  .pal h1 { font: 400 clamp(44px, 7vw, 96px)/.95 var(--serif); font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144; margin: 14px 0 10px; }
-  .pal h1 em { color: var(--jasper); font-weight: 300; }
-  .pal .kicker { color: var(--dusky); }
-  .pal > p { max-width: 640px; }
-  .pal h2 { font: 700 13px/1 var(--type); text-transform: uppercase; letter-spacing: .06em; margin: 56px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--dusky-16); }
-  .sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-  .sw.big { grid-template-columns: repeat(3, 1fr); }
-  .chip { border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 var(--dusky-16); }
-  .chip i { display: block; height: 110px; }
-  .big .chip i { height: 200px; }
-  .chip div { padding: 12px 14px; font-size: 14px; line-height: 1.35; }
-  .chip b { display: block; font: 400 20px/1.1 var(--serif); }
-  .chip code { font: 400 13px/1 var(--type); opacity: .7; }
-  .ramp { display: grid; grid-template-columns: 140px repeat(9, 1fr); gap: 6px; align-items: center; margin-bottom: 8px; font: 400 12px/1 var(--type); }
-  .ramp span { height: 56px; border-radius: 6px; display: grid; place-items: end start; padding: 6px; color: var(--slate); }
-  .grads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .grads div { height: 150px; border-radius: 12px; padding: 16px; display: flex; align-items: flex-end; font: 700 13px/1.3 var(--type); color: var(--paper); }
-  .pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .pairs div { padding: 26px; border-radius: 12px; font: 400 30px/1.1 var(--serif); }
-  .pairs small { display: block; margin-top: 10px; font: 400 12px/1.3 var(--type); opacity: .8; }
-  @media (max-width: 700px) { .sw.big, .grads, .pairs { grid-template-columns: 1fr; } .ramp { grid-template-columns: 90px repeat(9, 1fr); } }
+  body { background: var(--paper); color: var(--forest); }
+  .bs-hero { background: var(--red); color: var(--forest); padding: 60px var(--gut) 70px; position: relative; overflow: hidden; }
+  .bs-hero .display { font-size: clamp(70px, 12vw, 200px); --xc: var(--paper); }
+  .bs-hero .op { position: absolute; right: -80px; top: -80px; width: 420px; height: 420px; transform: rotate(10deg); }
+  .bs-hero a { position: relative; z-index: 1; }
+  .bs { padding: 40px var(--gut) 100px; max-width: 1280px; }
+  .bs h2 { margin: 70px 0 22px; }
+  .bs p.note { max-width: 680px; margin-bottom: 20px; font-weight: 500; }
+  .prop { display: grid; grid-template-columns: 25fr 25fr 15fr 7fr 7fr 7fr 7fr 7fr; height: 300px; }
+  .prop div { padding: 14px; display: flex; flex-direction: column; justify-content: space-between; font: 900 18px/1 var(--cond); text-transform: uppercase; }
+  .prop small { font: 700 12px/1.2 var(--sans); text-transform: none; }
+  .sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .chip { --c: 22px; min-height: 200px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; font: 900 28px/1 var(--cond); text-transform: uppercase; }
+  .chip code { font: 600 13px/1.4 var(--sans); text-transform: none; }
+  .ramp { display: grid; grid-template-columns: 150px repeat(9, 1fr); gap: 6px; align-items: center; margin-bottom: 8px; font: 900 16px/1 var(--cond); text-transform: uppercase; }
+  .ramp span { height: 60px; display: grid; place-items: end start; padding: 6px; font: 400 10px/1 var(--pixel); }
+  .grads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .grads div { --c: 26px; height: 170px; padding: 18px; display: flex; align-items: flex-end; font: 900 26px/1 var(--cond); text-transform: uppercase; color: var(--paper); }
+  .demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; }
+  .demo > div { background: #fff; padding: 26px; min-height: 260px; display: grid; gap: 16px; align-content: start; }
+  .demo h3 { font: 900 22px/1 var(--cond); text-transform: uppercase; }
+  .demo p { font-size: 14px; }
+  .box { width: 120px; height: 120px; background: var(--volt); --c: 22px; }
+  .big-ex { font: 900 64px/.85 var(--cond); text-transform: uppercase; color: var(--volt); --xc: var(--forest); }
+  .op-tile { height: 160px; }
+  .stripe-tile { height: 60px; }
+  .type { display: grid; gap: 18px; }
+  .type div { background: var(--forest); color: var(--paper); padding: 26px; }
+  .type .t1 { font: 900 clamp(60px, 9vw, 130px)/.85 var(--cond); text-transform: uppercase; }
+  .type .t2 { font: 600 22px/1.4 var(--sans); }
+  .type .t3 { font: 400 34px/1 var(--hand); color: var(--volt); }
+  .type .t4 { font: 400 20px/1.2 var(--pixel); color: var(--red); }
+  .type small { display: block; margin-top: 12px; font: 600 13px/1 var(--sans); color: var(--paper-70); }
+  @media (max-width: 800px) { .sw, .demo, .grads { grid-template-columns: 1fr 1fr; } .prop { height: 220px; } .ramp { grid-template-columns: 90px repeat(9, 1fr); } }
 </style>
 </head>
 <body>
-<main class="pal">
-  <a href="/" class="kicker">← Back to the site</a>
-  <h1>Colors, <em>by Wada Sanzo.</em></h1>
-  <p>The primaries are Classic combination 219 from Sanzo Wada's <em>A Dictionary of Color Combinations</em>. The secondaries come from combinations that share a color with 219, so they belong to the same family.</p>
+<header class="bs-hero">
+  <div class="op" aria-hidden="true"></div>
+  <a href="/" class="tag">← Back to the site</a>
+  <h1 class="display ex" style="margin-top:30px">Loud on<br>purpose.</h1>
+  <p style="max-width:560px;margin-top:24px;font-weight:600;position:relative">The CEK brand system. Two colors carry the weight, four loud accents add the punch, and every signature move comes from the pixel-stepped CEK mark.</p>
+</header>
+<main class="bs">
 
-  <h2>Primaries · combination 219</h2>
-  <div class="sw big">
-    <div class="chip"><i style="background:var(--jasper)"></i><div><b>Jasper Red</b><code>#EB5324</code><br>Accent: emphasis, buttons, key numbers</div></div>
-    <div class="chip"><i style="background:var(--chromium)"></i><div><b>Chromium Green</b><code>#719470</code><br>Support: tags, data, quiet highlights</div></div>
-    <div class="chip"><i style="background:var(--dusky)"></i><div><b>Dusky Green</b><code>#004F46</code><br>Base: backgrounds, headers, type on light</div></div>
+  <h2><span class="tag red">01 · Proportions</span></h2>
+  <p class="note">The bigger the block, the more often it shows up. Signal Red and Deep Forest do the heavy lifting. Accents are loud, so they stay small.</p>
+  <div class="prop">
+    <div style="background:var(--red);color:var(--paper)">Signal Red<small>25%</small></div>
+    <div style="background:var(--forest);color:var(--paper)">Deep Forest<small>25%</small></div>
+    <div style="background:var(--paper);color:var(--forest);box-shadow:inset 0 0 0 1px var(--forest-24)">Paper<small>15%</small></div>
+    <div style="background:var(--volt)">Volt<small>7%</small></div>
+    <div style="background:var(--pink);color:var(--paper)">Pink<small>7%</small></div>
+    <div style="background:var(--cobalt);color:var(--paper)">Cobalt<small>7%</small></div>
+    <div style="background:var(--tang)">Tang<small>7%</small></div>
+    <div style="background:var(--dusky);color:var(--paper)">Dusky<small>7%</small></div>
   </div>
 
-  <h2>Secondaries</h2>
+  <h2><span class="tag red">02 · Core</span></h2>
   <div class="sw">
-    <div class="chip"><i style="background:var(--slate)"></i><div><b>Deep Slate Green</b><code>#112F2C</code><br>Ink, darkest surface (combo 318)</div></div>
-    <div class="chip"><i style="background:var(--ivory)"></i><div><b>Ivory Buff</b><code>#EBD3A2</code><br>Warm paper (combo 94)</div></div>
-    <div class="chip"><i style="background:var(--paper)"></i><div><b>Paper</b><code>#F5ECD9</code><br>Ivory Buff, lifted for pages</div></div>
-    <div class="chip"><i style="background:var(--seashell)"></i><div><b>Seashell Pink</b><code>#FDD4BD</code><br>Soft warmth (combo 194, with Jasper)</div></div>
-    <div class="chip"><i style="background:var(--cream)"></i><div><b>Cream Yellow</b><code>#FDBF68</code><br>Highlight on dark (combo 278)</div></div>
-    <div class="chip"><i style="background:var(--olive)"></i><div><b>Olive Buff</b><code>#C1C494</code><br>Muted support (combo 200)</div></div>
+    <div class="x"><div class="chip cut" style="background:var(--red);color:var(--paper)">Signal Red<code>#FF4A1C · Jasper Red, turned all the way up</code></div></div>
+    <div class="x" style="--xc:var(--red)"><div class="chip cut" style="background:var(--forest);color:var(--paper)">Deep Forest<code>#0B2E28 · our black</code></div></div>
+    <div class="x"><div class="chip cut" style="background:var(--paper);box-shadow:inset 0 0 0 1px var(--forest-24)">Paper<code>#F6F0E4 · our white</code></div></div>
+    <div class="x"><div class="chip cut" style="background:var(--dusky);color:var(--paper)">Dusky Green<code>#004F46 · support</code></div></div>
   </div>
 
-  <h2>Opacity variations</h2>
+  <h2><span class="tag red">03 · Loud accents</span></h2>
+  <div class="sw">
+    <div class="x"><div class="chip cut" style="background:var(--volt)">Volt<code>#D7FF3A · highlights on dark</code></div></div>
+    <div class="x"><div class="chip cut" style="background:var(--pink);color:var(--paper)">Hot Pink<code>#FF3FA4 · energy</code></div></div>
+    <div class="x"><div class="chip cut" style="background:var(--cobalt);color:var(--paper)">Cobalt<code>#3A3BFF · links, cool contrast</code></div></div>
+    <div class="x"><div class="chip cut" style="background:var(--tang)">Tangerine<code>#FF9B1A · warmth</code></div></div>
+  </div>
+
+  <h2><span class="tag red">04 · Opacity steps</span></h2>
   <div id="ramps"></div>
 
-  <h2>Gradients</h2>
+  <h2><span class="tag red">05 · Gradients</span></h2>
+  <p class="note">Always at 40°, always two neighbors on the wheel. Use them on big flat moments: covers, cards, profile banners.</p>
   <div class="grads">
-    <div style="background:var(--g-forest)">Forest · Dusky → Chromium</div>
-    <div style="background:var(--g-ember)">Ember · Jasper → Cream Yellow</div>
-    <div style="background:var(--g-dusk)">Dusk · Deep Slate → Dusky</div>
-    <div style="background:var(--g-blush);color:var(--slate)">Blush · Seashell → Ivory Buff</div>
+    <div class="x"><div class="cut" style="background:var(--g-heat);height:170px;padding:18px;display:flex;align-items:flex-end;font:900 26px/1 var(--cond);text-transform:uppercase;color:var(--paper)">Heat · Red → Pink</div></div>
+    <div class="x"><div class="cut" style="background:var(--g-burn);height:170px;padding:18px;display:flex;align-items:flex-end;font:900 26px/1 var(--cond);text-transform:uppercase;color:var(--paper)">Burn · Tangerine → Red</div></div>
+    <div class="x"><div class="cut" style="background:var(--g-citrus);height:170px;padding:18px;display:flex;align-items:flex-end;font:900 26px/1 var(--cond);text-transform:uppercase;color:var(--forest)">Citrus · Volt → Tangerine</div></div>
+    <div class="x"><div class="cut" style="background:var(--g-night);height:170px;padding:18px;display:flex;align-items:flex-end;font:900 26px/1 var(--cond);text-transform:uppercase;color:var(--paper)">Night · Pink → Cobalt</div></div>
   </div>
 
-  <h2>Pairings</h2>
-  <div class="pairs">
-    <div style="background:var(--dusky);color:var(--paper)">Paper on Dusky<small>Default dark surface</small></div>
-    <div style="background:var(--paper);color:var(--dusky)">Dusky on Paper<small>Default light surface</small></div>
-    <div style="background:var(--jasper);color:var(--paper)">Paper on Jasper<small>Buttons, big moments</small></div>
-    <div style="background:var(--slate);color:var(--cream)">Cream on Slate<small>Labels on dark</small></div>
-    <div style="background:var(--seashell);color:var(--jasper)">Jasper on Seashell<small>Soft callouts</small></div>
-    <div style="background:var(--chromium);color:var(--slate)">Slate on Chromium<small>Data, tags</small></div>
+  <h2><span class="tag red">06 · Signature moves</span></h2>
+  <div class="demo">
+    <div><h3>The pixel extrusion</h3><span class="x" style="--xc:var(--forest);justify-self:start"><span class="box cut" style="display:block"></span></span><p>A 45° shadow built from 2px steps, the same stair-step as the diagonals in the CEK mark. Use it on blocks, buttons and photos.</p></div>
+    <div><h3>Extruded type</h3><span class="big-ex ex">Ship it.</span><p>Headlines get the same 45° extrusion. Keep strong contrast between the letters and the shadow.</p></div>
+    <div><h3>The cut corner</h3><span class="tag red" style="justify-self:start">Label like this</span><span class="tag volt" style="justify-self:start">Or this</span><p>Top-right corner clipped at 45°, on tags, buttons, cards and photos.</p></div>
+    <div><h3>Op-art squares</h3><div class="op op-tile"></div><p>Nested squares from the mark's outline. Background texture for big moments.</p></div>
+    <div><h3>Caution tape</h3><div class="stripes stripe-tile"></div><p>Volt and Forest stripes edge the moving tapes. Use them for momentum.</p></div>
+    <div><h3>The scrawl</h3><span class="scrawl" style="color:var(--red);font-size:30px">the receipts ↓</span><p>Hand-written notes in the margins. One per screen, max. It's the human in the system.</p></div>
+  </div>
+
+  <h2><span class="tag red">07 · Type</span></h2>
+  <div class="type">
+    <div><span class="t1">Big Shoulders</span><small>Display · Black 900, uppercase, tight</small></div>
+    <div><span class="t2">Instrument Sans for everything you actually read.</span><small>Body · 400 to 700</small></div>
+    <div><span class="t3">Permanent Marker for the margins</span><small>Scrawl · notes and asides only</small></div>
+    <div><span class="t4">SILKSCREEN 01 02 03</span><small>Pixel · numbers and tiny labels</small></div>
   </div>
 </main>
 <script>
-  const ramps = [['Jasper Red', '235 83 36'], ['Chromium Green', '113 148 112'], ['Dusky Green', '0 79 70']];
+  const ramps = [['Signal Red', '255 74 28'], ['Deep Forest', '11 46 40'], ['Volt', '215 255 58'], ['Hot Pink', '255 63 164'], ['Cobalt', '58 59 255']];
   const steps = [8, 16, 24, 32, 48, 64, 80, 90, 100];
-  document.getElementById('ramps').innerHTML = ramps.map(([n, c]) => `<div class="ramp"><b>${n}</b>${steps.map(s => `<span style="background:rgb(${c} / ${s / 100});color:${s > 60 ? '#f5ecd9' : '#112f2c'}">${s}%</span>`).join('')}</div>`).join('');
+  document.getElementById('ramps').innerHTML = ramps.map(([n, c]) => `<div class="ramp"><b>${n}</b>${steps.map(s => `<span style="background:rgb(${c} / ${s / 100});color:${s > 55 && n !== 'Volt' ? '#f6f0e4' : '#0b2e28'}">${s}%</span>`).join('')}</div>`).join('');
 </script>
 </body>
 </html>
