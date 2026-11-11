@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chris E. Kribs: film, design &amp; marketing</title>
+<meta name="description" content="Chris E. Kribs is a creative director, filmmaker and marketer in Easley, SC. Video, design and sales enablement that make brands feel human.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0e0d0b">
+<meta property="og:title" content="Chris E. Kribs">
+<meta property="og:description" content="Film, design & marketing that make brands feel human.">
+<meta property="og:image" content="/media/i/p-brush-creek.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230e0d0b'/><circle cx='32' cy='32' r='9' fill='%23ff5b1f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="is-loading">
+
+<!-- film leader -->
+<div class="leader" id="leader" aria-hidden="true">
+  <div class="leader-ring"><span class="leader-sweep"></span><span class="leader-num" id="leaderNum">3</span></div>
+  <div class="leader-cross"></div>
+  <button class="leader-skip" type="button">skip &rarr;</button>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav-sig" aria-label="Chris E. Kribs, home"><img src="/media/signature.png" alt="Chris E. Kribs" width="404" height="84"></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#work">Work</a><a href="#film">Film</a><a href="#design">Design</a><a href="#enablement">Enablement</a><a href="#about">About</a>
+  </nav>
+  <a href="#contact" class="nav-cta" data-cursor="Say hi">Let's talk</a>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" aria-label="Intro">
+  <video class="hero-reel" id="reel" src="/media/v/reel.mp4" poster="/media/i/p-brush-creek.jpg" autoplay muted loop playsinline preload="auto"></video>
+  <div class="hero-shade"></div>
+  <div class="hero-hud mono">
+    <span><i class="rec"></i>REC</span>
+    <span id="timecode">00:00:00:00</span>
+    <span class="hide-sm">EASLEY, SC &middot; 34.83&deg;N</span>
+  </div>
+  <div class="hero-copy">
+    <p class="eyebrow mono">Creative director &middot; filmmaker &middot; marketer</p>
+    <h1 class="hero-title">
+      <span class="line"><span>I make brands</span></span>
+      <span class="line"><span>feel <em class="swap" id="swap">human.</em></span></span>
+    </h1>
+    <p class="hero-sub">Film, design and sales enablement for brands from Wyoming guest ranches to Greenville tech firms. Work that makes people stop, feel something, and pick up the phone.</p>
+    <div class="hero-actions">
+      <a href="#film" class="btn btn-ember" data-cursor="Roll it">Watch the reel</a>
+      <a href="#work" class="btn btn-ghost">See the work</a>
+    </div>
+  </div>
+  <a href="#work" class="scroll-cue mono" aria-label="Scroll to work"><span>scroll</span><i></i></a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Clients">
+  <div class="marquee-track mono" id="marquee">
+    <span>Brush Creek Ranch</span><b>&#10022;</b><span>Union Club Hotel at Purdue</span><b>&#10022;</b><span>Michigan City, Indiana</span><b>&#10022;</b><span>MaxQ AI</span><b>&#10022;</b><span>Venue ND</span><b>&#10022;</b><span>The Santiago Partnership</span><b>&#10022;</b><span>Weber Family Dentistry</span><b>&#10022;</b><span>PTG IT Support</span><b>&#10022;</b><span>Better Than Rich</span><b>&#10022;</b>
+  </div>
+</div>
+
+<!-- SELECTED WORK INDEX -->
+<section class="index section" id="work">
+  <div class="section-head">
+    <p class="mono kicker">01 &mdash; Selected work</p>
+    <h2 class="display">A few things<br>I'm proud of.</h2>
+    <p class="section-note">Hover to peek. Click to step inside.</p>
+  </div>
+  <ol class="index-list" id="indexList"></ol>
+  <div class="peek" id="peek" aria-hidden="true"><img alt="" id="peekImg"></div>
+</section>
+
+<!-- FILM STRIP -->
+<section class="film" id="film" aria-label="Film">
+  <div class="film-sticky">
+    <div class="film-head">
+      <p class="mono kicker">02 &mdash; Film</p>
+      <h2 class="display">Visual<br><em>storytelling.</em></h2>
+      <p class="section-note">Directed, shot and cut. Hover a frame to preview, click to watch with sound.</p>
+    </div>
+    <div class="strip-wrap">
+      <div class="strip" id="strip"></div>
+    </div>
+    <div class="film-progress"><i id="filmBar"></i></div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section class="design section" id="design">
+  <div class="section-head">
+    <p class="mono kicker">03 &mdash; Design</p>
+    <h2 class="display">Humanizing brands<br>through <em>relatable</em> design.</h2>
+  </div>
+  <div id="designGroups"></div>
+</section>
+
+<!-- ENABLEMENT -->
+<section class="enable section" id="enablement">
+  <div class="enable-grid">
+    <div class="enable-copy">
+      <p class="mono kicker">04 &mdash; Sales enablement</p>
+      <h2 class="display">Documents that<br><em>generate demand.</em></h2>
+      <p>At PTG, an IT managed-services firm in Greenville, I built the whole kit a sales team needs to win and keep a client: a brand system, buyer's guides, security one-pagers, a customer welcome guide, business-review decks, webinar campaigns and short-form video.</p>
+      <p>B2B doesn't have to look like B2B. It has to be clear, it has to be useful, and it has to make the next conversation easier.</p>
+      <ul class="tags mono">
+        <li>Brand guidelines</li><li>Buyer's guides</li><li>Onboarding</li><li>QBR decks</li><li>Infographics</li><li>Webinars</li><li>Social video</li>
+      </ul>
+      <button class="btn btn-ember" type="button" data-open="ptg" data-cursor="Open">Open the PTG kit</button>
+    </div>
+    <div class="fan" id="fan" data-open="ptg" data-cursor="Open">
+      <img src="/media/i/ptg-buyers-guide.jpg" alt="PTG buyer's guide cover" loading="lazy">
+      <img src="/media/i/ptg-edr.jpg" alt="PTG endpoint detection resource" loading="lazy">
+      <img src="/media/i/ptg-cyber-guide.jpg" alt="PTG cyber insurance quick reference" loading="lazy">
+      <img src="/media/i/ptg-welcome-cover.jpg" alt="PTG welcome guide cover" loading="lazy">
+      <img src="/media/i/ptg-quick-facts.jpg" alt="PTG quick facts page" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section" id="process">
+  <div class="section-head">
+    <p class="mono kicker">05 &mdash; How I work</p>
+    <h2 class="display">Pretty is the easy part.</h2>
+    <p class="section-note">Behind the work is a planner who likes spreadsheets almost as much as cameras.</p>
+  </div>
+  <ol class="steps">
+    <li><span class="step-n">01</span><h3>Find the truth</h3><p>Personas, customer journey maps and competitive audits, so the story starts from what people actually care about.</p></li>
+    <li><span class="step-n">02</span><h3>Build the plan</h3><p>OGSM plans, content calendars and lead-scoring models that tie every piece to a goal someone can measure.</p></li>
+    <li><span class="step-n">03</span><h3>Make it beautiful</h3><p>Film, photography, design and copy that feel like one brand, from a 9:16 story to a 40-page guide.</p></li>
+    <li><span class="step-n">04</span><h3>Measure &amp; sharpen</h3><p>Attribution models and monthly reporting, so next quarter's work is smarter than this quarter's.</p></li>
+  </ol>
+</section>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="about-grid">
+    <figure class="about-photo" data-cursor="Hi">
+      <img src="/media/i/portrait.jpg" alt="Portrait of Chris Kribs" loading="lazy">
+      <figcaption class="mono">fig. 1 &mdash; the guy behind the camera</figcaption>
+    </figure>
+    <div class="about-copy">
+      <p class="mono kicker">06 &mdash; About</p>
+      <h2 class="display">Hey there, I'm Chris.</h2>
+      <p class="lead">I started in a creative agency with a camera in my hand and never really put it down. Since then I've led marketing in-house at tech companies, which taught me to pair the story with the strategy.</p>
+      <p>I work across both worlds: I can direct a shoot, design the campaign, write the copy and build the plan that proves it worked. I'm collaborative, organized to a fault, and happiest when a project has a clear brief and a little room to surprise you.</p>
+      <p>Off the clock I host long-table dinners in Easley, South Carolina, pull espresso shots, and look for any excuse to get people around a table.</p>
+      <div class="route mono" aria-label="Career path">
+        <span>Creative agency</span><i></i><span>PTG</span><i></i><span>Courser</span><i></i><span>In-house marketing lead</span><i></i><span class="now">Select freelance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="mono kicker">07 &mdash; Contact</p>
+  <h2 class="contact-title"><a href="mailto:chrisekribs@gmail.com" data-cursor="Write me">Let's make<br><em>something.</em></a></h2>
+  <p class="contact-sub">Agencies: I'm taking on a few select projects for teams that need an extra creative on the bench. White-label friendly, evenings and weekends, defined deliverables.</p>
+  <div class="contact-row">
+    <button class="btn btn-ember" type="button" id="copyEmail" data-cursor="Copy">chrisekribs@gmail.com</button>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/chris-kribs-8b5875173/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+  </div>
+  <footer class="foot mono">
+    <img src="/media/signature.png" alt="" width="404" height="84" class="foot-sig">
+    <span>Easley, SC &middot; <span id="clock">--:--</span> local</span>
+    <span>&copy; <span id="year">2026</span> Chris E. Kribs</span>
+  </footer>
+</section>
+
+</main>
+
+<!-- THEATER (case study overlay) -->
+<div class="theater" id="theater" role="dialog" aria-modal="true" aria-labelledby="thTitle" hidden>
+  <button class="th-close mono" type="button" id="thClose" aria-label="Close">close &times;</button>
+  <div class="th-scroll" id="thScroll">
+    <div class="th-media" id="thMedia"></div>
+    <div class="th-body">
+      <div class="th-meta mono" id="thMeta"></div>
+      <h2 class="th-title" id="thTitle"></h2>
+      <p class="th-blurb" id="thBlurb"></p>
+      <dl class="th-facts" id="thFacts"></dl>
+      <div class="th-gallery" id="thGallery"></div>
+      <div class="th-next" id="thNext"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-prev mono" id="lbPrev" type="button" aria-label="Previous">&larr;</button>
+  <button class="lb-btn lb-next mono" id="lbNext" type="button" aria-label="Next">&rarr;</button>
+  <button class="th-close mono" id="lbClose" type="button" aria-label="Close">close &times;</button>
+</div>
+
+<div class="toast mono" id="toast" role="status"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
