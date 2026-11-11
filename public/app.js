@@ -22,7 +22,7 @@
     mute: ['...#....', '..##....', '####.#.#', '####..#.', '####.#.#', '..##....', '...#....'],
     full: ['###.###', '#.....#', '#.....#', '.......', '#.....#', '#.....#', '###.###'],
     star: ['...#...', '...#...', '..###..', '#######', '..###..', '...#...', '...#...'],
-    chev: ['##........', '..##......', '....##....', '......##..', '........##', '......##..', '....##....', '..##......', '##........']
+    chev: ['...##......', '.....##....', '.......##..', '###########', '.......##..', '.....##....', '...##......']
   };
   const svg = g => {
     let r = '';
@@ -47,13 +47,14 @@
     { id: 'wz-demand', co: 'Wellzesta', title: 'The pipeline engine', type: 'Case studies · ebooks · reports · email', year: '2026',
       result: '120% of MQL goal in 5 months', sum: 'A department of one for a senior living software company. I set the plan with leadership and sales, then wrote and designed the content that fed it.',
       results: ['120% of the annual MQL goal in five months', '$873K active pipeline influenced', '43 contacts advanced to SQL', 'Lead scoring + attribution live in two months'],
-      peek: ['wz-sunnyside-mockup', 'wz-ebook', 'wz-report'],
+      peek: ['wz-sunnyside-mockup', 'wz-ebook-p1', 'wz-report-p1'],
       blocks: [
-        { t: 'book', title: 'Case study: Sunnyside', pages: ['wz-cs-sunnyside', 'wz-cs-sunnyside-2'] },
-        { t: 'book', title: 'Ebook: the rollout that almost failed', pages: ['wz-ebook', 'wz-ebook-3'] },
-        { t: 'book', title: 'Resident engagement report', pages: ['wz-report', 'wz-report-2'] },
-        { t: 'email', title: 'Customer newsletters', mails: [['wz-newsletter-oct', 'October: what\'s new in Wellzesta'], ['wz-newsletter-june', 'June: summer engagement ideas']] },
-        { t: 'book', title: 'One-pagers + case study: Tandem', pages: ['wz-cs-tandem', 'wz-ai-menu', 'wz-signup-flyer', 'wz-onboarding'] }
+        { t: 'book', title: 'Case study: Sunnyside', pages: ['wz-cs-sunnyside-p1', 'wz-cs-sunnyside-p2', 'wz-cs-sunnyside-p3', 'wz-cs-sunnyside-p4'] },
+        { t: 'book', title: 'Ebook: the rollout that almost failed', pages: ['wz-ebook-p1', 'wz-ebook-p2', 'wz-ebook-p3', 'wz-ebook-p4', 'wz-ebook-p5', 'wz-ebook-p6', 'wz-ebook-p7', 'wz-ebook-p8'] },
+        { t: 'book', title: 'Resident engagement report', pages: ['wz-report-p1', 'wz-report-p2', 'wz-report-p3', 'wz-report-p4', 'wz-report-p5', 'wz-report-p6'] },
+        { t: 'email', title: 'Customer newsletters', mails: [['wz-newsletter-oct', 'October: what\'s new in Wellzesta'], [['wz-newsletter-june-p1', 'wz-newsletter-june-p2', 'wz-newsletter-june-p3', 'wz-newsletter-june-p4'], 'June: summer engagement ideas']] },
+        { t: 'book', title: 'Case study: Tandem', pages: ['wz-cs-tandem-p1', 'wz-cs-tandem-p2', 'wz-cs-tandem-p3', 'wz-cs-tandem-p4'] },
+        { t: 'book', title: 'Product brief, staff onboarding + sign-up flyer', pages: ['wz-ai-menu-p1', 'wz-ai-menu-p2', 'wz-onboarding-p1', 'wz-onboarding-p2', 'wz-signup-flyer'] }
       ] },
     { id: 'wz-social', co: 'Wellzesta', title: 'Launches, social + events', type: 'LinkedIn · product launches · conferences', year: '2026',
       result: '15 demos + 3 opps from one playbook', sum: 'Feature launches, product motion and a conference playbook that runs the same way before, during and after every show.',
@@ -332,8 +333,8 @@
       const el = document.createElement('div'); el.className = 'm-mail';
       el.innerHTML = `<div class="mail"><div class="mail-top"><i></i><i></i><i></i><span>Inbox</span></div>
         <div class="mail-body"><ul class="mail-list">${b.mails.map(([n, s], k) => `<li><button type="button" data-k="${k}" class="${k ? '' : 'on'}"><b>Wellzesta</b><span>${s}</span></button></li>`).join('')}</ul>
-        <div class="mail-pane"><div class="mail-hdr"><b class="mail-subj"></b><small>From Wellzesta · to you</small></div><div class="mail-scroll"><img alt=""></div></div></div></div>`;
-      const show = k => { const [n, s] = b.mails[k]; $('.mail-pane img', el).src = I(n); $('.mail-subj', el).textContent = s; $('.mail-scroll', el).scrollTop = 0; $$('.mail-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
+        <div class="mail-pane"><div class="mail-hdr"><b class="mail-subj"></b><small>From Wellzesta · to you</small></div><div class="mail-scroll"></div></div></div></div>`;
+      const show = k => { const [n, s] = b.mails[k]; $('.mail-scroll', el).innerHTML = [].concat(n).map(x => `<img src="${I(x)}" alt="">`).join(''); $('.mail-subj', el).textContent = s; $('.mail-scroll', el).scrollTop = 0; $$('.mail-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
       $$('.mail-list button', el).forEach(x => x.addEventListener('click', () => show(+x.dataset.k)));
       show(0);
       return el;
