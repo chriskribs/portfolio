@@ -49,15 +49,9 @@
       </div>
     </div>
   </div>
-  <ul class="hero-stats" aria-label="Top results">
-    <li class="receipts"><span class="scrawl">the receipts ↓</span></li>
-    <li class="x"><div class="stat s1 cut"><span class="pi" data-icon="target"></span><b>120%</b><span>of the annual MQL goal, hit in five months</span></div></li>
-    <li class="x"><div class="stat s2 cut"><span class="pi" data-icon="bars"></span><b>$873K</b><span>active pipeline influenced in five months</span></div></li>
-    <li class="x"><div class="stat s3 cut"><span class="pi" data-icon="up"></span><b>+1,230%</b><span>organic web traffic in two years</span></div></li>
-  </ul>
 </section>
 
-<div class="ticker" aria-hidden="true"><div class="tick-track" id="ticker"></div></div>
+<div class="ticker" aria-label="Brands I've worked with"><div class="tick-track" id="ticker"></div></div>
 
 <section class="sec work" id="work">
   <div class="sec-head">
@@ -70,42 +64,35 @@
 </section>
 
 <section class="sec results peaks forest" id="results">
-  <div class="results-zig zig" aria-hidden="true"></div>
+  
   <div class="sec-head" style="position: relative; z-index: 1">
     <span class="kicker"><span class="px">02</span> Results</span>
     <h2 class="display" style="--xc: var(--paper)">Numbers, <span class="hl">not vibes.</span></h2>
   </div>
   <div class="ledger" id="ledger"></div>
+  <div class="results-band zig" aria-hidden="true"></div>
 </section>
 
 <section class="sec about peaks" id="about">
   <div class="about-grid">
-    <figure class="about-photo swap x" tabindex="0" style="--xc: var(--red)">
-      <div class="swap-media">
-        <img class="px-img" src="/media/px/headshot.png" alt="">
-        <img class="real-img" src="/media/i/me-headshot.jpg" alt="Chris Kribs">
-      </div>
-      <span class="scrawl">hover me. that's the real one.</span>
+    <figure class="about-photo">
+      <img src="/media/i/me-headshot.jpg" alt="Chris Kribs">
     </figure>
     <div class="about-copy">
       <span class="kicker"><span class="px">03</span> About</span>
       <h2 class="display">Hey, I'm <span class="hl">Chris.</span></h2>
       <p class="lead">I started at a creative agency in the edit bay, cutting, coloring and mixing other people's footage. Since then I've run marketing in-house for B2B tech companies, twice as a department of one, so every piece of creative I make has to earn a number someone cares about.</p>
-      <p>People person. Big-picture thinker who sweats the details. Grew up on metal, still play drums. I'm in the gym most mornings, and every evening ends with my wife, our twins and two dogs.</p>
+      <p>People person. Big-picture thinker who sweats the details. Love music. I'm in the gym most mornings, and every evening ends with my wife, our twins and two dogs.</p>
       <div class="route" aria-label="Career path">
         <span class="tag">WeCreate Media</span><span class="chev" data-icon="chev"></span><span class="tag">Vast Creative</span><span class="chev" data-icon="chev"></span><span class="tag">PTG + Courser</span><span class="chev" data-icon="chev"></span><span class="tag red">Wellzesta</span>
       </div>
-      <div class="snaps">
-        <figure class="swap x-sm" tabindex="0" style="--xc: var(--red)"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris on drums"></div></figure>
-        <figure class="swap x-sm" tabindex="0" style="--xc: var(--pink)"><div class="swap-media"><img class="px-img" src="/media/px/stage.png" alt=""><img class="real-img" src="/media/i/me-stage.jpg" alt="Chris on stage"></div></figure>
-        <figure class="swap x-sm" tabindex="0" style="--xc: var(--forest)"><div class="swap-media"><img class="px-img" src="/media/px/snow.png" alt=""><img class="real-img" src="/media/i/me-snow.jpg" alt="Chris outside with the dogs"></div></figure>
-      </div>
+      <div class="polas" id="polas" tabindex="0" role="button" aria-label="Next photo"></div>
+      <p class="polas-hint"><span>tap for the next one</span><span id="polaDots"></span></p>
     </div>
   </div>
 </section>
 
 <section class="contact peaks paper" id="contact">
-  <div class="contact-traffic traffic" aria-hidden="true"></div>
   <span class="kicker"><span class="px">04</span> Contact</span>
   <h2 class="contact-title"><a href="mailto:chrisekribs@gmail.com">Let's <span class="hl">talk</span><span class="chev" data-icon="chev"></span></a></h2>
   <p class="contact-sub">Open to contract work with agencies and B2B teams.</p>
@@ -114,6 +101,7 @@
     <span class="btnx x-sm" style="--xc: var(--red)"><button class="btn btn-paper" type="button" id="copyEmail">Copy email</button></span>
     <span class="btnx x-sm" style="--xc: var(--red)"><a class="btn btn-paper" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a></span>
   </div>
+  <div class="contact-band traffic" aria-hidden="true"></div>
   <footer class="foot">
     <span class="mark" data-mark aria-hidden="true"></span>
     <span>© <span id="year">2026</span> Chris Kribs · Greenville, SC</span>

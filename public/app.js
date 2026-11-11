@@ -36,9 +36,21 @@
   };
 
   /* ================= TICKER ================= */
-  const names = ['Wellzesta', 'PTG', 'Courser', 'Relais & Châteaux', 'The Santiago Partnership', 'Weber Family Dentistry', 'Union Club Hotel', 'Brush Creek Ranch', 'Michigan City'];
-  const tick = names.map(t => `<span>${t}</span><span class="chev">${svg(ICONS.chev)}</span>`).join('');
+  const BRANDS = [
+    { name: 'Wellzesta', ids: ['wz-demand', 'wz-social', 'wz-video'], sum: 'Senior living software. As a department of one I ran the pipeline, the launches, the social and the video.' },
+    { name: 'PTG', ids: ['ptg-brand', 'ptg-kit', 'ptg-social'], sum: 'A Greenville IT firm. I built the brand, the content engine, the sales kit and the video, solo.' },
+    { name: 'Courser', ids: ['courser'], sum: 'My first team of people who think the way I do. We shaped the strategy together and ran it across 11 brands.' },
+    { name: 'Relais & Châteaux', films: ['delicious-journeys'], sum: 'Edit, color, sound design and master. My favorite film I\'ve finished.' },
+    { name: 'The Santiago Partnership', films: ['santiago'], sum: 'Edit, color, sound design and master.' },
+    { name: 'Weber Family Dentistry', films: ['weber'], sum: 'Edit, color, sound design and master.' },
+    { name: 'Union Club Hotel', ids: ['union'], sum: 'Weekly stories and posts for a university hotel, made at Vast Creative.' },
+    { name: 'Brush Creek Ranch', films: ['brush-creek'], sum: 'Edit, color, sound design and master.' },
+    { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'A destination campaign for a Lake Michigan town, made at WeCreate Media.' },
+    { name: 'MaxQ AI', films: ['maxq'], sum: 'An event recap film. Edit, color, sound design and master.' }
+  ];
+  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${svg(ICONS.chev)}</span>`).join('');
   $('#ticker').innerHTML = tick + tick;
+  $$('#ticker button').slice(0, BRANDS.length).forEach(b => b.removeAttribute('tabindex'));
 
   const ME = { name: 'Chris Kribs', img: '/media/i/me-headshot.jpg' };
 
@@ -174,17 +186,17 @@
 
   /* ================= RESULTS LEDGER ================= */
   const L = [
-    ['120%', 'of the annual MQL goal, hit in five months', 'Wellzesta'],
-    ['$873K', 'active pipeline influenced in five months', 'Wellzesta'],
-    ['43', 'contacts advanced to sales-qualified', 'Wellzesta'],
-    ['15', 'net-new demos and 3 opportunities from one conference playbook', 'Wellzesta'],
-    ['3 → 2', 'demos sat, then deals moved forward, from 25 ABM mailers', 'Wellzesta'],
-    ['201%', 'of MQL goal', 'Courser'],
-    ['80%', 'adoption target for a launch, hit within one quarter', 'Courser'],
-    ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser'],
-    ['+1,230%', 'organic web traffic in two years', 'PTG']
+    ['120%', 'of the annual MQL goal, hit in five months', 'Wellzesta', 'wz-demand'],
+    ['$873K', 'active pipeline influenced in five months', 'Wellzesta', 'wz-demand'],
+    ['43', 'contacts advanced to sales-qualified', 'Wellzesta', 'wz-demand'],
+    ['15', 'net-new demos and 3 opportunities from one conference playbook', 'Wellzesta', 'wz-social'],
+    ['3 → 2', 'demos sat, then deals moved forward, from 25 ABM mailers', 'Wellzesta', 'wz-social'],
+    ['201%', 'of MQL goal', 'Courser', 'courser'],
+    ['80%', 'adoption target for a launch, hit within one quarter', 'Courser', 'courser'],
+    ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser', 'courser'],
+    ['+1,230%', 'organic web traffic in two years', 'PTG', 'ptg-brand']
   ];
-  $('#ledger').innerHTML = L.map(([n, l, s]) => `<div class="x"><div class="led cut"><b>${n}</b><span>${l}</span><small>${s}</small></div></div>`).join('');
+  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}</b><span>${l}</span><small>${s}</small><span class="go">See the work <span class="chev">${svg(ICONS.chev)}</span></span></button></div>`).join('');
 
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
@@ -346,16 +358,16 @@
     }
   };
 
-  const openProject = i => {
+  let mode = 'project';
+  const render = (v, kicker, count) => {
     cleanups.forEach(f => f()); cleanups = [];
-    cur = i; const p = P[i];
-    $('#vKicker').innerHTML = `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`;
-    $('#vTitle').textContent = p.title;
-    $('#vSum').textContent = p.sum;
-    $('#vResults').innerHTML = p.results.map(r => `<li>${r}</li>`).join('');
-    $('#vCount').textContent = `${openable.indexOf(i) + 1} / ${openable.length}`;
+    $('#vKicker').innerHTML = kicker;
+    $('#vTitle').textContent = v.title;
+    $('#vSum').textContent = v.sum;
+    $('#vResults').innerHTML = (v.results || []).map(r => `<li>${r}</li>`).join('');
+    $('#vCount').textContent = count;
     vBlocks.innerHTML = '';
-    p.blocks.forEach(b => {
+    (v.blocks || []).forEach(b => {
       const sec = document.createElement('section'); sec.className = 'v-block';
       sec.innerHTML = `<h3 class="v-label"><span class="tag">${b.title}</span></h3>`;
       sec.appendChild(mk[b.t](b));
@@ -364,14 +376,51 @@
     viewer.hidden = false; document.body.classList.add('lock');
     $('#vScroll').scrollTop = 0; $('#vClose').focus({ preventScroll: true });
   };
+  const openProject = i => {
+    mode = 'project'; cur = i; const p = P[i]; $('#vNext').innerHTML = `Next project <span class="chev">${svg(ICONS.chev)}</span>`;
+    render(p, `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`, openable.includes(i) ? `${openable.indexOf(i) + 1} / ${openable.length}` : '');
+  };
+  const FILM = Object.fromEntries(P.find(p => p.id === 'films').blocks[0].vids);
+  const openBrand = k => {
+    mode = 'brand'; cur = k; const b = BRANDS[k]; $('#vNext').innerHTML = `Next brand <span class="chev">${svg(ICONS.chev)}</span>`;
+    const ps = (b.ids || []).map(id => P.find(p => p.id === id));
+    const blocks = ps.flatMap(p => (p.blocks || []).map(x => ({ ...x, title: ps.length > 1 ? `${p.title} · ${x.title}` : x.title })));
+    if (b.films) blocks.push({ t: 'player', title: b.films.length > 1 ? 'Films' : 'Film', vids: b.films.map(f => [f, FILM[f]]) });
+    const results = ps.flatMap(p => p.results || []).slice(0, 6);
+    render({ title: b.name, sum: b.sum, results, blocks }, `<span class="px">${String(k + 1).padStart(2, '0')}</span> Brands I've worked with`, `${k + 1} / ${BRANDS.length}`);
+  };
   const closeProject = () => { cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
   $('#vClose').addEventListener('click', closeProject);
-  $('#vNext').addEventListener('click', () => openProject(openable[(openable.indexOf(cur) + 1) % openable.length]));
+  $('#vNext').addEventListener('click', () => (mode === 'brand' ? openBrand((cur + 1) % BRANDS.length) : openProject(openable[(openable.indexOf(cur) + 1) % openable.length])));
+  $('#ticker').addEventListener('click', e => { const b = e.target.closest('[data-brand]'); if (b) openBrand(+b.dataset.brand); });
   addEventListener('keydown', e => { if (!viewer.hidden && e.key === 'Escape') closeProject(); });
   idx.addEventListener('click', e => { const r = e.target.closest('button.row'); if (r) openProject(+r.dataset.i); });
   document.addEventListener('click', e => { const b = e.target.closest('[data-project]'); if (b) openProject(P.findIndex(p => p.id === b.dataset.project)); });
 
   /* ================= MISC ================= */
+  const PHOTOS = [
+    ['me-family', 'my crew'],
+    ['me-drums', 'love music'],
+    ['me-stage', 'the view from the drum riser'],
+    ['me-snow', 'snow day with the dogs']
+  ];
+  const polas = $('#polas');
+  if (polas) {
+    const rot = [-4, 3, -2, 5];
+    let order = PHOTOS.map((_, k) => k), busy = false;
+    const draw = () => {
+      polas.innerHTML = order.slice().reverse().map(k => `<figure class="pola" data-k="${k}" style="--r:${rot[k % 4]}deg"><img src="${I(PHOTOS[k][0])}" alt=""><figcaption>${PHOTOS[k][1]}</figcaption></figure>`).join('');
+      $('#polaDots').innerHTML = PHOTOS.map((_, k) => `<i class="${k === order[0] ? 'on' : ''}"></i>`).join(' ');
+    };
+    const next = () => {
+      if (busy) return; busy = true;
+      const top = polas.lastElementChild; top.classList.add('out');
+      setTimeout(() => { order.push(order.shift()); draw(); busy = false; }, reduce ? 0 : 420);
+    };
+    polas.addEventListener('click', next);
+    polas.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } });
+    draw();
+  }
   $$('.swap').forEach(f => {
     f.addEventListener('click', () => f.classList.toggle('on'));
     f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); f.classList.toggle('on'); } });
