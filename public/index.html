@@ -3,267 +3,222 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chris E. Kribs: marketing strategist &amp; maker</title>
-<meta name="description" content="Chris E. Kribs: B2B marketing strategist and maker in Greenville, SC. I ask what the goal is before I make the thing.">
+<title>Chris Kribs · Marketing strategist</title>
+<meta name="description" content="Chris Kribs: B2B marketing strategist in Greenville, SC. I ask what the goal is before I make the thing.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0d1c43">
-<meta property="og:title" content="Chris E. Kribs">
+<meta property="og:title" content="Chris Kribs · Marketing strategist">
 <meta property="og:description" content="Ask why first. Then make the thing.">
 <meta property="og:image" content="/media/px/avatar.png">
-<link rel="icon" href="/media/px/avatar.png">
+<link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
-<!-- TITLE SCREEN -->
-<div class="title" id="title" role="dialog" aria-label="Title screen">
-  <div class="title-inner">
-    <p class="px tiny blink-slow">&#9733; 1 PLAYER &#9733;</p>
-    <h1 class="title-name px"><span>CHRIS</span><span>E. KRIBS</span></h1>
-    <p class="title-sub px">MARKETING STRATEGIST &middot; MAKER &middot; DRUMMER</p>
-    <div class="title-art"><img src="/media/px/avatar.png" alt="Pixel portrait of Chris" width="560" height="560"></div>
-    <button class="press px" id="pressStart" type="button">&#9654; PRESS START</button>
-    <p class="vt hint">or press any key &middot; sound <button type="button" class="sound-inline" id="soundTitle">ON</button></p>
-    <p class="vt copy">&copy; 2026 KRIBS SOFT &middot; EASLEY, SC &middot; INSERT COFFEE</p>
-  </div>
-</div>
-
-<!-- TOP BAR -->
-<header class="bar" id="bar">
-  <a href="#hello" class="bar-logo px">CEK<span class="blink">_</span></a>
-  <nav class="bar-nav px" aria-label="Sections">
-    <a href="#think">THINK</a><a href="#quests">QUESTS</a><a href="#loot">LOOT</a><a href="#me">ME</a><a href="#tapes">TAPES</a><a href="#album">ALBUM</a><a href="#guestbook">GUESTBOOK</a>
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Chris Kribs, home">
+    <span class="mark" data-mark aria-hidden="true"></span>
+    <span class="brand-name">Chris Kribs</span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#approach">Approach</a>
+    <a href="#work">Work</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
   </nav>
-  <button class="bar-sound px" id="soundBtn" type="button" aria-label="Toggle sound">&#9835; ON</button>
+  <a class="btn btn-sm" href="#contact">Say hi <span class="pi" data-icon="arrow"></span></a>
 </header>
 
-<div class="marquee vt" aria-hidden="true"><div class="marquee-track" id="marquee">&#9733; WELCOME TO CHRIS'S HOMEPAGE &#9733; ASK WHY FIRST &#9733; THEN MAKE THE THING &#9733; NOW WITH 100% MORE STRATEGY &#9733; BEST VIEWED WITH THE VOLUME UP &#9733; <span id="visits">FIRST VISIT? HI.</span> &#9733; THIS SITE IS ALWAYS UNDER CONSTRUCTION &#9733;&nbsp;</div></div>
+<main id="top">
 
-<main>
-
-<!-- HELLO / DIALOGUE -->
-<section class="screen hello" id="hello" aria-label="Hello">
-  <div class="stage-bg" aria-hidden="true"></div>
-  <div class="dialog-wrap">
-    <figure class="npc">
-      <img src="/media/px/avatar.png" alt="Pixel Chris" width="560" height="560">
-      <figcaption class="px tiny">CHRIS &middot; LV 7</figcaption>
-    </figure>
-    <div class="dialog win" id="dialog" aria-live="polite">
-      <div class="win-title px"><span>CHRIS</span><span class="dots"><i></i><i></i><i></i></span></div>
-      <p class="dialog-text" id="dialogText"></p>
-      <div class="choices" id="choices" hidden>
-        <a href="#think" class="choice px">&#9654; HOW DO YOU THINK?</a>
-        <a href="#quests" class="choice px">&#9654; WHERE HAVE YOU BEEN?</a>
-        <a href="#me" class="choice px">&#9654; WHO IS THIS GUY?</a>
-        <a href="#tapes" class="choice px">&#9654; SHOW ME THE TAPES</a>
-        <a href="#guestbook" class="choice px">&#9654; LET'S TALK</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="pi" data-icon="sparkle"></span> Marketing strategist · Greenville, SC</p>
+      <h1 class="hero-title">Ask why first.<br><span class="hl">Then make the thing.</span></h1>
+      <p class="lede">I'm Chris. Someone asks for a video, an email sequence, a booth. I ask what it's supposed to accomplish, find where things are actually stuck, then build the piece that moves that number. Usually I build it myself.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#work">See the work <span class="pi" data-icon="arrow"></span></a>
+        <a class="btn btn-ghost" href="#approach">How I think</a>
       </div>
-      <button class="next px blink" id="dialogNext" type="button" aria-label="Next">&#9660;</button>
-    </div>
-  </div>
-</section>
-
-<!-- THINK -->
-<section class="screen" id="think" aria-label="How I think">
-  <header class="screen-head">
-    <p class="px tiny ink-pink">LEVEL 1</p>
-    <h2 class="px h2">THE ASK <span class="ink-pink">VS.</span> THE GOAL</h2>
-    <p class="lede">Most marketing requests show up as a deliverable: a video, an email sequence, a booth. I start one step earlier. What is this supposed to change? Then I pick the channel that changes it.</p>
-  </header>
-
-  <div class="machine win">
-    <div class="win-title px"><span>GOAL-O-MATIC.EXE</span><span class="win-btns"><i>_</i><i>&#9633;</i><i>&times;</i></span></div>
-    <div class="machine-body">
-      <div class="asks" id="asks" role="tablist" aria-label="Pick a request"></div>
-      <div class="readout" id="readout" aria-live="polite">
-        <div class="ro-row"><span class="ro-k px">THE ASK</span><p class="ro-v" id="roAsk"></p></div>
-        <div class="ro-row"><span class="ro-k px">I ASK</span><p class="ro-v" id="roWhy"></p></div>
-        <div class="ro-row"><span class="ro-k px ink-pink">REAL GOAL</span><p class="ro-v" id="roGoal"></p></div>
-        <div class="ro-row"><span class="ro-k px ink-green">THE MOVE</span><p class="ro-v" id="roMove"></p></div>
-        <div class="ro-row"><span class="ro-k px ink-blue">LOOT</span><p class="ro-v" id="roLoot"></p></div>
-      </div>
-    </div>
-  </div>
-
-  <ol class="loop" aria-label="How a project runs">
-    <li><span class="px">01</span><b>ASK WHY</b><small>What should be different when this works?</small></li>
-    <li><span class="px">02</span><b>FIND THE GAP</b><small>Read the funnel. The problem is rarely where the request points.</small></li>
-    <li><span class="px">03</span><b>PICK THE CHANNEL</b><small>Mailer, walkthrough, email, video, event. Whatever closes the gap.</small></li>
-    <li><span class="px">04</span><b>MAKE IT</b><small>I write, design, shoot and build it myself, or run the people who do.</small></li>
-    <li><span class="px">05</span><b>MEASURE</b><small>Lead scoring and attribution in HubSpot, so the next move is smarter.</small></li>
-  </ol>
-  <p class="aside vt">&gt; BIG-PICTURE THINKER. DETAIL-ORIENTED DOER. BOTH STATS MAXED.</p>
-</section>
-
-<!-- QUESTS -->
-<section class="screen" id="quests" aria-label="Career quests">
-  <header class="screen-head">
-    <p class="px tiny ink-pink">LEVEL 2</p>
-    <h2 class="px h2">QUEST LOG</h2>
-    <p class="lede">Seven-plus years of B2B marketing. Twice as a department of one, once with a team of people who think like I do, and before that, behind a camera.</p>
-  </header>
-  <div class="quests" id="questList"></div>
-</section>
-
-<!-- LOOT -->
-<section class="screen loot" id="loot" aria-label="Results">
-  <header class="screen-head">
-    <p class="px tiny ink-yellow">LEVEL 3</p>
-    <h2 class="px h2">LOOT &amp; ACHIEVEMENTS</h2>
-    <p class="lede">The numbers that came out the other end.</p>
-  </header>
-  <div class="ach" id="achList"></div>
-</section>
-
-<!-- ME -->
-<section class="screen" id="me" aria-label="About Chris">
-  <header class="screen-head">
-    <p class="px tiny ink-pink">LEVEL 4</p>
-    <h2 class="px h2">CHARACTER SHEET</h2>
-  </header>
-  <div class="sheet">
-    <div class="sheet-card win">
-      <div class="win-title px"><span>PLAYER 1</span></div>
-      <figure class="swap-photo" tabindex="0">
-        <img class="pix" src="/media/px/headshot.png" alt="Pixel portrait of Chris">
-        <img class="real" src="/media/i/me-headshot.jpg" alt="Chris Kribs" loading="lazy">
-        <figcaption class="vt">HOVER TO RENDER IN HD</figcaption>
-      </figure>
-      <dl class="stats-dl vt">
-        <div><dt>NAME</dt><dd>CHRIS E. KRIBS</dd></div>
-        <div><dt>CLASS</dt><dd>STRATEGIST / MAKER</dd></div>
-        <div><dt>LEVEL</dt><dd>7+ YRS B2B</dd></div>
-        <div><dt>BASE</dt><dd>GREENVILLE &amp; EASLEY, SC</dd></div>
-        <div><dt>TRAINED AT</dt><dd>PURDUE, COMM &amp; MEDIA '18</dd></div>
-        <div><dt>PARTY</dt><dd>WIFE, TWINS, 2 DOGS</dd></div>
+      <dl class="hero-stats">
+        <div><dt class="num">120%</dt><dd>of the annual MQL goal, in 5 months</dd></div>
+        <div><dt class="num">$873K</dt><dd>active pipeline influenced</dd></div>
+        <div><dt class="num">+1,230%</dt><dd>organic traffic in 2 years</dd></div>
       </dl>
     </div>
-    <div class="sheet-main">
-      <div class="win">
-        <div class="win-title px"><span>ATTRIBUTES</span></div>
-        <ul class="attrs" id="attrs"></ul>
+    <figure class="hero-card swap" tabindex="0" aria-label="Photo of Chris. Hover or tap to switch from pixel to photo.">
+      <div class="swap-media">
+        <img class="px-img" src="/media/px/avatar.png" alt="" width="560" height="560">
+        <img class="real-img" src="/media/i/me-headshot.jpg" alt="Chris Kribs" width="387" height="440">
       </div>
-      <div class="win bio">
-        <div class="win-title px"><span>README.TXT</span></div>
-        <p>I'm a people person who happens to love a spreadsheet. I grew up on metal, I still play drums, and I train like my kids depend on it, because they kind of do.</p>
-        <p>At work I like being in the room where the strategy gets shaped, and then being the one who actually ships it. Ask me for a video and I'll ask what it's for. Sometimes the answer is still a video. I'm pretty good at those too.</p>
-        <p>After hours I host <a href="https://hereeasley.com" target="_blank" rel="noopener">here</a>, small dinners for people building things in Easley, and I run <b>there coffee</b>, a coffee cart. Same instinct: get the right people in a room and make it feel good to show up.</p>
-      </div>
-    </div>
+      <figcaption>
+        <span class="mono">CHRIS KRIBS</span>
+        <span class="mono dim">hover me</span>
+      </figcaption>
+      <span class="sticker s-pink">big thinker</span>
+      <span class="sticker s-yellow">detail person</span>
+      <span class="pi deco d1" data-icon="sparkle"></span>
+      <span class="pi deco d2" data-icon="plus"></span>
+    </figure>
   </div>
-  <div class="snaps" id="snaps">
-    <figure class="snap swap-photo" tabindex="0"><img class="pix" src="/media/px/drums.png" alt="Pixel drum kit"><img class="real" src="/media/i/me-drums.jpg" alt="Chris's drum kit on an outdoor stage" loading="lazy"><figcaption class="vt">BEHIND THE KIT</figcaption></figure>
-    <figure class="snap swap-photo" tabindex="0"><img class="pix" src="/media/px/stage.png" alt="Pixel stage"><img class="real" src="/media/i/me-stage.jpg" alt="View from a drum riser over a stadium stage" loading="lazy"><figcaption class="vt">VIEW FROM THE RISER</figcaption></figure>
-    <figure class="snap swap-photo" tabindex="0"><img class="pix" src="/media/px/family.png" alt="Pixel family"><img class="real" src="/media/i/me-family.jpg" alt="Chris with his wife and twins" loading="lazy"><figcaption class="vt">THE PARTY</figcaption></figure>
-    <figure class="snap swap-photo" tabindex="0"><img class="pix" src="/media/px/snow.png" alt="Pixel snow walk"><img class="real" src="/media/i/me-snow.jpg" alt="Chris and his wife with their two dogs in the snow" loading="lazy"><figcaption class="vt">+2 DOGS</figcaption></figure>
-    <figure class="snap swap-photo" tabindex="0"><img class="pix" src="/media/px/gym.png" alt="Pixel gym"><img class="real" src="/media/i/me-gym.jpg" alt="A squat rack in a home gym" loading="lazy"><figcaption class="vt">HP REGEN STATION</figcaption></figure>
-  </div>
-
-  <div class="win inv">
-    <div class="win-title px"><span>INVENTORY</span><span class="vt">[ HOVER AN ITEM ]</span></div>
-    <div class="inv-grid" id="inventory"></div>
-    <p class="inv-desc vt" id="invDesc">&gt; 0 ITEMS SELECTED</p>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
   </div>
 </section>
 
-<!-- TAPES -->
-<section class="screen tapes" id="tapes" aria-label="Video">
-  <header class="screen-head">
-    <p class="px tiny ink-yellow">LEVEL 5</p>
-    <h2 class="px h2">THE TAPES</h2>
-    <p class="lede">Video is one tool in the bag, not the bag. When it's the right move, I write it, shoot it and cut it.</p>
-  </header>
-  <div class="tv-wrap">
-    <div class="tv">
-      <div class="tv-screen">
-        <video id="tv" playsinline controls preload="none" poster="/media/i/p-wz-explainer.jpg"></video>
-        <canvas class="tv-static" id="tvStatic" width="160" height="90" aria-hidden="true"></canvas>
-        <div class="tv-osd px" id="tvOsd">CH 01</div>
-        <div class="scan" aria-hidden="true"></div>
-      </div>
-      <div class="tv-panel">
-        <span class="tv-brand px">KRIBSVISION</span>
-        <span class="knob" aria-hidden="true"></span><span class="knob" aria-hidden="true"></span>
+<!-- 01 APPROACH -->
+<section class="sec dark" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div>
+        <h2 class="sec-title">The ask isn't always the answer.</h2>
+        <p class="sec-sub">Most requests show up with the solution already picked. I back up one step and ask what has to change in the business. Pick a real ask to see how it played out.</p>
       </div>
     </div>
-    <div class="tv-guide win">
-      <div class="win-title px"><span>TV GUIDE</span></div>
-      <ol class="channels" id="channels"></ol>
-      <p class="tv-note" id="tvNote"></p>
+
+    <div class="asks-wrap">
+      <div class="asks" id="asks" role="tablist" aria-label="Real requests"></div>
+      <article class="ask-card" id="askCard" aria-live="polite">
+        <div class="ask-row"><span class="tag">The ask</span><p id="aAsk"></p></div>
+        <div class="ask-row"><span class="tag t-pink">I asked</span><p id="aWhy"></p></div>
+        <div class="ask-row"><span class="tag t-green">Real goal</span><p id="aGoal"></p></div>
+        <div class="ask-row"><span class="tag t-blue">What we did</span><p id="aMove"></p></div>
+        <div class="ask-result"><span class="pi" data-icon="check"></span><p id="aResult"></p></div>
+      </article>
+    </div>
+
+    <ol class="steps">
+      <li><span class="step-n">1</span><h3>Ask why</h3><p>What should be different when this works? Who has to do what?</p></li>
+      <li><span class="step-n">2</span><h3>Find the gap</h3><p>Read the data. Talk to sales, success and customers. Find where it's really stuck.</p></li>
+      <li><span class="step-n">3</span><h3>Pick the channel</h3><p>Video, mail, email, an event, a one-pager. Whatever fits the gap, not the habit.</p></li>
+      <li><span class="step-n">4</span><h3>Make it</h3><p>Write it, design it, shoot it, cut it, ship it. The details matter.</p></li>
+      <li><span class="step-n">5</span><h3>Measure it</h3><p>Pipeline, adoption, demos. The number we agreed on in step one.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 02 WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div>
+        <h2 class="sec-title">Where I've done it.</h2>
+        <p class="sec-sub">Twice I've been the whole marketing department. At Courser I finally got a team of people who think the way I do. Before all that, agencies, where I learned to make things.</p>
+      </div>
+    </div>
+    <div class="cases" id="cases"></div>
+  </div>
+</section>
+
+<!-- 03 RESULTS -->
+<section class="sec tint" id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h2 class="sec-title">The numbers we agreed on.</h2>
+        <p class="sec-sub">Not views or likes. The measures leadership and sales actually cared about.</p>
+      </div>
+    </div>
+    <div class="metrics" id="metrics"></div>
+  </div>
+</section>
+
+<!-- 04 VIDEO -->
+<section class="sec" id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div>
+        <h2 class="sec-title">Sometimes it is a video.</h2>
+        <p class="sec-sub">When video is the right call, I write, shoot and cut it. Each one of these had a job to do.</p>
+      </div>
+    </div>
+  </div>
+  <div class="reel" id="reel" tabindex="0" aria-label="Videos, scroll sideways"></div>
+</section>
+
+<!-- 05 ABOUT -->
+<section class="sec dark" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div>
+        <h2 class="sec-title">Off the clock.</h2>
+        <p class="sec-sub">Hover or tap a picture to bring it into focus.</p>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="photos">
+        <figure class="swap ph ph-wide" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/family.png" alt=""><img class="real-img" src="/media/i/me-family.jpg" alt="Chris with his family"></div><figcaption>Wife, twins, two dogs</figcaption></figure>
+        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/drums.png" alt=""><img class="real-img" src="/media/i/me-drums.jpg" alt="Chris playing drums"></div><figcaption>Behind the kit</figcaption></figure>
+        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/stage.png" alt=""><img class="real-img" src="/media/i/me-stage.jpg" alt="Chris on stage"></div><figcaption>On stage</figcaption></figure>
+        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/gym.png" alt=""><img class="real-img" src="/media/i/me-gym.jpg" alt="Chris at the gym"></div><figcaption>Lifting</figcaption></figure>
+        <figure class="swap ph" tabindex="0"><div class="swap-media"><img class="px-img" src="/media/px/snow.png" alt=""><img class="real-img" src="/media/i/me-snow.jpg" alt="Chris outside in the snow"></div><figcaption>Outside</figcaption></figure>
+      </div>
+      <div class="about-copy">
+        <p class="about-lede">I'm a people person who also likes a good spreadsheet. I'll talk big picture all day, then go fix the kerning.</p>
+        <ul class="traits" id="traits"></ul>
+        <h3 class="chips-title mono">What I bring</h3>
+        <div class="chips" id="chips"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ALBUM -->
-<section class="screen" id="album" aria-label="Work album">
-  <header class="screen-head">
-    <p class="px tiny ink-pink">LEVEL 6</p>
-    <h2 class="px h2">MY DOCUMENTS</h2>
-    <p class="lede">Case studies, ebooks, reports, newsletters, sales kits, social and print. Double-click a folder. (Single works too.)</p>
-  </header>
-  <div class="desktop win">
-    <div class="win-title px"><span id="explorerPath">C:\CHRIS\WORK</span><span class="win-btns"><i>_</i><i>&#9633;</i><i>&times;</i></span></div>
-    <div class="folders" id="folders"></div>
-    <div class="files" id="files" hidden></div>
-    <p class="status vt" id="explorerStatus"></p>
-  </div>
-</section>
-
-<!-- GUESTBOOK -->
-<section class="screen guest" id="guestbook" aria-label="Contact">
-  <header class="screen-head">
-    <p class="px tiny ink-yellow">FINAL LEVEL</p>
-    <h2 class="px h2">SIGN MY GUESTBOOK</h2>
-    <p class="lede">Got a goal that needs a strategy and someone to ship it? Tell me what you're trying to change.</p>
-  </header>
-  <form class="win gb" id="gbForm">
-    <div class="win-title px"><span>GUESTBOOK.CGI</span></div>
-    <label class="vt">NAME<input name="name" autocomplete="name" required></label>
-    <label class="vt">WHAT ARE YOU TRYING TO CHANGE?<textarea name="msg" rows="4" required></textarea></label>
-    <div class="gb-row">
-      <button class="btn px" type="submit">&#9654; SEND</button>
-      <button class="btn btn-alt px" type="button" id="copyEmail">COPY EMAIL</button>
-      <a class="btn btn-alt px" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LINKEDIN</a>
+<!-- 06 CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <span class="sec-num">06</span>
+      <h2 class="contact-title">Got an ask?<br>Let's find the goal.</h2>
+      <p class="contact-sub">I take on contract work with agencies and B2B teams: strategy, campaigns, content, and the making that goes with them.</p>
+      <div class="contact-row">
+        <a class="btn btn-paper" href="mailto:chrisekribs@gmail.com">Email me <span class="pi" data-icon="arrow"></span></a>
+        <button class="btn btn-line" type="button" id="copyEmail">Copy email</button>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/chriskribs" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <span class="mark mark-xl" data-mark aria-hidden="true"></span>
     </div>
-    <p class="vt gb-note">Opens your email app, addressed to chrisekribs@gmail.com.</p>
-  </form>
-
-  <div class="badges" aria-label="Web badges">
-    <span class="b88 b-blue">MADE IN<br>EASLEY SC</span>
-    <span class="b88 b-pink">\m/ METAL<br>CERTIFIED</span>
-    <span class="b88 b-green">RUNS ON<br>ESPRESSO</span>
-    <span class="b88 b-yellow">DRUMS:<br>ON</span>
-    <span class="b88 b-navy">ASK<br>WHY FIRST</span>
   </div>
-  <div class="webring vt">
-    <a href="https://hereeasley.com" target="_blank" rel="noopener">&#9664; here</a>
-    <span>&#9733; THE EASLEY WEBRING &#9733;</span>
-    <a href="#hello">top &#9650;</a>
-  </div>
-  <footer class="foot vt">
-    <span>&copy; <span id="year">2026</span> CHRIS E. KRIBS &middot; HAND-CODED-ISH</span>
-    <span>EASLEY, SC &middot; <span id="clock">--:--</span></span>
-    <span class="dim">tip: &uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</span>
-  </footer>
 </section>
 
 </main>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" hidden>
-  <div class="win lb-win">
-    <div class="win-title px"><span id="lbTitle">VIEWER</span><span class="win-btns"><button type="button" id="lbPrev" aria-label="Previous">&lt;</button><button type="button" id="lbNext" aria-label="Next">&gt;</button><button type="button" id="lbClose" aria-label="Close">&times;</button></span></div>
-    <div class="lb-body"><img id="lbImg" alt=""><video id="lbVid" playsinline controls loop hidden></video></div>
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span class="mono">© <span id="year">2026</span> Chris Kribs · Greenville, SC</span>
+    <span class="mono dim">Made by hand. Pixels on purpose.</span>
+  </div>
+</footer>
+
+<!-- Gallery / player -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <div class="modal-bar">
+      <div><p class="mono dim" id="mKicker"></p><h3 id="mTitle"></h3></div>
+      <button type="button" class="icon-btn" id="mClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-stage">
+      <button type="button" class="icon-btn nav-prev" id="mPrev" aria-label="Previous">‹</button>
+      <img id="mImg" alt="" hidden>
+      <video id="mVid" controls playsinline preload="metadata" hidden></video>
+      <button type="button" class="icon-btn nav-next" id="mNext" aria-label="Next">›</button>
+    </div>
+    <p class="modal-note" id="mNote"></p>
+    <div class="thumbs" id="mThumbs"></div>
   </div>
 </div>
 
-<div class="toast px" id="toast" role="status"></div>
-<div class="party" id="party" aria-hidden="true"></div>
-
+<div class="toast" id="toast" role="status"></div>
 <script src="/app.js"></script>
 </body>
 </html>
