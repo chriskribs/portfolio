@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="signal">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,6 @@
 <meta property="og:description" content="Marketing that shows up in the pipeline.">
 <meta property="og:image" content="/media/px/avatar.png">
 <link rel="icon" type="image/svg+xml" href="/media/brand/favicon.svg">
-<script>try{var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
@@ -24,7 +23,6 @@
     <span class="brand-name">Chris Kribs</span>
   </a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#results">Results</a>
     <a href="#work">Work</a>
     <a href="#about">About</a>
   </nav>
@@ -34,52 +32,43 @@
 <main id="top">
 
 <section class="hero">
-  <div class="wrap hero-grid">
+  <video class="hero-video" src="/media/v/reel.mp4" poster="/media/i/p-reel.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="hero-shade"></div>
+  <div class="wrap hero-inner">
     <div class="hero-copy">
       <p class="eyebrow">B2B marketing · Greenville, SC</p>
       <h1 class="hero-title">Marketing that shows up in the pipeline.</h1>
-      <p class="lede">I'm Chris Kribs. I plan and run B2B marketing, and I make a lot of it myself: campaigns, content, events and video. Here's what it's added up to.</p>
+      <p class="lede">I'm Chris Kribs. I plan and run B2B marketing, and I make a lot of it myself: campaigns, content, events and video.</p>
       <div class="hero-cta">
-        <a class="btn" href="#results">See the results</a>
-        <a class="btn btn-ghost" href="#work">See the work</a>
+        <a class="btn btn-accent" href="#work">See the work</a>
+        <button class="btn btn-line" type="button" data-gal="video" data-i="0">Watch video <span class="pi" data-icon="play"></span></button>
       </div>
     </div>
-    <figure class="hero-card swap" tabindex="0" aria-label="Photo of Chris. Hover or tap to switch from pixel to photo.">
-      <div class="swap-media">
-        <img class="px-img" src="/media/px/avatar.png" alt="" width="560" height="560">
-        <img class="real-img" src="/media/i/me-headshot.jpg" alt="Chris Kribs" width="387" height="440">
-      </div>
-    </figure>
+    <ul class="hero-stats" aria-label="Top results">
+      <li><span class="stat-ico" data-icon="target"></span><span class="num">120%</span><span class="stat-l">of the annual MQL goal, hit in 5 months</span></li>
+      <li><span class="stat-ico" data-icon="bars"></span><span class="num">$873K</span><span class="stat-l">active pipeline influenced in 5 months</span></li>
+      <li><span class="stat-ico" data-icon="up"></span><span class="num">+1,230%</span><span class="stat-l">organic web traffic in 2 years</span></li>
+    </ul>
   </div>
 </section>
 
-<section class="sec" id="results">
+<section class="sec" id="work">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">01</span>
-      <h2 class="sec-title">Results</h2>
+      <h2 class="sec-title">Work + results</h2>
     </div>
-    <div class="metrics" id="metrics"></div>
+    <div class="filters" id="filters" role="tablist" aria-label="Filter work"></div>
+    <p class="filter-note" id="filterNote" aria-live="polite"></p>
+    <div class="bento" id="bento"></div>
   </div>
-</section>
-
-<section class="sec alt" id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">02</span>
-      <h2 class="sec-title">Work</h2>
-    </div>
-    <div class="cases" id="cases"></div>
-  </div>
-  <div class="wrap reel-head"><h3 class="mono">Video</h3></div>
-  <div class="reel" id="reel" tabindex="0" aria-label="Videos, scroll sideways"></div>
 </section>
 
 <section class="sec dark" id="about">
   <div class="wrap about-grid">
     <div>
       <div class="sec-head">
-        <span class="sec-num">03</span>
+        <span class="sec-num">02</span>
         <h2 class="sec-title">About</h2>
       </div>
       <p class="about-lede">People person. Big thinker who sweats the details. Drummer who grew up on metal. Husband, dad of twins, two dogs, and I'm in the gym most mornings.</p>

@@ -29,7 +29,10 @@
     bulb: ['..###..', '.#####.', '#######', '#######', '.#####.', '..###..', '..###..', '...#...'],
     magnifier: ['.###....', '#...#...', '#...#...', '#...#...', '.###.#..', '.....##.', '......##'],
     chat: ['#######', '#.....#', '#.#.#.#', '#.....#', '#######', '.##....', '.#.....'],
-    play: ['#....', '###..', '#####', '###..', '#....']
+    play: ['#....', '###..', '#####', '###..', '#....'],
+    target: ['#########', '#.......#', '#.#####.#', '#.#...#.#', '#.#.#.#.#', '#.#...#.#', '#.#####.#', '#.......#', '#########'],
+    bars: ['.......##', '.......##', '....##.##', '....##.##', '.##.##.##', '.##.##.##', '.##.##.##', '.........', '#########'],
+    up: ['....#....', '...###...', '..#####..', '.#######.', '###.#.###', '....#....', '....#....', '....#....', '....#....']
   };
   const svgFrom = grid => {
     const w = grid[0].length, h = grid.length;
@@ -39,22 +42,6 @@
   };
   $$('[data-mark]').forEach(el => { el.innerHTML = svgFrom(MARK); });
 
-  /* ============ 01 RESULTS ============ */
-  const metrics = [
-    ['120%', 'of the annual MQL goal, hit in five months', 'Wellzesta'],
-    ['$873K', 'in active pipeline influenced in five months', 'Wellzesta'],
-    ['+1,230%', 'organic website traffic in two years', 'PTG'],
-    ['201%', 'of MQL goal', 'Courser'],
-    ['80%', 'adoption target for a product launch, hit within one quarter', 'Courser'],
-    ['+9%', 'ARR in three months, with campaigns across 11 brands', 'Courser'],
-    ['43', 'contacts advanced to sales-qualified', 'Wellzesta'],
-    ['15', 'net-new demos and 3 opportunities from one conference playbook', 'Wellzesta'],
-    ['12%', 'of a 25-account ABM mailer round sat a demo, and 2 deals moved forward', 'Wellzesta']
-  ];
-  $('#metrics').innerHTML = metrics.map(([n, l, s], i) =>
-    `<div class="metric ${i < 3 ? 'lead' : ''}"><span class="num">${n}</span><span class="m-label">${l}</span><span class="m-src mono">${s}</span></div>`).join('');
-
-  /* ============ 02 WORK ============ */
   const G = (img, cap, vid) => ({ img, cap, vid });
   const galleries = {
     wellzesta: { title: 'Wellzesta', items: [
@@ -76,42 +63,86 @@
       ...['discover-1', 'discover-2', 'discover-3', 'discover-4', 'discover-5', 'farmers', 'arts', 'stpats', 'guide-1', 'guide-2'].map(n => G('mc-' + n, 'Michigan City destination marketing · WeCreate Media')),
       ...['12-days', '7-days', 'appropriate', 'eye-catching'].map(n => G('play-' + n, 'Community playground donation campaign'))] }
   };
-  const cases = [
-    { co: 'Wellzesta', when: '2026 – now', role: 'Marketing Manager · senior living software', team: 'Team of one', gal: 'wellzesta',
-      pts: ['120% of the annual MQL goal in five months', '$873K active pipeline, 43 SQLs', 'First lead scoring and attribution, live in two months'],
-      thumbs: ['wz-sunnyside-mockup', 'wz-ebook', 'wz-linkedin-8'] },
-    { co: 'Courser', when: '2023 – 2025', role: 'Regional Marketing Manager · alongside PTG', team: 'Team',
-      pts: ['201% of MQL goal', '80% launch adoption target hit in one quarter', '+9% ARR in three months across 11 brands'] },
-    { co: 'PTG', when: '2021 – 2025', role: 'Marketing Manager · managed IT services', team: 'Team of one', gal: 'ptg',
-      pts: ['+1,230% organic traffic in two years', 'Brand guidelines in year one', 'Sales enablement: guides, QBR decks, webinars'],
-      thumbs: ['ptg-brand-01', 'ptg-welcome-cover', 'ptg-sbr-deck'] },
-    { co: 'Agency', when: '2018 – 2021', role: 'Vast Creative Co. · WeCreate Media', team: 'Clients', gal: 'agency',
-      pts: ['Social for Marriott hotel brands, including the Union Club Hotel', 'Destination marketing for Michigan City, Indiana', 'Brand films and spots for a range of clients'],
-      thumbs: ['uc-latte', 'mc-discover-1', 'p-brush-creek'] }
-  ];
-  $('#cases').innerHTML = cases.map((c, i) => {
-    const n = c.gal ? galleries[c.gal].items.length : 0;
-    return `<article class="case k${i}">
-      <div class="case-meta"><span class="mono">${c.when}</span><span class="pill">${c.team}</span></div>
-      <h3 class="case-co">${c.co}</h3>
-      <p class="case-role">${c.role}</p>
-      <ul class="case-pts">${c.pts.map(p => `<li><span class="pi" data-icon="plus"></span>${p}</li>`).join('')}</ul>
-      ${c.thumbs ? `<button type="button" class="case-gal" data-gal="${c.gal}" aria-label="Open ${c.co} work, ${n} pieces">
-        <span class="case-thumbs">${c.thumbs.map(t => `<img src="${I(t)}" alt="">`).join('')}</span>
-        <span class="case-gal-label">See the work (${n}) <span class="pi" data-icon="arrow"></span></span>
-      </button>` : ''}
-    </article>`;
-  }).join('');
-
   const videos = [
     ['wz-explainer', 'Wellzesta explainer'], ['wz-immanuel', 'Customer testimonial'], ['wz-resident-intro', 'Resident onboarding'], ['wz-marvella', 'Resident social cut'],
     ['ptg-cyber', 'Webinar promo'], ['ptg-clip', 'Leadership soundbites'], ['brush-creek', 'Brush Creek Ranch brand film'], ['venue-nd', 'Venue ND :30'],
     ['weber', 'Weber Family Dentistry :30'], ['santiago', 'Santiago Partnership'], ['maxq', 'MaxQ AI event recap'], ['delicious-journeys', 'Delicious Journeys'], ['michigan-city', 'Michigan City summer']
   ];
   galleries.video = { title: 'Video', items: videos.map(([v, t]) => G('p-' + v, t, v)) };
-  $('#reel').innerHTML = videos.map(([v, t], i) => `<button type="button" class="clip" data-gal="video" data-i="${i}">
-    <span class="clip-media"><img src="${I('p-' + v)}" alt=""><span class="play"><span class="pi" data-icon="play"></span></span></span>
-    <span class="clip-t">${t}</span></button>`).join('');
+  /* ============ 01 WORK + RESULTS (bento) ============ */
+  const groups = {
+    all: { label: 'All' },
+    wellzesta: { label: 'Wellzesta', note: 'Marketing Manager, 2026 – now · senior living software · team of one' },
+    courser: { label: 'Courser', note: 'Regional Marketing Manager, 2023 – 2025, alongside PTG · campaigns across 11 brands' },
+    ptg: { label: 'PTG', note: 'Marketing Manager, 2021 – 2025 · managed IT services · team of one' },
+    agency: { label: 'Agency', note: 'Vast Creative Co. and WeCreate Media, 2018 – 2021 · hotels, towns and small businesses' },
+    video: { label: 'Video', note: 'Brand films, testimonials, spots and social cuts. I write, shoot and edit.' }
+  };
+  /* w = work piece, r = result. size: s 1x1, w 2x1, t 1x2, b 2x2 */
+  const W = (g, img, size, cap, vid, loop) => ({ k: 'w', g, img, size, cap, vid, loop });
+  const R = (g, n, l, size = 's') => ({ k: 'r', g, n, l, size });
+  const tiles = [
+    W('wellzesta', 'wz-sunnyside-mockup', 'b', 'Customer case study'),
+    R('wellzesta', '120%', 'of the annual MQL goal, hit in five months'),
+    W('wellzesta', 'p-wz-linkedin-anim', 's', 'LinkedIn loop', 'wz-linkedin-anim', true),
+    W('wellzesta', 'wz-ebook', 't', 'Ebook: app rollout'),
+    R('wellzesta', '$873K', 'active pipeline influenced in five months'),
+    W('ptg', 'ptg-brand-01', 'w', 'Brand guidelines, built in year one'),
+    R('ptg', '+1,230%', 'organic web traffic in two years'),
+    W('wellzesta', 'wz-kyle-leadingage-va', 's', 'Conference promo'),
+    R('wellzesta', '15', 'net-new demos and 3 opportunities from one conference playbook'),
+    W('video', 'p-brush-creek', 'w', 'Brush Creek Ranch brand film', 'brush-creek'),
+    R('courser', '201%', 'of MQL goal'),
+    W('agency', 'uc-latte', 's', 'Union Club Hotel social'),
+    W('ptg', 'ptg-welcome-cover', 's', 'Customer welcome guide'),
+    R('wellzesta', '3 + 2', 'demos sat and deals moved forward from 25 ABM mailers'),
+    W('wellzesta', 'wz-report', 's', 'Resident engagement report'),
+    W('agency', 'mc-discover-1', 'w', 'Michigan City destination campaign'),
+    R('courser', '80%', 'adoption target for a launch, hit within one quarter'),
+    W('ptg', 'ptg-sbr-deck', 't', 'Quarterly business review deck'),
+    W('wellzesta', 'p-wz-wellness-chart', 's', 'Product motion', 'wz-wellness-chart', true),
+    R('courser', '+9%', 'ARR in three months, campaigns across 11 brands'),
+    W('video', 'p-wz-immanuel', 'w', 'Customer testimonial', 'wz-immanuel'),
+    R('wellzesta', '43', 'contacts advanced to sales-qualified'),
+    W('ptg', 'ptg-buyers-guide', 's', "Buyer's guide"),
+    W('agency', 'uc-cocktails', 's', 'Union Club Hotel social'),
+    W('video', 'p-venue-nd', 's', 'Venue ND :30', 'venue-nd'),
+    W('wellzesta', 'wz-cs-tandem', 's', 'Case study: Tandem'),
+    W('ptg', 'p-ptg-cyber', 's', 'Webinar promo', 'ptg-cyber'),
+    W('video', 'p-wz-explainer', 'w', 'Wellzesta explainer', 'wz-explainer'),
+    W('agency', 'mc-guide-1', 's', 'Pocket city guide'),
+    W('video', 'p-weber', 's', 'Weber Family Dentistry :30', 'weber')
+  ];
+  const tag = g => groups[g].label;
+  $('#filters').innerHTML = Object.entries(groups).map(([k, g]) => `<button type="button" role="tab" class="filter" data-f="${k}" aria-selected="${k === 'all'}">${g.label}</button>`).join('');
+  const bento = $('#bento');
+  bento.innerHTML = tiles.map((t, i) => t.k === 'r'
+    ? `<div class="tile res ${t.size}" data-g="${t.g}"><span class="num">${t.n}</span><span class="res-l">${t.l}</span><span class="tile-tag mono">${tag(t.g)}</span></div>`
+    : `<button type="button" class="tile work ${t.size}" data-g="${t.g}" data-t="${i}" aria-label="${t.cap}, ${tag(t.g)}">
+        ${t.loop ? `<video src="${V(t.vid)}" poster="${I(t.img)}" muted loop playsinline preload="none"></video>` : `<img src="${I(t.img)}" alt="" loading="lazy">`}
+        ${t.vid && !t.loop ? '<span class="play"><span class="pi" data-icon="play"></span></span>' : ''}
+        <span class="tile-cap"><span class="tile-tag mono">${tag(t.g)}</span>${t.cap}</span>
+      </button>`).join('');
+  $('#filters').addEventListener('click', e => {
+    const b = e.target.closest('.filter'); if (!b) return;
+    const f = b.dataset.f;
+    $$('.filter').forEach(x => x.setAttribute('aria-selected', x === b));
+    $$('.tile', bento).forEach(t => { t.hidden = f !== 'all' && t.dataset.g !== f; });
+    const note = $('#filterNote');
+    note.textContent = groups[f].note || '';
+    if (galleries[f]) note.insertAdjacentHTML('beforeend', ` <button type="button" class="link" data-gal="${f}">Open all ${galleries[f].items.length} pieces</button>`);
+  });
+  /* looping clips play only while on screen */
+  const loopIO = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting && !reduce) v.play().catch(() => {}); else v.pause(); }), { threshold: .3 });
+  $$('video', bento).forEach(v => loopIO.observe(v));
+  /* tile click → that piece in its gallery */
+  bento.addEventListener('click', e => {
+    const b = e.target.closest('.tile.work'); if (!b) return;
+    const t = tiles[+b.dataset.t];
+    const key = t.vid && !t.loop ? 'video' : t.g;
+    const i = galleries[key].items.findIndex(x => x.img === t.img);
+    open(key, Math.max(0, i));
+  });
 
   /* ============ 03 ABOUT ============ */
   const traits = [['chat', 'People person'], ['bulb', 'Big picture'], ['magnifier', 'Details'], ['drum', 'Drummer'], ['horns', 'Metal'], ['dumbbell', 'Health'], ['heart', 'Family']];
@@ -172,10 +203,10 @@
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['results', 'work', 'about', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+  ['work', 'about', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
 
   if (!reduce && 'IntersectionObserver' in window) {
-    const els = $$('.metric, .case, .clip');
+    const els = $$('.tile');
     els.forEach(el => el.classList.add('rv'));
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1 });
     els.forEach(el => io.observe(el));
