@@ -37,13 +37,26 @@
     const y0 = rr(18, 24), y1 = rr(18, 22), bend = rr(-7, 7);
     return `<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M3 ${y0.toFixed(1)} Q 48 ${(y0 + bend).toFixed(1)} 93 ${y1.toFixed(1)}"/><path d="M${rr(72, 78).toFixed(1)} ${rr(4, 9).toFixed(1)} L 95 ${(y1 - .5).toFixed(1)} L ${rr(73, 79).toFixed(1)} ${rr(32, 37).toFixed(1)}"/></svg>`;
   };
+  /* red-pen style circle: one smooth, slightly lopsided pass that overshoots its start */
+  const LOOP_C = ['pen', 'ball', 'green', 'olive'];
+  let loopN = 0;
   const loop = () => {
-    const a0 = rr(-2.9, -2.3), n = 26; let d = '';
+    const a0 = rr(-2.6, -2.0), n = 9, pts = [];
+    const sx = rr(.94, 1.04), sy = rr(.86, .96), tilt = rr(-.12, .12);
     for (let k = 0; k <= n; k++) {
-      const a = a0 + (k / n) * (Math.PI * 2 + .55), r = 46 + rr(-2.5, 2.5) + k * .12;
-      d += (k ? ' L ' : 'M ') + (50 + Math.cos(a) * r).toFixed(1) + ' ' + (50 + Math.sin(a) * r * .9).toFixed(1);
+      const a = a0 + (k / n) * (Math.PI * 2 + rr(.5, .8)), r = 46 + rr(-2.2, 2.2) + k * .55;
+      const x = Math.cos(a) * r * sx, y = Math.sin(a) * r * sy;
+      pts.push([50 + x * Math.cos(tilt) - y * Math.sin(tilt), 50 + x * Math.sin(tilt) + y * Math.cos(tilt)]);
     }
-    return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="${d}"/></svg>`;
+    // Catmull-Rom to cubic Bezier so the line is smooth, not faceted
+    let d = `M ${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+      d += ` C ${c1[0].toFixed(1)} ${c1[1].toFixed(1)}, ${c2[0].toFixed(1)} ${c2[1].toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+    }
+    const c = LOOP_C[loopN++ % LOOP_C.length];
+    return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="--lc: var(--${c})"><path pathLength="1" d="${d}"/></svg>`;
   };
   const roughBox = (w, h) => {
     const j = () => rr(-1.6, 1.6).toFixed(1);

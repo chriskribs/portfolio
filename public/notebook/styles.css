@@ -147,6 +147,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .row::before { content: ""; position: absolute; left: -10px; right: -10px; top: 14%; bottom: 14%; background: var(--acid); transform: scaleX(0) skewX(-8deg); transform-origin: left; transition: transform .4s var(--ease); z-index: -1; border-radius: 3px 14px 6px 18px; opacity: .85; }
 .row:not(.static):hover, .row:focus-visible { padding-inline: 18px; outline: none; }
 .row:not(.static):hover::before, .row:focus-visible::before { transform: scaleX(1) skewX(-8deg); }
+/* each row swipes a different brand color */
+#index li:nth-child(4n+1) .row { --sw: var(--acid); --sw-fg: var(--ink); }
+#index li:nth-child(4n+2) .row { --sw: var(--green); --sw-fg: var(--paper); }
+#index li:nth-child(4n+3) .row { --sw: var(--pen); --sw-fg: var(--paper); }
+#index li:nth-child(4n+4) .row { --sw: var(--ball); --sw-fg: var(--paper); }
+.row::before { background: var(--sw, var(--acid)); }
+.row > * { transition: color .25s; }
+.row:not(.static):hover, .row:not(.static):hover > *, .row:not(.static):hover small, .row:not(.static):hover .px,
+.row:focus-visible, .row:focus-visible > *, .row:focus-visible small { color: var(--sw-fg, var(--ink)); }
 .r-n { font: 700 15px/1 var(--type); color: var(--green); }
 .r-title b { display: block; font: 900 clamp(32px, 3.4vw, 52px)/.92 var(--disp); text-transform: uppercase; }
 .r-title small { display: block; margin-top: 6px; font: 700 13px/1.2 var(--type); opacity: .7; }
@@ -178,7 +187,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   box-shadow: 0 8px 18px rgb(0 0 0 / .18); transition: transform .2s var(--ease); }
 .led b { position: relative; justify-self: start; font: 900 clamp(58px, 6vw, 96px)/.88 var(--disp); color: var(--ink); }
 .led b svg { position: absolute; left: -14%; top: -18%; width: 128%; height: 136%; overflow: visible; pointer-events: none; }
-.led b path { fill: none; stroke: var(--pen); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .6s var(--ease); }
+.led b path { fill: none; stroke: var(--lc, var(--pen)); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .75s cubic-bezier(.6, .05, .3, 1); }
 .led:hover b path, .led:focus-visible b path { stroke-dashoffset: 0; }
 .led span { font-weight: 600; max-width: 22em; }
 .led:hover, .led:focus-visible { transform: translateY(-4px); outline: none; }
