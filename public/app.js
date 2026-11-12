@@ -29,10 +29,44 @@
     g.forEach((row, y) => [...row].forEach((c, x) => { if (c === '#') r += `<rect x="${x}" y="${y}" width="1" height="1"/>`; }));
     return `<svg viewBox="0 0 ${g[0].length} ${g.length}" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">${r}</svg>`;
   };
+
+  /* ================= DRAWN THINGS (stand-ins until Chris's scans) ================= */
+  let seed = 11;
+  const rr = (a, b) => { seed = (seed * 16807) % 2147483647; return a + (seed / 2147483647) * (b - a); };
+  const handArrow = () => {
+    const y0 = rr(18, 24), y1 = rr(18, 22), bend = rr(-7, 7);
+    return `<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M3 ${y0.toFixed(1)} Q 48 ${(y0 + bend).toFixed(1)} 93 ${y1.toFixed(1)}"/><path d="M${rr(72, 78).toFixed(1)} ${rr(4, 9).toFixed(1)} L 95 ${(y1 - .5).toFixed(1)} L ${rr(73, 79).toFixed(1)} ${rr(32, 37).toFixed(1)}"/></svg>`;
+  };
+  /* red-pen style circle: one smooth, slightly lopsided pass that overshoots its start */
+  const LOOP_C = ['pen', 'ball', 'green', 'olive'];
+  let loopN = 0;
+  const loop = () => {
+    const a0 = rr(-2.6, -2.0), n = 9, pts = [];
+    const sx = rr(.94, 1.04), sy = rr(.86, .96), tilt = rr(-.12, .12);
+    for (let k = 0; k <= n; k++) {
+      const a = a0 + (k / n) * (Math.PI * 2 + rr(.5, .8)), r = 46 + rr(-2.2, 2.2) + k * .55;
+      const x = Math.cos(a) * r * sx, y = Math.sin(a) * r * sy;
+      pts.push([50 + x * Math.cos(tilt) - y * Math.sin(tilt), 50 + x * Math.sin(tilt) + y * Math.cos(tilt)]);
+    }
+    // Catmull-Rom to cubic Bezier so the line is smooth, not faceted
+    let d = `M ${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+      d += ` C ${c1[0].toFixed(1)} ${c1[1].toFixed(1)}, ${c2[0].toFixed(1)} ${c2[1].toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+    }
+    const c = LOOP_C[loopN++ % LOOP_C.length];
+    return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="--lc: var(--${c})"><path pathLength="1" d="${d}"/></svg>`;
+  };
+  const roughBox = (w, h) => {
+    const j = () => rr(-1.6, 1.6).toFixed(1);
+    return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="M${2 + +j()} ${2 + +j()} L ${w - 2 + +j()} ${1 + +j()} L ${w - 1 + +j()} ${h - 2 + +j()} L ${1 + +j()} ${h - 1 + +j()} Z"/></svg>`;
+  };
   const ic = n => `<span class="pi">${svg(ICONS[n])}</span>`;
   const paint = (root = document) => {
-    $$('[data-mark]', root).forEach(el => { el.innerHTML = svg(MARK); });
-    $$('[data-icon]', root).forEach(el => { el.innerHTML = svg(ICONS[el.dataset.icon]); });
+    $$('[data-mark]', root).forEach(el => { el.innerHTML = NB.mark(); });
+    $$('[data-doodle]', root).forEach(el => { el.innerHTML = NB.doodle(el.dataset.doodle); });
+    $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };
 
   /* ================= TICKER ================= */
@@ -48,7 +82,7 @@
     { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'A destination campaign for a Lake Michigan town, made at WeCreate Media.' },
     { name: 'MaxQ AI', films: ['maxq'], sum: 'An event recap film. Edit, color, sound design and master.' }
   ];
-  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${svg(ICONS.chev)}</span>`).join('');
+  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
   $('#ticker').innerHTML = tick + tick;
   $$('#ticker button').slice(0, BRANDS.length).forEach(b => b.removeAttribute('tabindex'));
 
@@ -196,7 +230,7 @@
     ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser', 'courser'],
     ['+1,230%', 'organic web traffic in two years', 'PTG', 'ptg-brand']
   ];
-  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}</b><span>${l}</span><small>${s}</small><span class="go">See the work <span class="chev">${svg(ICONS.chev)}</span></span></button></div>`).join('');
+  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}${loop()}</b><span>${l}</span><small>${s}</small><span class="go">See the work <span class="chev">${handArrow()}</span></span></button></div>`).join('');
 
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
@@ -294,7 +328,7 @@
     book(b) {
       const el = document.createElement('div'); el.className = 'm-book';
       el.innerHTML = `<div class="book"><div class="pg left"></div><div class="pg right"></div></div>
-        <div class="book-nav"><button type="button" class="bk-prev">Prev</button><span class="bk-n"></span><button type="button" class="bk-next">Next <span class="chev">${svg(ICONS.chev)}</span></button></div>`;
+        <div class="book-nav"><button type="button" class="bk-prev">Prev</button><span class="bk-n"></span><button type="button" class="bk-next">Next <span class="chev">${handArrow()}</span></button></div>`;
       const book = $('.book', el), left = $('.left', el), right = $('.right', el), pages = b.pages;
       let i = 0, busy = false;
       const img = n => n ? `<img src="${I(n)}" alt="" loading="lazy">` : '';
@@ -377,12 +411,12 @@
     $('#vScroll').scrollTop = 0; $('#vClose').focus({ preventScroll: true });
   };
   const openProject = i => {
-    mode = 'project'; cur = i; const p = P[i]; $('#vNext').innerHTML = `Next project <span class="chev">${svg(ICONS.chev)}</span>`;
+    mode = 'project'; cur = i; const p = P[i]; $('#vNext').innerHTML = `Next project <span class="chev">${handArrow()}</span>`;
     render(p, `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`, openable.includes(i) ? `${openable.indexOf(i) + 1} / ${openable.length}` : '');
   };
   const FILM = Object.fromEntries(P.find(p => p.id === 'films').blocks[0].vids);
   const openBrand = k => {
-    mode = 'brand'; cur = k; const b = BRANDS[k]; $('#vNext').innerHTML = `Next brand <span class="chev">${svg(ICONS.chev)}</span>`;
+    mode = 'brand'; cur = k; const b = BRANDS[k]; $('#vNext').innerHTML = `Next brand <span class="chev">${handArrow()}</span>`;
     const ps = (b.ids || []).map(id => P.find(p => p.id === id));
     const blocks = ps.flatMap(p => (p.blocks || []).map(x => ({ ...x, title: ps.length > 1 ? `${p.title} · ${x.title}` : x.title })));
     if (b.films) blocks.push({ t: 'player', title: b.films.length > 1 ? 'Films' : 'Film', vids: b.films.map(f => [f, FILM[f]]) });
@@ -399,10 +433,10 @@
 
   /* ================= MISC ================= */
   const PHOTOS = [
-    ['me-family', 'my crew'],
-    ['me-drums', 'love music'],
-    ['me-stage', 'the view from the drum riser'],
-    ['me-snow', 'snow day with the dogs']
+    ['me-family', 'the homies (my beautiful family)'],
+    ['me-drums', 'opening for vanilla ice'],
+    ['me-stage', 'opening up for pitbull and MAXX'],
+    ['me-snow', 'the dawgs: chaplin and jax']
   ];
   const polas = $('#polas');
   if (polas) {
@@ -436,4 +470,9 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   paint();
+  /* doodles draw themselves in when they scroll into view */
+  if ('IntersectionObserver' in window && !reduce) {
+    const dio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); dio.unobserve(e.target); } }), { threshold: .4 });
+    $$('.doodle').forEach(d => { d.classList.add('undrawn'); dio.observe(d); });
+  }
 })();
