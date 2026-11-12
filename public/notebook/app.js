@@ -51,7 +51,8 @@
   };
   const ic = n => `<span class="pi">${svg(ICONS[n])}</span>`;
   const paint = (root = document) => {
-    $$('[data-mark]', root).forEach(el => { el.innerHTML = `${roughBox(52, 34)}<b>CEK</b>`; });
+    $$('[data-mark]', root).forEach(el => { el.innerHTML = NB.mark(); });
+    $$('[data-doodle]', root).forEach(el => { el.innerHTML = NB.doodle(el.dataset.doodle); });
     $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };
 
@@ -419,10 +420,10 @@
 
   /* ================= MISC ================= */
   const PHOTOS = [
-    ['me-family', 'my crew'],
-    ['me-drums', 'love music'],
-    ['me-stage', 'the view from the drum riser'],
-    ['me-snow', 'snow day with the dogs']
+    ['me-family', 'the homies (my beautiful family)'],
+    ['me-drums', 'opening for vanilla ice'],
+    ['me-stage', 'opening up for pitbull and MAXX'],
+    ['me-snow', 'the dawgs: chaplin and jax']
   ];
   const polas = $('#polas');
   if (polas) {
@@ -456,4 +457,9 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   paint();
+  /* doodles draw themselves in when they scroll into view */
+  if ('IntersectionObserver' in window && !reduce) {
+    const dio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); dio.unobserve(e.target); } }), { threshold: .4 });
+    $$('.doodle').forEach(d => { d.classList.add('undrawn'); dio.observe(d); });
+  }
 })();

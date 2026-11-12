@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notebook Brand System</title>
+<meta name="description" content="The Chris Kribs brand system: Chronic Green, the split-diamond mark, hand-drawn elements and how to use them.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#15180f">
+<link rel="icon" type="image/svg+xml" href="/notebook/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eater&family=Courier+Prime:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Londrina+Solid:wght@400;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/notebook/styles.css">
+<style>
+  .bs { --gut: clamp(16px, 4vw, 56px); }
+  .bs-top { display: flex; align-items: center; gap: 14px; padding: 18px var(--gut); background: var(--ink); color: var(--paper); font: 700 14px/1 var(--type); }
+  .bs-top a:last-child { margin-left: auto; color: var(--acid); }
+  .bs-top .mark { width: 34px; height: 34px; }
+  .bs-hero { background: var(--ink); color: var(--paper); padding: clamp(50px, 9vh, 100px) var(--gut) clamp(70px, 12vh, 130px); display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
+  .bs-hero h1 { font: 900 clamp(64px, 10vw, 168px)/.86 var(--disp); text-transform: uppercase; margin: 18px 0 26px; }
+  .bs-hero h1 .metal { color: var(--acid); }
+  .bs-hero p { max-width: 560px; color: var(--paper-70); font-size: 19px; }
+  .bs-hero .big { color: var(--acid); width: min(100%, 380px); justify-self: center; }
+  .bs-sec { padding: clamp(70px, 11vh, 120px) var(--gut); max-width: 1320px; }
+  .bs-sec + .bs-sec { padding-top: 0; }
+  .bs-sec h2 { font: 900 clamp(44px, 6vw, 88px)/.9 var(--disp); text-transform: uppercase; margin: 14px 0 18px; }
+  .bs-sec h2 .metal { color: var(--green); }
+  .note { max-width: 700px; font-size: 18px; margin-bottom: 34px; }
+  .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .card { background: #fffdf8; padding: 22px; box-shadow: 0 1px 2px var(--ink-24), 0 8px 18px rgb(21 24 15 / .08); }
+  .card b { display: block; font: 900 26px/1 var(--disp); text-transform: uppercase; margin: 14px 0 6px; }
+  .card p { font-size: 15px; line-height: 1.45; }
+  .marks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .marks .tile { aspect-ratio: 1; display: grid; place-items: center; }
+  .marks .tile .mark { width: 62%; height: 62%; color: inherit; }
+  .sizes .mark { color: var(--green); }
+  .t-ink { background: var(--ink); color: var(--acid); } .t-paper { background: #fffdf8; color: var(--green); box-shadow: 0 1px 2px var(--ink-24); } .t-green { background: var(--green); color: var(--ink); }
+  .sizes { display: flex; align-items: end; gap: 26px; margin-top: 22px; color: var(--green); font: 700 13px/1 var(--type); }
+  .sizes span { display: grid; justify-items: center; gap: 8px; color: var(--ink-60); }
+  .sw { height: 130px; display: flex; align-items: end; padding: 12px; font: 700 13px/1 var(--type); }
+  .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 26px; padding: 26px 0; border-top: 2px solid var(--ink); align-items: baseline; }
+  .type-row .k { font: 700 14px/1.4 var(--type); }
+  .type-row .k small { display: block; font-weight: 400; color: var(--ink-60); margin-top: 6px; font-size: 13px; }
+  .s-disp { font: 900 clamp(48px, 6vw, 96px)/.9 var(--disp); text-transform: uppercase; }
+  .s-metal { font: 400 clamp(44px, 5vw, 84px)/1 'Eater', var(--disp); text-transform: uppercase; color: var(--green); }
+  .s-type { font: 700 22px/1.3 var(--type); }
+  .s-hand { font: 400 46px/1 var(--hand); color: var(--ball); }
+  .s-sans { font: 400 19px/1.55 var(--sans); max-width: 640px; }
+  .drawn { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .drawn .stage { height: 150px; display: grid; place-items: center; background: #fffdf8; position: relative; overflow: hidden; }
+  .stage svg { overflow: visible; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+  .st-ul { font: 900 54px/1 var(--disp); text-transform: uppercase; color: var(--green); }
+  .st-loop { position: relative; font: 900 64px/1 var(--disp); padding: 0 16px; }
+  .st-loop svg { position: absolute; inset: -14px -6px; width: calc(100% + 12px); height: calc(100% + 28px); color: var(--pen); stroke-width: 3; }
+  .st-arrow svg { width: 180px; height: 60px; color: var(--ink); stroke-width: 3.6; }
+  .st-tape { width: 70%; height: 90px; background: #fff; box-shadow: 0 6px 14px rgb(0 0 0 / .14); position: relative; rotate: -2deg; }
+  .st-tape::before { content: ""; position: absolute; left: 50%; top: -14px; translate: -50% 0; width: 110px; height: 28px; rotate: 3deg; background: rgb(236 231 210 / .9); clip-path: polygon(2% 8%, 9% 0, 18% 10%, 30% 2%, 44% 9%, 58% 1%, 71% 8%, 84% 0, 98% 7%, 100% 92%, 90% 100%, 77% 91%, 63% 99%, 49% 92%, 35% 100%, 21% 92%, 8% 100%, 0 93%); }
+  .st-torn { background: var(--green) !important; }
+  .st-torn::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; background: var(--paper); -webkit-mask: var(--tear) 0 0 / 420px 22px repeat-x; mask: var(--tear) 0 0 / 420px 22px repeat-x; }
+  .st-hl span { font: 900 40px/1 var(--disp); text-transform: uppercase; padding: 2px 10px; background: linear-gradient(transparent 18%, rgb(166 210 46 / .85) 18%, rgb(166 210 46 / .85) 86%, transparent 86%); }
+  .dz-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .dz { background: #fffdf8; padding: 22px 18px 14px; display: grid; justify-items: center; gap: 10px; font: 700 13px/1 var(--type); box-shadow: 0 1px 2px var(--ink-24); }
+  .dz.dark { background: var(--ink); color: var(--paper); } .dz.grn { background: var(--green); color: var(--paper); }
+  .dz i { display: block; width: 92px; height: 92px; color: var(--dc); }
+  .dz i svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round; filter: url(#wob); }
+  .rules { display: grid; gap: 0; max-width: 980px; counter-reset: r; }
+  .rules li { list-style: none; display: grid; grid-template-columns: 70px 1fr; gap: 18px; padding: 22px 0; border-top: 2px solid var(--ink); font-size: 18px; }
+  .rules li::before { counter-increment: r; content: counter(r, decimal-leading-zero); font: 700 15px/1.6 var(--type); color: var(--green); }
+  .rules b { font-weight: 700; }
+  .shot { background: var(--ink); color: var(--paper); }
+  .shot .bs-sec h2 .metal { color: var(--acid); }
+  .shot .note { color: var(--paper-70); }
+  .shot ol { columns: 2 280px; column-gap: 40px; max-width: 1100px; padding-left: 22px; font-size: 17px; }
+  .shot li { margin-bottom: 10px; break-inside: avoid; }
+  .shot li b { color: var(--acid); font-weight: 600; }
+  .shot .scrawl { color: var(--acid); margin-top: 26px; }
+  @media (max-width: 800px) { .bs-hero { grid-template-columns: 1fr; } .bs-hero .big { width: 60%; justify-self: start; } .type-row { grid-template-columns: 1fr; gap: 12px; } .marks { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body class="bs">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wob"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></svg>
+
+<div class="bs-top"><span class="mark" data-mark></span><span>Chris Kribs · Brand system</span><a href="/notebook/">Back to the site</a></div>
+
+<header class="bs-hero">
+  <div>
+    <span class="tag acid">The notebook · v1</span>
+    <h1>Drawn, not <span class="metal">decorated.</span></h1>
+    <p>The brand is a working notebook. Ruled paper, red pen, tape and notes in the margin. The color and the attitude come from my dad's old band, Chronic Disorder: photocopied flyers, a hand-drawn tape cover and a green you can't miss. It's a nod to where I come from, not a genre.</p>
+  </div>
+  <span class="big" data-mark></span>
+</header>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">01</span> The mark</span>
+  <h2>The split <span class="metal">diamond.</span></h2>
+  <p class="note">CEK cut into a diamond split down the middle, after the Chronic Disorder tape logo. The C is the left half. The E is the right half, and the K's arms reach out from its spine. Spiky edges, a little drippy. This version is a stand-in until I draw it by hand.</p>
+  <div class="marks">
+    <div class="tile t-ink"><span class="mark" data-mark></span></div>
+    <div class="tile t-paper"><span class="mark" data-mark></span></div>
+    <div class="tile t-green"><span class="mark" data-mark></span></div>
+  </div>
+  <div class="sizes">
+    <span><i class="mark" data-mark style="width:96px;height:96px"></i>96</span>
+    <span><i class="mark" data-mark style="width:46px;height:46px"></i>46 · nav</span>
+    <span><i class="mark" data-mark style="width:24px;height:24px"></i>24</span>
+    <span><img src="/notebook/favicon.svg" width="32" height="32" alt="">favicon</span>
+  </div>
+</section>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">02</span> Color</span>
+  <h2>Chronic <span class="metal">green.</span></h2>
+  <p class="note">Green leads. Ink and photocopy white carry the pages. Acid green and red pen are small accents, the way you'd use a highlighter and a red pen on a page.</p>
+  <div class="grid">
+    <div class="card"><div class="sw" style="background:var(--green);color:var(--paper)">#0A9655</div><b>Chronic Green</b><p>The flyer marker. Section grounds, buttons, the one word that matters.</p></div>
+    <div class="card"><div class="sw" style="background:var(--ink);color:var(--paper)">#15180F</div><b>Ink</b><p>Type, the hero, the contact flyer.</p></div>
+    <div class="card"><div class="sw" style="background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink-12)">#F3F1E8</div><b>Photocopy</b><p>The page. Never pure white.</p></div>
+    <div class="card"><div class="sw" style="background:var(--acid);color:var(--ink)">#A6D22E</div><b>Acid</b><p>The sun logo green. Highlighter, the mark on dark, small pops.</p></div>
+    <div class="card"><div class="sw" style="background:var(--pen);color:var(--paper)">#D6362B</div><b>Red pen</b><p>Circles, margin lines, corrections. Lines only, never a fill.</p></div>
+    <div class="card"><div class="sw" style="background:var(--ball);color:var(--paper)">#2B3FBF</div><b>Ballpoint</b><p>Handwritten captions and notes.</p></div>
+    <div class="card"><div class="sw" style="background:var(--olive);color:var(--paper)">#556B20</div><b>Cassette olive</b><p>Support only.</p></div>
+    <div class="card"><div class="sw" style="background:var(--toner);color:var(--ink)">#E6E2D4</div><b>Toner</b><p>A second paper for cards.</p></div>
+  </div>
+</section>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">03</span> Type</span>
+  <h2>Loud, then <span class="metal">louder.</span></h2>
+  <p class="note">Five voices, each with one job.</p>
+  <div class="type-row"><div class="k">Londrina Solid 900<small>Headers. Stand-in for my own lettering.</small></div><div class="s-disp">Marketing that shows up</div></div>
+  <div class="type-row"><div class="k">Eater<small>One word per header, the payoff. After the Chronic Disorder lettering.</small></div><div class="s-metal">did. vibes. talk</div></div>
+  <div class="type-row"><div class="k">Courier Prime 700<small>Labels, kickers, tags. Typed on the page.</small></div><div class="s-type">01 / Selected work · 2026</div></div>
+  <div class="type-row"><div class="k">Reenie Beanie<small>Margin notes and captions. One note per screen.</small></div><div class="s-hand">the homies (my beautiful family)</div></div>
+  <div class="type-row"><div class="k">Instrument Sans<small>Body copy. Quiet, so everything else can be loud.</small></div><div class="s-sans">I plan the marketing, then make a lot of it myself: campaigns, content, events and video.</div></div>
+</section>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">04</span> Drawn things</span>
+  <h2>Marks on the <span class="metal">page.</span></h2>
+  <p class="note">The working tools of a notebook. Each one does a job: point, circle, underline, hold, separate.</p>
+  <div class="drawn">
+    <div class="card"><div class="stage"><span class="st-ul"><span class="ul">The pipeline.</span></span></div><b>Underline</b><p>Two marker passes under the line that pays off a headline.</p></div>
+    <div class="card"><div class="stage"><span class="st-loop">120%<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 14 C 40 0, 86 4, 96 40 C 104 76, 70 98, 40 94 C 10 90, -2 62, 6 36 C 12 18, 34 6, 58 8"/></svg></span></div><b>Red-pen circle</b><p>Around a number that matters. Draws itself on hover.</p></div>
+    <div class="card"><div class="stage st-arrow"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 21 Q 48 17 93 20"/><path d="M75 7 L 95 19.5 L 76 34"/></svg></div><b>Hand arrow</b><p>Replaces every arrow: buttons, next, the career path, the ticker.</p></div>
+    <div class="card"><div class="stage"><div class="st-tape"></div></div><b>Tape</b><p>Holds up photos and index cards.</p></div>
+    <div class="card"><div class="stage st-torn"></div><b>Torn edge</b><p>Where one section ends and the next begins.</p></div>
+    <div class="card"><div class="stage st-hl"><span>Highlighter</span></div><b>Highlighter</b><p>Acid swipe on hover across a row of work.</p></div>
+  </div>
+</section>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">05</span> Doodles</span>
+  <h2>In the <span class="metal">margins.</span></h2>
+  <p class="note">Small drawings of the work itself: video, sound, results, the people. They draw themselves in as they scroll into view. These are stand-ins until I draw and scan the real ones.</p>
+  <div class="dz-grid" id="dz"></div>
+</section>
+
+<section class="bs-sec">
+  <span class="kicker"><span class="px">06</span> Rules</span>
+  <h2>How it <span class="metal">works.</span></h2>
+  <ol class="rules">
+    <li><span><b>One metal word per header.</b> Only on the payoff word. Never in body copy, buttons, the nav or a whole line.</span></li>
+    <li><span><b>Doodles live in the margins.</b> Never behind text or on top of the work. Two or three per section, max.</span></li>
+    <li><span><b>Green leads.</b> Acid and red pen are small accents. Red pen is a line, never a fill.</span></li>
+    <li><span><b>If a marker can't draw it, it doesn't belong.</b> No gradients, glows, bevels or 3D.</span></li>
+    <li><span><b>One handwritten note per screen.</b> It's the human in the margin, so it has to feel like one.</span></li>
+    <li><span><b>A tribute, not a genre.</b> No skulls, gore or band imagery. Nothing that says I illustrate for metal bands.</span></li>
+    <li><span><b>Repeats flip, never rotate.</b> Any pattern made from the mark mirrors across an axis. It never spins into a pinwheel.</span></li>
+    <li><span><b>The work stays clean.</b> Project images and films never get doodled on, taped over or torn.</span></li>
+  </ol>
+</section>
+
+<div class="shot">
+<section class="bs-sec">
+  <span class="kicker" style="color:var(--paper)"><span class="px" style="color:var(--acid)">07</span> To draw</span>
+  <h2>The shot <span class="metal">list.</span></h2>
+  <p class="note">Black marker on plain white paper, one drawing per photo, shot straight down in daylight with no shadow. Each one gets cut out and swapped in for its stand-in.</p>
+  <ol>
+    <li><b>The mark.</b> CEK split diamond, three or four tries, big.</li>
+    <li><b>"Chris Kribs"</b> lettered once, chunky, for the nav.</li>
+    <li><b>Metal words:</b> did. · vibes. · Chris. · talk · and the brand page words.</li>
+    <li><b>Arrows.</b> Five or six, short and long, a couple with a curl.</li>
+    <li><b>Underlines.</b> Three, one fast, one double, one wobbly.</li>
+    <li><b>Circles.</b> Three loops, the kind you'd draw around a number.</li>
+    <li><b>Video:</b> play button, film strip, waveform.</li>
+    <li><b>Sound:</b> faders, headphones, drumsticks.</li>
+    <li><b>Results:</b> chart going up, lightning bolt, star.</li>
+    <li><b>People:</b> heart, envelope, sparkle, a curly arrow.</li>
+  </ol>
+  <span class="scrawl">ugly is fine. it's a notebook.</span>
+</section>
+</div>
+
+<script src="/notebook/draw.js"></script>
+<script>
+  document.querySelectorAll('[data-mark]').forEach(el => { el.innerHTML = NB.mark(); });
+  const C = { play: 'pen', film: 'ink', wave: 'ball', fader: 'paper', phones: 'green', sticks: 'ink', chart: 'acid', bolt: 'paper', star: 'acid', heart: 'pen', mail: 'acid', curl: 'ink', spark: 'pen' };
+  document.getElementById('dz').innerHTML = NB.names.map(n => {
+    const c = C[n] || 'ink', bg = c === 'paper' || c === 'acid' ? (n === 'chart' || n === 'bolt' ? 'grn' : 'dark') : '';
+    return `<div class="dz ${bg}"><i style="--dc: var(--${c})">${NB.doodle(n)}</i>${n}</div>`;
+  }).join('');
+</script>
+</body>
+</html>

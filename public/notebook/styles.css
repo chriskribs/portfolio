@@ -68,10 +68,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .pi { display: inline-flex; width: 1em; height: 1em; flex: none; }
 .pi svg { width: 100%; height: 100%; }
-.mark { display: inline-grid; place-items: center; width: 52px; height: 34px; position: relative; font: 900 19px/1 var(--disp); letter-spacing: .02em; color: var(--ink); }
-.mark svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.mark path { fill: var(--acid); stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
-.mark b { position: relative; }
+.mark { display: inline-block; width: 46px; height: 46px; color: var(--acid); transition: rotate .4s var(--ease); }
+.mark svg { width: 100%; height: 100%; overflow: visible; }
+.nav.solid .mark { color: var(--green); }
+.brand:hover .mark { rotate: -8deg; }
 .px { font-family: var(--type); }
 .kicker { display: inline-flex; align-items: center; gap: 10px; font: 700 15px/1 var(--type); letter-spacing: .02em; }
 .kicker .px { font-weight: 700; color: var(--green); }
@@ -205,7 +205,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .polas { position: relative; width: min(340px, 82vw); aspect-ratio: 340 / 400; margin: 44px 0 10px 10px; cursor: pointer; outline: none; }
 .pola { position: absolute; inset: 0; margin: 0; padding: 14px 14px 0; background: #fffdf8; box-shadow: 0 10px 24px rgb(21 24 15 / .2), 0 1px 2px rgb(21 24 15 / .2); transform: rotate(var(--r)); transition: transform .5s var(--ease), opacity .5s; }
 .pola img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--ink-12); }
-.pola figcaption { padding: 16px 8px 18px; font: 400 32px/1 var(--hand); color: var(--ball); text-align: center; }
+.pola figcaption { padding: 14px 6px 16px; font: 400 26px/1 var(--hand); white-space: nowrap; color: var(--ball); text-align: center; }
 .pola.out { transform: translate(120%, -6%) rotate(18deg); opacity: 0; }
 .polas-hint { display: flex; align-items: center; gap: 12px; margin-left: 10px; font: 400 28px/1 var(--hand); color: var(--pen); }
 .polas-hint i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-24); } .polas-hint i.on { background: var(--pen); }
@@ -224,7 +224,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .contact .btn { border-color: var(--paper); box-shadow: 4px 4px 0 var(--green); }
 .contact .btn:hover { box-shadow: 6px 6px 0 var(--green); }
 .foot { display: flex; align-items: center; gap: 16px; margin-top: auto; padding-top: 110px; font: 700 13px/1 var(--type); color: var(--paper-70); position: relative; z-index: 1; }
-.foot .mark { color: var(--ink); }
+.foot .mark { color: var(--acid); width: 34px; height: 34px; }
 .foot a { margin-left: auto; color: var(--acid); }
 
 /* ================= PROJECT VIEWER ================= */
@@ -442,3 +442,43 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .book-nav .chev { color: currentColor; margin-left: 4px; }
 @media (max-width: 640px) { .nav .btn .chev { display: none; } .brand-name { font-size: 22px; } }
+
+/* ================= METAL: one word per header, after the Chronic Disorder lettering ================= */
+.metal { font-family: 'Eater', var(--disp); font-weight: 400; font-size: .78em; letter-spacing: -.01em; line-height: 1; text-transform: uppercase; }
+.display .metal { vertical-align: -.02em; }
+.contact-title .metal { font-size: .7em; }
+
+/* ================= DOODLES (stand-ins until Chris's drawings) ================= */
+.doodle { position: absolute; z-index: 2; width: calc(var(--s, 90px) * 1.2); height: calc(var(--s, 90px) * 1.2); rotate: var(--r, 0deg); color: var(--dc, var(--ink)); pointer-events: none; }
+.doodle svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round; filter: url(#wob); }
+.doodle path { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--ease); }
+.doodle.undrawn path { stroke-dashoffset: 1; }
+.doodle.drawn path { stroke-dashoffset: 0; }
+.doodle.drawn path:nth-child(2) { transition-delay: .35s; } .doodle.drawn path:nth-child(3) { transition-delay: .6s; } .doodle.drawn path:nth-child(4) { transition-delay: .8s; }
+.sec-head { position: relative; }
+.dd-play { right: 6%; top: -10px; }
+.dd-film { right: calc(6% + 120px); top: 70px; }
+.dd-wave { right: 0; top: 130px; }
+.dd-chart { right: -30px; top: -20px; }
+.dd-bolt { right: 100px; top: 90px; }
+.about-photo .doodle { z-index: 4; }
+.dd-sticks { right: -70px; top: -60px; }
+.dd-phones { left: -46px; bottom: 40px; }
+.about-copy { position: relative; }
+.dd-heart { right: 4%; bottom: 180px; }
+.dd-curl { right: calc(4% + 70px); bottom: 110px; }
+.contact { position: relative; }
+.dd-mail { right: 8%; top: 18%; }
+.dd-spark { right: calc(8% + 150px); top: 12%; }
+.dd-fader { right: 26%; bottom: 140px; }
+.hero-title .ul { position: relative; }
+.dd-star { right: -.62em; top: -.3em; --s: .5em !important; }
+@media (max-width: 900px) {
+  .dd-film, .dd-wave, .dd-bolt, .dd-curl, .dd-fader, .dd-spark, .dd-phones { display: none; }
+  .doodle:not(.dd-star) { --s: 64px !important; }
+  .dd-play { right: 0; top: -40px; }
+  .dd-chart { right: 0; top: -40px; }
+  .dd-sticks { right: -10px; top: -46px; }
+  .dd-heart { right: 0; bottom: auto; top: -20px; }
+  .dd-mail { right: 4%; top: 40px; }
+}
