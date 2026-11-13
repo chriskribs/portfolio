@@ -255,6 +255,11 @@
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
   let cur = -1, cleanups = [];
+  /* shareable links: #p/<project>/<doc or video>, #b/<brand> */
+  const slug = t => t.toLowerCase().replace(/&/g, 'and').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  let linkBase = '';
+  const setLink = sub => { const h = linkBase ? '#' + linkBase + (sub ? '/' + sub : '') : ''; history.replaceState(null, '', location.pathname + location.search + h); };
+  const copyLink = () => { const u = location.href; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(() => toast('Link copied')).catch(() => prompt('Copy this link', u)); };
   const openable = P.map((p, i) => p.blocks ? i : -1).filter(i => i >= 0);
 
   const time = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
@@ -268,7 +273,9 @@
           <button type="button" class="pl-mute" aria-label="Mute">${ic('sound')}</button><button type="button" class="pl-fs" aria-label="Full screen">${ic('full')}</button></div>
         ${b.vids.length > 1 ? `<div class="pl-list">${b.vids.map(([v, t], k) => `<button type="button" data-k="${k}" class="${k ? '' : 'on'}"><img src="${I('p-' + v)}" alt="" loading="lazy">${k < (b.top || 0) ? `<span class="top">Top pick ${k + 1}</span>` : ''}<span>${t}</span></button>`).join('')}</div>` : `<p class="pl-title">${b.vids[0][1]}</p>`}`;
       const v = $('video', el), fill = $('.pl-fill', el), pp = $('.pl-pp', el), big = $('.pl-big', el);
-      const load = k => { const [id] = b.vids[k]; v.src = V(id); v.poster = I('p-' + id); $$('.pl-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
+      const load = (k, user) => { const [id] = b.vids[k]; v.src = V(id); v.poster = I('p-' + id); $$('.pl-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); if (user) setLink(id); };
+      el.dataset.vids = b.vids.map(x => x[0]).join(' ');
+      el.loadVid = id => { const k = b.vids.findIndex(x => x[0] === id); if (k >= 0) load(k, true); return k >= 0; };
       load(0);
       const sync = () => { const p = !v.paused; pp.innerHTML = ic(p ? 'pause' : 'play'); big.hidden = p; };
       v.addEventListener('play', sync); v.addEventListener('pause', sync);
@@ -279,7 +286,7 @@
       $('.pl-track', el).addEventListener('click', e => { const r = e.currentTarget.getBoundingClientRect(); v.currentTime = (e.clientX - r.left) / r.width * (v.duration || 0); });
       $('.pl-mute', el).addEventListener('click', e => { v.muted = !v.muted; e.currentTarget.innerHTML = ic(v.muted ? 'mute' : 'sound'); });
       $('.pl-fs', el).addEventListener('click', () => { (v.requestFullscreen || v.webkitEnterFullscreen || (() => {})).call(v); });
-      $$('.pl-list button', el).forEach(x => x.addEventListener('click', () => { load(+x.dataset.k); v.play().catch(() => {}); }));
+      $$('.pl-list button', el).forEach(x => x.addEventListener('click', () => { load(+x.dataset.k, true); v.play().catch(() => {}); }));
       cleanups.push(() => v.pause());
       return el;
     },
@@ -347,7 +354,7 @@
     },
     docs(b) {
       const el = document.createElement('div'); el.className = 'm-docs';
-      el.innerHTML = b.docs.map((d, k) => `<button type="button" class="doc${d.wide ? ' wide' : ''}" data-k="${k}" style="--r:${[-1.5, 1.2, -.8, 1.6][k % 4]}deg">
+      el.innerHTML = b.docs.map((d, k) => `<button type="button" class="doc${d.wide ? ' wide' : ''}" data-k="${k}" data-slug="${slug(d.title)}" style="--r:${[-1.5, 1.2, -.8, 1.6][k % 4]}deg">
           <span class="doc-cover"><img src="${I(d.cover || d.pages[0])}" alt="" loading="lazy"></span>
           <span class="doc-kind">${d.kind} · ${d.pages.length} ${d.pages.length > 1 ? 'pages' : 'page'}</span>
           <b class="doc-title">${d.title}</b><span class="doc-open">Read it <span class="chev">${handArrow()}</span></span></button>`).join('');
@@ -444,17 +451,17 @@
   /* document reader: one document at a time, every page stacked */
   const reader = document.createElement('div'); reader.className = 'reader'; reader.hidden = true;
   reader.setAttribute('role', 'dialog'); reader.setAttribute('aria-modal', 'true'); reader.setAttribute('aria-label', 'Document');
-  reader.innerHTML = `<div class="rd-bar"><span class="rd-kind"></span><b class="rd-title"></b><span class="rd-n"></span><button type="button" class="rd-close">Close</button></div>
+  reader.innerHTML = `<div class="rd-bar"><span class="rd-kind"></span><b class="rd-title"></b><span class="rd-n"></span><button type="button" class="rd-copy">Copy link</button><button type="button" class="rd-close">Close</button></div>
     <div class="rd-scroll"><div class="rd-pages"></div><p class="rd-end"><button type="button" class="rd-back">Back to the documents</button></p></div>`;
   document.body.appendChild(reader);
   let rdFrom = null, rdIo = null;
   const closeReader = () => {
     if (reader.hidden) return;
-    reader.hidden = true; if (rdIo) rdIo.disconnect();
+    reader.hidden = true; if (rdIo) rdIo.disconnect(); setLink();
     if (rdFrom) rdFrom.focus({ preventScroll: true });
   };
   const openReader = (d, from) => {
-    rdFrom = from;
+    rdFrom = from; setLink(slug(d.title));
     $('.rd-kind', reader).textContent = d.kind; $('.rd-title', reader).textContent = d.title;
     const pg = $('.rd-pages', reader); pg.className = 'rd-pages' + (d.wide ? ' wide' : '');
     pg.innerHTML = d.pages.map((n, k) => `<figure data-k="${k}"><img src="${I(n)}" alt="${d.title}, page ${k + 1}"${k > 1 ? ' loading="lazy"' : ''}>${d.pages.length > 1 ? `<figcaption>${k + 1}</figcaption>` : ''}</figure>`).join('');
@@ -465,6 +472,7 @@
     reader.hidden = false; $('.rd-scroll', reader).scrollTop = 0; $('.rd-close', reader).focus({ preventScroll: true });
   };
   $('.rd-close', reader).addEventListener('click', closeReader);
+  $('.rd-copy', reader).addEventListener('click', copyLink);
   $('.rd-back', reader).addEventListener('click', closeReader);
   addEventListener('keydown', e => { if (!reader.hidden && e.key === 'Escape') { e.stopImmediatePropagation(); closeReader(); } }, true);
 
@@ -483,24 +491,37 @@
       sec.appendChild(mk[b.t](b));
       vBlocks.appendChild(sec);
     });
-    viewer.hidden = false; document.body.classList.add('lock');
+    viewer.hidden = false; document.body.classList.add('lock'); setLink();
     $('#vScroll').scrollTop = 0; $('#vClose').focus({ preventScroll: true });
   };
   const openProject = i => {
-    mode = 'project'; cur = i; const p = P[i]; $('#vNext').innerHTML = `Next project <span class="chev">${handArrow()}</span>`;
+    mode = 'project'; cur = i; const p = P[i]; linkBase = 'p/' + p.id; $('#vNext').innerHTML = `Next project <span class="chev">${handArrow()}</span>`;
     render(p, `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`, openable.includes(i) ? `${openable.indexOf(i) + 1} / ${openable.length}` : '');
   };
   const FILM = Object.fromEntries(P.find(p => p.id === 'films').blocks[0].vids);
   const openBrand = k => {
-    mode = 'brand'; cur = k; const b = BRANDS[k]; $('#vNext').innerHTML = `Next brand <span class="chev">${handArrow()}</span>`;
+    mode = 'brand'; cur = k; const b = BRANDS[k]; linkBase = 'b/' + slug(b.name); $('#vNext').innerHTML = `Next brand <span class="chev">${handArrow()}</span>`;
     const ps = (b.ids || []).map(id => P.find(p => p.id === id));
     const blocks = ps.flatMap(p => (p.blocks || []).map(x => ({ ...x, title: ps.length > 1 ? `${p.title} · ${x.title}` : x.title })));
     if (b.films) blocks.push({ t: 'player', title: b.films.length > 1 ? 'Films' : 'Film', vids: b.films.map(f => [f, FILM[f]]) });
     const results = ps.flatMap(p => p.results || []).slice(0, 6);
     render({ title: b.name, sum: b.sum, results, blocks }, `<span class="px">${String(k + 1).padStart(2, '0')}</span> Brands I've worked with`, `${k + 1} / ${BRANDS.length}`);
   };
-  const closeProject = () => { closeReader(); cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
+  const closeProject = () => { closeReader(); linkBase = ''; setLink(); cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
   $('#vClose').addEventListener('click', closeProject);
+  $('#vCopy').addEventListener('click', copyLink);
+  const route = () => {
+    const [kind, id, sub] = decodeURIComponent(location.hash.slice(1)).split('/');
+    if (kind === 'p') { const i = P.findIndex(p => p.id === id); if (i < 0 || !openable.includes(i)) return; openProject(i); }
+    else if (kind === 'b') { const k = BRANDS.findIndex(b => slug(b.name) === id); if (k < 0) return; openBrand(k); }
+    else return;
+    if (!sub) return;
+    const doc = $(`.doc[data-slug="${sub}"]`, vBlocks);
+    if (doc) { doc.scrollIntoView({ block: 'center' }); doc.click(); return; }
+    const pl = $$('.m-player', vBlocks).find(x => x.dataset.vids.split(' ').includes(sub));
+    if (pl) { pl.loadVid(sub); setTimeout(() => pl.scrollIntoView({ block: 'start' }), 50); }
+  };
+  addEventListener('hashchange', route);
   $('#vNext').addEventListener('click', () => (mode === 'brand' ? openBrand((cur + 1) % BRANDS.length) : openProject(openable[(openable.indexOf(cur) + 1) % openable.length])));
   $('#ticker').addEventListener('click', e => { const b = e.target.closest('[data-brand]'); if (b) openBrand(+b.dataset.brand); });
   addEventListener('keydown', e => { if (!viewer.hidden && e.key === 'Escape') closeProject(); });
@@ -546,6 +567,7 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   paint();
+  if (location.hash.length > 2) route();
   /* doodles draw themselves in when they scroll into view */
   if ('IntersectionObserver' in window && !reduce) {
     const dio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); dio.unobserve(e.target); } }), { threshold: .4 });
