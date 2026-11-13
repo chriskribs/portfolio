@@ -73,7 +73,7 @@
   const BRANDS = [
     { name: 'Wellzesta', ids: ['wz-demand', 'wz-social', 'wz-video'], sum: 'Senior living software. As a department of one I ran the pipeline, the launches, the social and the video.' },
     { name: 'PTG', ids: ['ptg-brand', 'ptg-kit', 'ptg-social'], sum: 'A Greenville IT firm. I built the brand, the content engine, the sales kit and the video, solo.' },
-    { name: 'Courser', ids: ['courser'], sum: 'My first team of people who think the way I do. We shaped the strategy together and ran it across 11 brands.' },
+    { name: 'Courser', ids: ['courser'], sum: 'Strategy and budget for 11 brands. I ran it behind the scenes, and hired and directed the agencies who made the creative.' },
     { name: 'Relais & Châteaux', films: ['delicious-journeys'], sum: 'Edit, color, sound design and master. My favorite film I\'ve finished.' },
     { name: 'The Santiago Partnership', films: ['santiago'], sum: 'Edit, color, sound design and master.' },
     { name: 'Weber Family Dentistry', films: ['weber'], sum: 'Edit, color, sound design and master.' },
@@ -95,12 +95,16 @@
       results: ['120% of the annual MQL goal in five months', '$873K active pipeline influenced', '43 contacts advanced to SQL', 'Lead scoring + attribution live in two months'],
       peek: ['wz-sunnyside-mockup', 'wz-ebook-p1', 'wz-report-p1'],
       blocks: [
-        { t: 'book', title: 'Case study: Sunnyside', pages: ['wz-cs-sunnyside-p1', 'wz-cs-sunnyside-p2', 'wz-cs-sunnyside-p3', 'wz-cs-sunnyside-p4'] },
-        { t: 'book', title: 'Ebook: the rollout that almost failed', pages: ['wz-ebook-p1', 'wz-ebook-p2', 'wz-ebook-p3', 'wz-ebook-p4', 'wz-ebook-p5', 'wz-ebook-p6', 'wz-ebook-p7', 'wz-ebook-p8'] },
-        { t: 'book', title: 'Resident engagement report', pages: ['wz-report-p1', 'wz-report-p2', 'wz-report-p3', 'wz-report-p4', 'wz-report-p5', 'wz-report-p6'] },
-        { t: 'email', title: 'Customer newsletters', mails: [['wz-newsletter-oct', 'October: what\'s new in Wellzesta'], [['wz-newsletter-june-p1', 'wz-newsletter-june-p2', 'wz-newsletter-june-p3', 'wz-newsletter-june-p4'], 'June: summer engagement ideas']] },
-        { t: 'book', title: 'Case study: Tandem', pages: ['wz-cs-tandem-p1', 'wz-cs-tandem-p2', 'wz-cs-tandem-p3', 'wz-cs-tandem-p4'] },
-        { t: 'book', title: 'Product brief, staff onboarding + sign-up flyer', pages: ['wz-ai-menu-p1', 'wz-ai-menu-p2', 'wz-onboarding-p1', 'wz-onboarding-p2', 'wz-signup-flyer'] }
+        { t: 'docs', title: 'The documents', docs: [
+          { title: 'Case study: Sunnyside', kind: 'Case study', pages: ['wz-cs-sunnyside-p1', 'wz-cs-sunnyside-p2', 'wz-cs-sunnyside-p3', 'wz-cs-sunnyside-p4'] },
+          { title: 'Case study: Tandem', kind: 'Case study', pages: ['wz-cs-tandem-p1', 'wz-cs-tandem-p2', 'wz-cs-tandem-p3', 'wz-cs-tandem-p4'] },
+          { title: 'The rollout that almost failed', kind: 'Ebook', pages: ['wz-ebook-p1', 'wz-ebook-p2', 'wz-ebook-p3', 'wz-ebook-p4', 'wz-ebook-p5', 'wz-ebook-p6', 'wz-ebook-p7', 'wz-ebook-p8'] },
+          { title: 'Resident engagement report', kind: 'Report', pages: ['wz-report-p1', 'wz-report-p2', 'wz-report-p3', 'wz-report-p4', 'wz-report-p5', 'wz-report-p6'] },
+          { title: 'AI menu product brief', kind: 'Product brief', pages: ['wz-ai-menu-p1', 'wz-ai-menu-p2'] },
+          { title: 'Staff onboarding guide', kind: 'Guide', pages: ['wz-onboarding-p1', 'wz-onboarding-p2'] },
+          { title: 'Resident sign-up flyer', kind: 'Flyer', pages: ['wz-signup-flyer'] }
+        ] },
+        { t: 'email', title: 'Customer newsletters', mails: [['wz-newsletter-oct', 'October: what\'s new in Wellzesta'], [['wz-newsletter-june-p1', 'wz-newsletter-june-p2', 'wz-newsletter-june-p3', 'wz-newsletter-june-p4'], 'June: summer engagement ideas']] }
       ] },
     { id: 'wz-social', co: 'Wellzesta', title: 'Launches, social + events', type: 'LinkedIn · product launches · conferences', year: '2026',
       result: '15 demos + 3 opps from one playbook', sum: 'Feature launches, product motion and a conference playbook that runs the same way before, during and after every show.',
@@ -130,9 +134,20 @@
         ] },
         { t: 'player', title: 'Explainer', vids: [['wz-explainer', 'Wellzesta in 45 seconds']] }
       ] },
-    { id: 'courser', co: 'Courser', title: 'Multi-brand launches', type: 'Launch marketing · research · 11 brands', year: '2023–25',
-      result: '80% adoption in one quarter', sum: 'My first team of people who think the way I do, alongside PTG. We shaped the strategy together and ran it across 11 brands.',
-      results: ['201% of MQL goal', '80% launch adoption target hit within one quarter', '+9% ARR in three months'], peek: [], card: '201%' },
+    { id: 'courser', co: 'Courser', title: 'Strategy + budget, 11 brands', type: 'Goal math · quarterly plans · budgets · agency direction', year: '2023–25',
+      result: '201% of MQL goal', sum: 'Most of this job never looked like marketing. I built the goal math, the quarterly plans and the budget for 11 IT brands, then hired the agencies and directed the creative they made.',
+      results: ['201% of MQL goal', '80% launch adoption target hit within one quarter', '+9% ARR in three months'], peek: ['cr-geo-6', 'cr-lnl-1', 'cr-geo-2'],
+      blocks: [
+        { t: 'calc', title: 'Start with the deals' },
+        { t: 'plan', title: 'A quarter on one page' },
+        { t: 'budget', title: 'The budget every brand filled in' },
+        { t: 'docs', title: 'The documents', docs: [
+          { title: 'Geo marketing framework', kind: 'Planning deck', wide: true, cover: 'cr-geo-6', pages: Array.from({ length: 11 }, (_, k) => 'cr-geo-' + (k + 1)) },
+          { title: 'Planning for the unplanned', kind: 'Lunch & learn deck', wide: true, pages: Array.from({ length: 18 }, (_, k) => 'cr-lnl-' + (k + 1)) },
+          { title: 'Merger announcement', kind: 'Blog post', pages: ['cr-merge-blog-1', 'cr-merge-blog-2', 'cr-merge-blog-3'] },
+          { title: 'Merger FAQ for clients', kind: 'FAQ', pages: ['cr-merge-faq-1', 'cr-merge-faq-2'] }
+        ] }
+      ] },
     { id: 'ptg-brand', co: 'PTG', title: 'Brand + content system', type: 'Brand guidelines · SEO content', year: '2021–25',
       result: '+1,230% organic traffic in 2 yrs', sum: 'A one-person marketing department for a Greenville IT firm. First a brand system so every page looked like the same company, then the content and SEO built on it.',
       results: ['+1,230% organic web traffic in two years', 'Brand guidelines shipped in year one'],
@@ -142,9 +157,15 @@
       result: 'Built from scratch, solo', sum: 'Everything a sales team needs to win a client and keep them: buyer\'s guides, security one-pagers, a welcome guide and quarterly business review decks.',
       results: [], peek: ['ptg-welcome-cover', 'ptg-buyers-guide', 'ptg-sbr-deck'],
       blocks: [
-        { t: 'book', title: 'Customer welcome guide', pages: ['ptg-welcome-cover', 'ptg-welcome-open', 'ptg-quick-facts', 'ptg-service-tickets'] },
-        { t: 'book', title: 'Buyer\'s guides + security one-pagers', pages: ['ptg-buyers-guide', 'ptg-cyber-guide', 'ptg-edr', 'ptg-password-mockup', 'ptg-cost-mockup', 'ptg-sbr-tv', 'ptg-updates', 'ptg-trends'] },
-        { t: 'deck', title: 'QBR + audit decks', slides: ['ptg-sbr-deck', 'ptg-audit-deck', 'ptg-offerings', 'ptg-roadmap', 'ptg-security-training'] }
+        { t: 'docs', title: 'The documents', docs: [
+          { title: 'Customer welcome guide', kind: 'Guide', pages: ['ptg-welcome-cover', 'ptg-welcome-open', 'ptg-quick-facts', 'ptg-service-tickets'] },
+          { title: 'Buyer\'s guide to IT providers', kind: 'Buyer\'s guide', pages: ['ptg-buyers-guide'] },
+          { title: 'Cyber insurance quick reference', kind: 'One-pager', pages: ['ptg-cyber-guide'] },
+          { title: 'Is your business safe? (EDR)', kind: 'Guide', pages: ['ptg-edr'] },
+          { title: 'Why you need password management', kind: 'One-pager', pages: ['ptg-password-mockup'] },
+          { title: 'The cost of a compromised password', kind: 'One-pager', pages: ['ptg-cost-mockup'] }
+        ] },
+        { t: 'deck', title: 'QBR + audit decks', slides: ['ptg-sbr-deck', 'ptg-sbr-tv', 'ptg-updates', 'ptg-trends', 'ptg-audit-deck', 'ptg-offerings', 'ptg-roadmap', 'ptg-security-training'] }
       ] },
     { id: 'ptg-social', co: 'PTG', title: 'Webinars + social video', type: 'Ads · vertical video', year: '2021–25',
       result: '54-min panel → 40-sec promo', sum: 'Webinar promotion and short vertical video that put a trusted face on an IT firm, in the feed where business owners already scroll.',
@@ -325,42 +346,71 @@
       cleanups.push(() => clearTimeout(t));
       return el;
     },
-    book(b) {
-      const el = document.createElement('div'); el.className = 'm-book';
-      el.innerHTML = `<div class="book"><div class="pg left"></div><div class="pg right"></div></div>
-        <div class="book-nav"><button type="button" class="bk-prev">Prev</button><span class="bk-n"></span><button type="button" class="bk-next">Next <span class="chev">${handArrow()}</span></button></div>`;
-      const book = $('.book', el), left = $('.left', el), right = $('.right', el), pages = b.pages;
-      let i = 0, busy = false;
-      const img = n => n ? `<img src="${I(n)}" alt="" loading="lazy">` : '';
-      const render = () => {
-        left.innerHTML = img(pages[i - 1]); right.innerHTML = img(pages[i]);
-        left.classList.toggle('empty', !pages[i - 1]); right.classList.toggle('empty', !pages[i]);
-        book.classList.toggle('closed', i === 0);
-        book.classList.toggle('ended', i >= pages.length);
-        $('.bk-n', el).textContent = i === 0 ? 'Cover' : `${Math.min(i, pages.length)}–${Math.min(i + 1, pages.length)} / ${pages.length}`;
-        $('.bk-prev', el).disabled = i === 0; $('.bk-next', el).disabled = i >= pages.length;
+    docs(b) {
+      const el = document.createElement('div'); el.className = 'm-docs';
+      el.innerHTML = b.docs.map((d, k) => `<button type="button" class="doc${d.wide ? ' wide' : ''}" data-k="${k}" style="--r:${[-1.5, 1.2, -.8, 1.6][k % 4]}deg">
+          <span class="doc-cover"><img src="${I(d.cover || d.pages[0])}" alt="" loading="lazy"></span>
+          <span class="doc-kind">${d.kind} · ${d.pages.length} ${d.pages.length > 1 ? 'pages' : 'page'}</span>
+          <b class="doc-title">${d.title}</b><span class="doc-open">Read it <span class="chev">${handArrow()}</span></span></button>`).join('');
+      $$('.doc', el).forEach(x => x.addEventListener('click', () => openReader(b.docs[+x.dataset.k], x)));
+      return el;
+    },
+    calc() {
+      const el = document.createElement('div'); el.className = 'm-calc';
+      const ST = [['List', 'people a campaign reaches'], ['Leads', 'raise a hand'], ['MQLs', 'marketing qualified'], ['SQLs', 'sales accepts them'], ['Opps', 'real opportunities'], ['Deals', 'signed']];
+      const R = [3, 55, 30, 60, 20];
+      const C = ['ink', 'ball', 'olive', 'green', 'pen', 'acid'];
+      el.innerHTML = `<div class="calc-in"><span class="calc-lbl">New deals this quarter</span>
+          <div class="calc-goal"><button type="button" data-d="-1" aria-label="Fewer deals">–</button><output class="calc-n">3</output><button type="button" data-d="1" aria-label="More deals">+</button></div>
+          <p class="calc-note">The math I ran for every brand, every quarter. Start with the deals sales needs and work backward to how many people a campaign has to reach. Change a rate to see what moves.</p></div>
+        <ol class="calc-funnel">${ST.map(([n, d], k) => `<li style="--bc: var(--${C[k]})"><span class="cf-n"><b data-s="${k}"></b><small>${n}</small></span><span class="cf-bar"><i></i></span><span class="cf-d">${d}</span>
+          ${k < 5 ? `<label class="cf-rate"><input type="number" min="1" max="100" value="${R[k]}" data-r="${k}">% become ${ST[k + 1][0].toLowerCase()}</label>` : ''}</li>`).join('')}</ol>
+        <p class="calc-foot">Sample rates. Each brand's real rates came from its own CRM.</p>`;
+      let goal = 3;
+      const run = () => {
+        const r = $$('[data-r]', el).map(x => Math.min(100, Math.max(1, +x.value || 1)) / 100);
+        const v = [goal]; for (let k = 4; k >= 0; k--) v.unshift(v[0] / r[k]);
+        const max = Math.sqrt(v[0]);
+        v.forEach((n, k) => { $(`[data-s="${k}"]`, el).textContent = Math.ceil(n - 1e-9).toLocaleString(); $$('.cf-bar i', el)[k].style.width = Math.max(3, Math.sqrt(n) / max * 100) + '%'; });
+        $('.calc-n', el).textContent = goal;
       };
-      const flip = dir => {
-        if (busy) return;
-        if (dir > 0 && i >= pages.length) return;
-        if (dir < 0 && i === 0) return;
-        busy = true;
-        const leaf = document.createElement('div');
-        leaf.className = 'leaf ' + (dir > 0 ? 'fwd' : 'back');
-        leaf.innerHTML = dir > 0
-          ? `<div class="face front">${img(pages[i])}</div><div class="face backf">${img(pages[i + 1])}</div>`
-          : `<div class="face front">${img(pages[i - 1])}</div><div class="face backf">${img(pages[i - 2])}</div>`;
-        book.appendChild(leaf);
-        if (dir > 0) { right.innerHTML = img(pages[i + 2]); right.classList.toggle('empty', !pages[i + 2]); }
-        else { left.innerHTML = img(pages[i - 3]); left.classList.toggle('empty', !pages[i - 3]); }
-        if (dir > 0 && i === 0) book.classList.remove('closed');
-        requestAnimationFrame(() => requestAnimationFrame(() => leaf.classList.add('go')));
-        setTimeout(() => { i += dir * 2; leaf.remove(); render(); busy = false; }, reduce ? 0 : 900);
-      };
-      $('.bk-next', el).addEventListener('click', () => flip(1));
-      $('.bk-prev', el).addEventListener('click', () => flip(-1));
-      right.addEventListener('click', () => flip(1)); left.addEventListener('click', () => flip(-1));
-      render();
+      $$('[data-d]', el).forEach(x => x.addEventListener('click', () => { goal = Math.max(1, Math.min(50, goal + +x.dataset.d)); run(); }));
+      $$('[data-r]', el).forEach(x => x.addEventListener('input', run));
+      run();
+      return el;
+    },
+    plan() {
+      const el = document.createElement('div'); el.className = 'm-plan';
+      const TIERS = [['1', 'Corporate', 'One big campaign a quarter that every brand runs. Same story, same assets.'], ['2', 'Geo', 'One to three optional campaigns each region picks, to fit its market.'], ['3', 'Local', 'Events and sponsorships, picked and run by the people in the room.']];
+      const ROWS = [
+        ['Premium mailers', 'New logos', 'Jan', 'Sales'], ['BDR mailers', 'New logos', 'Jan', 'BDR'],
+        ['Industry associations: speaking + networking', 'New logos', 'Rolling', 'Sales'], ['Chamber events', 'New logos', 'Rolling', 'Sales'],
+        ['Search + paid social ads', 'New logos', 'Jan to Mar', 'BDR + sales'], ['Local + organic SEO', 'New logos', 'Always on', ''],
+        ['Copilot lunch & learn, in person + virtual', 'New + existing', 'Jan', 'Sales'], ['Corporate campaign: threat exposure', 'New + existing', 'Jan to Mar', 'Sales'],
+        ['NPS campaign', 'Existing', 'Feb', ''], ['Newsletter', 'Existing', 'Monthly', '']];
+      el.innerHTML = `<div class="tiers">${TIERS.map(([n, t, d]) => `<div class="tier"><span class="tier-n">${n}</span><b>${t}</b><p>${d}</p></div>`).join('')}</div>
+        <div class="sheet"><div class="sheet-hd"><span>Q1 campaign targets</span><span class="scrawl">every campaign owes the goal</span></div>
+        <div class="sheet-x"><table><thead><tr><th>Campaign</th><th>Who it's for</th><th>When</th><th>Follow-up</th></tr></thead>
+        <tbody>${ROWS.map(([a, b, c, d]) => `<tr><td>${a}</td><td><span class="who ${b.startsWith('New l') ? 'n' : b.startsWith('New') ? 'b' : 'e'}">${b}</span></td><td>${c}</td><td>${d || '–'}</td></tr>`).join('')}</tbody></table></div></div>
+        <p class="calc-foot">Each row also carried a list size, a response rate and the leads, MQLs, SQLs and opps it owed the goal above.</p>`;
+      return el;
+    },
+    budget() {
+      const el = document.createElement('div'); el.className = 'm-budget';
+      const EVEN = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+      const ROWS = [
+        ['Local events', 'Per event, in the month it happens', [0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0]],
+        ['Associations + subscriptions', 'Annual dues, spread by month', [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+        ['Print', 'Annual, spread by month', EVEN], ['LinkedIn ads', 'Annual, spread by month', EVEN], ['Google ads', 'Annual, spread by month', EVEN],
+        ['Other digital ads, offset by partner funds', 'Annual, spread by month', EVEN],
+        ['Sales tools: ZoomInfo, HubSpot, Sales Navigator, call recording, Copilot', 'Per user, per month', EVEN],
+        ['HubSpot brand license', 'Per brand, per year', EVEN], ['Website hosting', 'Per site, per year', EVEN],
+        ['Photo + video', 'As needed', [0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0]], ['Customer appreciation + giveaways', 'Monthly', EVEN]];
+      const M = 'JFMAMJJASOND';
+      el.innerHTML = `<div class="sheet"><div class="sheet-hd"><span>Annual marketing budget · one per brand</span><span class="scrawl">start at 2% of revenue</span></div>
+        <div class="sheet-x"><table><thead><tr><th>Line item</th><th>How it's set</th><th class="mo">${[...M].map(m => `<i>${m}</i>`).join('')}</th></tr></thead>
+        <tbody>${ROWS.map(([a, b, m]) => `<tr><td>${a}</td><td>${b}</td><td class="mo">${m.map(x => `<i class="l${x}"></i>`).join('')}</td></tr>`).join('')}</tbody></table></div></div>
+        <p class="calc-foot">I built the template and the rules. Each brand's leader filled it in, then it went up for approval. The dollar amounts stay with the client.</p>`;
       return el;
     },
     deck(b) {
@@ -392,9 +442,36 @@
     }
   };
 
+  /* document reader: one document at a time, every page stacked */
+  const reader = document.createElement('div'); reader.className = 'reader'; reader.hidden = true;
+  reader.setAttribute('role', 'dialog'); reader.setAttribute('aria-modal', 'true'); reader.setAttribute('aria-label', 'Document');
+  reader.innerHTML = `<div class="rd-bar"><span class="rd-kind"></span><b class="rd-title"></b><span class="rd-n"></span><button type="button" class="rd-close">Close</button></div>
+    <div class="rd-scroll"><div class="rd-pages"></div><p class="rd-end"><button type="button" class="rd-back">Back to the documents</button></p></div>`;
+  document.body.appendChild(reader);
+  let rdFrom = null, rdIo = null;
+  const closeReader = () => {
+    if (reader.hidden) return;
+    reader.hidden = true; if (rdIo) rdIo.disconnect();
+    if (rdFrom) rdFrom.focus({ preventScroll: true });
+  };
+  const openReader = (d, from) => {
+    rdFrom = from;
+    $('.rd-kind', reader).textContent = d.kind; $('.rd-title', reader).textContent = d.title;
+    const pg = $('.rd-pages', reader); pg.className = 'rd-pages' + (d.wide ? ' wide' : '');
+    pg.innerHTML = d.pages.map((n, k) => `<figure data-k="${k}"><img src="${I(n)}" alt="${d.title}, page ${k + 1}"${k > 1 ? ' loading="lazy"' : ''}>${d.pages.length > 1 ? `<figcaption>${k + 1}</figcaption>` : ''}</figure>`).join('');
+    const nEl = $('.rd-n', reader); nEl.textContent = d.pages.length > 1 ? `1 / ${d.pages.length}` : '';
+    if (rdIo) rdIo.disconnect();
+    rdIo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) nEl.textContent = `${+e.target.dataset.k + 1} / ${d.pages.length}`; }), { root: $('.rd-scroll', reader), rootMargin: '-45% 0px -45% 0px' });
+    if (d.pages.length > 1) $$('figure', pg).forEach(f => rdIo.observe(f));
+    reader.hidden = false; $('.rd-scroll', reader).scrollTop = 0; $('.rd-close', reader).focus({ preventScroll: true });
+  };
+  $('.rd-close', reader).addEventListener('click', closeReader);
+  $('.rd-back', reader).addEventListener('click', closeReader);
+  addEventListener('keydown', e => { if (!reader.hidden && e.key === 'Escape') { e.stopImmediatePropagation(); closeReader(); } }, true);
+
   let mode = 'project';
   const render = (v, kicker, count) => {
-    cleanups.forEach(f => f()); cleanups = [];
+    cleanups.forEach(f => f()); cleanups = []; closeReader();
     $('#vKicker').innerHTML = kicker;
     $('#vTitle').textContent = v.title;
     $('#vSum').textContent = v.sum;
@@ -423,7 +500,7 @@
     const results = ps.flatMap(p => p.results || []).slice(0, 6);
     render({ title: b.name, sum: b.sum, results, blocks }, `<span class="px">${String(k + 1).padStart(2, '0')}</span> Brands I've worked with`, `${k + 1} / ${BRANDS.length}`);
   };
-  const closeProject = () => { cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
+  const closeProject = () => { closeReader(); cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
   $('#vClose').addEventListener('click', closeProject);
   $('#vNext').addEventListener('click', () => (mode === 'brand' ? openBrand((cur + 1) % BRANDS.length) : openProject(openable[(openable.indexOf(cur) + 1) % openable.length])));
   $('#ticker').addEventListener('click', e => { const b = e.target.closest('[data-brand]'); if (b) openBrand(+b.dataset.brand); });
