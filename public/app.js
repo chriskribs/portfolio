@@ -158,12 +158,11 @@
       results: [], peek: ['ptg-welcome-cover', 'ptg-buyers-guide', 'ptg-sbr-deck'],
       blocks: [
         { t: 'docs', title: 'The documents', docs: [
-          { title: 'Customer welcome guide', kind: 'Guide', pages: ['ptg-welcome-cover', 'ptg-welcome-open', 'ptg-quick-facts', 'ptg-service-tickets'] },
-          { title: 'Buyer\'s guide to IT providers', kind: 'Buyer\'s guide', pages: ['ptg-buyers-guide'] },
-          { title: 'Cyber insurance quick reference', kind: 'One-pager', pages: ['ptg-cyber-guide'] },
-          { title: 'Is your business safe? (EDR)', kind: 'Guide', pages: ['ptg-edr'] },
-          { title: 'Why you need password management', kind: 'One-pager', pages: ['ptg-password-mockup'] },
-          { title: 'The cost of a compromised password', kind: 'One-pager', pages: ['ptg-cost-mockup'] }
+          { title: 'Customer welcome guide', kind: 'Guide', cover: 'ptg-welcome-cover', pages: ['ptg-welcome-p1', 'ptg-welcome-p2', 'ptg-welcome-p3', 'ptg-welcome-p4', 'ptg-welcome-p5', 'ptg-welcome-p6', 'ptg-welcome-p7', 'ptg-welcome-p8', 'ptg-welcome-p9', 'ptg-welcome-p10'] },
+          { title: 'Buyer\'s guide to IT providers', kind: 'Buyer\'s guide', cover: 'ptg-buyers-guide', pages: ['ptg-buyers-p1', 'ptg-buyers-p2', 'ptg-buyers-p3', 'ptg-buyers-p4', 'ptg-buyers-p5', 'ptg-buyers-p6'] },
+          { title: 'Cyber insurance quick reference', kind: 'Guide', cover: 'ptg-cyber-guide', pages: ['ptg-cyber-p1', 'ptg-cyber-p2'] },
+          { title: 'Is your business safe? (EDR)', kind: 'Guide', cover: 'ptg-edr', pages: ['ptg-edr-p1', 'ptg-edr-p2', 'ptg-edr-p3', 'ptg-edr-p4'] },
+          { title: 'Why you need password management', kind: 'Guide', cover: 'ptg-password-mockup', pages: ['ptg-pswrd-p1', 'ptg-pswrd-p2'] }
         ] },
         { t: 'deck', title: 'QBR + audit decks', slides: ['ptg-sbr-deck', 'ptg-sbr-tv', 'ptg-updates', 'ptg-trends', 'ptg-audit-deck', 'ptg-offerings', 'ptg-roadmap', 'ptg-security-training'] }
       ] },
