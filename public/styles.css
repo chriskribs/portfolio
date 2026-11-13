@@ -559,3 +559,5 @@ td.mo i.l2 { background: var(--ink); border-color: var(--ink); }
 }
 .v-block, .m-plan, .m-budget, .sheet { min-width: 0; }
 .m-plan table { min-width: 600px; } .m-budget table { min-width: 820px; } .sheet td:nth-child(2) { white-space: nowrap; }
+.mail-scroll.live { padding: 0; overflow: hidden; display: flex; }
+.mail-scroll.live iframe { flex: 1; width: 100%; height: 100%; min-height: 560px; border: 0; background: #fff; }

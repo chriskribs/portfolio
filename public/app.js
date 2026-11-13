@@ -104,7 +104,7 @@
           { title: 'Staff onboarding guide', kind: 'Guide', pages: ['wz-onboarding-p1', 'wz-onboarding-p2'] },
           { title: 'Resident sign-up flyer', kind: 'Flyer', pages: ['wz-signup-flyer'] }
         ] },
-        { t: 'email', title: 'Customer newsletters', mails: [['wz-newsletter-oct', 'October: what\'s new in Wellzesta'], [['wz-newsletter-june-p1', 'wz-newsletter-june-p2', 'wz-newsletter-june-p3', 'wz-newsletter-june-p4'], 'June: summer engagement ideas']] }
+        { t: 'email', title: 'Customer newsletters', mails: [['/media/mail/wz-october.html', 'Update events from anywhere'], ['/media/mail/wz-pointclickcare.html', 'Enter each resident once, with PointClickCare']] }
       ] },
     { id: 'wz-social', co: 'Wellzesta', title: 'Launches, social + events', type: 'LinkedIn · product launches · conferences', year: '2026',
       result: '15 demos + 3 opps from one playbook', sum: 'Feature launches, product motion and a conference playbook that runs the same way before, during and after every show.',
@@ -430,7 +430,7 @@
       el.innerHTML = `<div class="mail"><div class="mail-top"><i></i><i></i><i></i><span>Inbox</span></div>
         <div class="mail-body"><ul class="mail-list">${b.mails.map(([n, s], k) => `<li><button type="button" data-k="${k}" class="${k ? '' : 'on'}"><b>Wellzesta</b><span>${s}</span></button></li>`).join('')}</ul>
         <div class="mail-pane"><div class="mail-hdr"><b class="mail-subj"></b><small>From Wellzesta · to you</small></div><div class="mail-scroll"></div></div></div></div>`;
-      const show = k => { const [n, s] = b.mails[k]; $('.mail-scroll', el).innerHTML = [].concat(n).map(x => `<img src="${I(x)}" alt="">`).join(''); $('.mail-subj', el).textContent = s; $('.mail-scroll', el).scrollTop = 0; $$('.mail-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
+      const show = k => { const [n, s] = b.mails[k]; const sc = $('.mail-scroll', el); sc.classList.toggle('live', /\.html$/.test(n)); sc.innerHTML = /\.html$/.test(n) ? `<iframe src="${n}" title="${s}" loading="lazy"></iframe>` : [].concat(n).map(x => `<img src="${I(x)}" alt="">`).join(''); $('.mail-subj', el).textContent = s; $('.mail-scroll', el).scrollTop = 0; $$('.mail-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
       $$('.mail-list button', el).forEach(x => x.addEventListener('click', () => show(+x.dataset.k)));
       show(0);
       return el;
