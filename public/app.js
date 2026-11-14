@@ -249,7 +249,6 @@
   const slug = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, 'and').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   let linkBase = '';
   const setLink = sub => { const h = linkBase ? '#' + linkBase + (sub ? '/' + sub : '') : ''; history.replaceState(null, '', location.pathname + location.search + h); };
-  const copyLink = () => { const u = location.href; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(() => toast('Link copied')).catch(() => prompt('Copy this link', u)); };
   const openable = P.map((p, i) => p.blocks ? i : -1).filter(i => i >= 0);
 
   const time = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
@@ -446,7 +445,7 @@
   /* document reader: one document at a time, every page stacked */
   const reader = document.createElement('div'); reader.className = 'reader'; reader.hidden = true;
   reader.setAttribute('role', 'dialog'); reader.setAttribute('aria-modal', 'true'); reader.setAttribute('aria-label', 'Document');
-  reader.innerHTML = `<div class="rd-bar"><span class="rd-kind"></span><b class="rd-title"></b><span class="rd-n"></span><button type="button" class="rd-copy">Copy link</button><button type="button" class="rd-close">Close</button></div>
+  reader.innerHTML = `<div class="rd-bar"><span class="rd-kind"></span><b class="rd-title"></b><span class="rd-n"></span><button type="button" class="rd-close">Close</button></div>
     <div class="rd-scroll"><div class="rd-pages"></div><p class="rd-end"><button type="button" class="rd-back">Back to the documents</button></p></div>`;
   document.body.appendChild(reader);
   let rdFrom = null, rdIo = null;
@@ -467,7 +466,6 @@
     reader.hidden = false; $('.rd-scroll', reader).scrollTop = 0; $('.rd-close', reader).focus({ preventScroll: true });
   };
   $('.rd-close', reader).addEventListener('click', closeReader);
-  $('.rd-copy', reader).addEventListener('click', copyLink);
   $('.rd-back', reader).addEventListener('click', closeReader);
   addEventListener('keydown', e => { if (!reader.hidden && e.key === 'Escape') { e.stopImmediatePropagation(); closeReader(); } }, true);
 
@@ -505,7 +503,6 @@
   };
   const closeProject = () => { closeReader(); linkBase = ''; setLink(); cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
   $('#vClose').addEventListener('click', closeProject);
-  $('#vCopy').addEventListener('click', copyLink);
   const route = () => {
     const [kind, id, sub] = decodeURIComponent(location.hash.slice(1)).split('/');
     if (kind === 'p') { const i = P.findIndex(p => p.id === id); if (i < 0 || !openable.includes(i)) return; openProject(i); }
