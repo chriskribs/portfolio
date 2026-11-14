@@ -50,7 +50,7 @@
   };
 
   /* client logos, full colour (vector, /media/logo), shown big and faded behind the viewer header */
-  const LOGO = { Wellzesta: 'wellzesta', PTG: 'ptg', Courser: 'courser' };
+  const LOGO = { Wellzesta: 'wellzesta', PTG: 'ptg', Courser: 'courser', 'White Lodging': 'whitelodging', 'Relais & Châteaux': 'relais' };
   const logoFor = name => { const k = Object.keys(LOGO).find(n => (name || '').startsWith(n)); return k ? `/media/logo/${LOGO[k]}-color.svg` : ''; };
 
   /* ================= TICKER ================= */
@@ -239,7 +239,7 @@
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
   let cur = -1, cleanups = [];
   /* shareable links: #p/<project>/<doc or video>, #b/<brand> */
-  const slug = t => t.toLowerCase().replace(/&/g, 'and').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const slug = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, 'and').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   let linkBase = '';
   const setLink = sub => { const h = linkBase ? '#' + linkBase + (sub ? '/' + sub : '') : ''; history.replaceState(null, '', location.pathname + location.search + h); };
   const copyLink = () => { const u = location.href; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(() => toast('Link copied')).catch(() => prompt('Copy this link', u)); };
@@ -462,7 +462,7 @@
   let mode = 'project';
   const render = (v, kicker, count) => {
     cleanups.forEach(f => f()); cleanups = []; closeReader();
-    const lg = logoFor(v.brand); $('#vLogo').innerHTML = lg ? `<img src="${lg}" alt="">` : '';
+    const lg = logoFor(v.brand); $('#vLogo').innerHTML = lg ? `<img src="${lg}" alt="">` : ''; $('#vLogo').dataset.l = lg ? lg.split('/').pop().replace('-color.svg', '') : '';
     $('#vKicker').innerHTML = kicker;
     $('#vTitle').textContent = v.title;
     $('#vSum').textContent = v.sum;
@@ -497,7 +497,7 @@
   const route = () => {
     const [kind, id, sub] = decodeURIComponent(location.hash.slice(1)).split('/');
     if (kind === 'p') { const i = P.findIndex(p => p.id === id); if (i < 0 || !openable.includes(i)) return; openProject(i); }
-    else if (kind === 'b') { const bid = { 'union-club-hotel': 'white-lodging', 'brush-creek-ranch': 'white-lodging' }[id] || id; const k = BRANDS.findIndex(b => slug(b.name) === bid); if (k < 0) return; openBrand(k); }
+    else if (kind === 'b') { const bid = { 'union-club-hotel': 'white-lodging', 'brush-creek-ranch': 'white-lodging', 'relais-and-ch-teaux': 'relais-and-chateaux' }[id] || id; const k = BRANDS.findIndex(b => slug(b.name) === bid); if (k < 0) return; openBrand(k); }
     else return;
     if (!sub) return;
     const doc = $(`.doc[data-slug="${sub}"]`, vBlocks);
