@@ -45,7 +45,6 @@
   const ic = n => `<span class="pi">${svg(ICONS[n])}</span>`;
   const paint = (root = document) => {
     $$('[data-mark]', root).forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined, el.dataset.style); });
-    $$('[data-name]', root).forEach(el => { el.innerHTML = NB.name(el.dataset.style); });
     $$('[data-doodle]', root).forEach(el => { el.innerHTML = NB.doodle(el.dataset.doodle); });
     $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };

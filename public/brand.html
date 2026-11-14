@@ -7,7 +7,7 @@
 <meta name="description" content="The Chris Kribs brand system: Chronic Green, the split-diamond mark, hand-drawn elements and how to use them.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#15180f">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Courier+Prime:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Londrina+Solid:wght@400;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
@@ -52,6 +52,9 @@
   .stage svg { overflow: visible; }
   .st-ul { font: 900 54px/1 var(--disp); text-transform: uppercase; color: var(--green); }
   .st-loop { position: relative; font: 900 64px/1 var(--disp); padding: 0 16px; }
+  .led-demo .cl { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset .1s; }
+  .led-demo:hover .cl { stroke-dashoffset: 0; transition: stroke-dashoffset .7s steps(14, end); }
+  @media (hover: none) { .led-demo .cl { stroke-dashoffset: 0; } }
   .st-loop svg { position: absolute; inset: -18px -14px; width: calc(100% + 28px); height: calc(100% + 36px); color: var(--pen); }
   .st-arrow svg { width: 180px; height: 40px; color: var(--ink); }
   .st-tape { width: 70%; height: 90px; background: #fff; box-shadow: 0 6px 14px rgb(0 0 0 / .14); position: relative; rotate: -2deg; }
@@ -116,7 +119,7 @@
 <section class="bs-sec">
   <span class="kicker"><span class="px">01</span> The mark</span>
   <h2>The split <span class="metal">diamond.</span></h2>
-  <p class="note">C and K cut into a diamond split down the middle, after the Chronic Disorder tape logo. The C is the left half. The K stem runs down the split, and its short arms are cut flush with the diamond's edge, so their ends make the arrow point. Spiky edges, a little drippy. Drawn by hand in black marker, five takes. Take 3 is the mark, straightened, with a little more room between the C and the K, filled in solid, with the outline as drawn kept as an alternate. Every drawing on the site was redrawn several times, and the page flips through the redraws about eight times a second, like Squigglevision and the animated holds in late-90s cartoons.</p>
+  <p class="note">C and K cut into a diamond split down the middle, after the Chronic Disorder tape logo. The C is the left half. The K stem runs down the split, and its short arms are cut flush with the diamond's edge, so their ends make the arrow point. Spiky edges, a little drippy. Drawn by hand in black marker, five takes. Take 3 is the mark, turned so the K stands square to the base, with a little more room between the C and the K, filled in solid, with the outline as drawn kept as an alternate. Every drawing on the site was redrawn several times, and the page flips through the redraws about eight times a second, like Squigglevision and the animated holds in late-90s cartoons.</p>
   <div class="marks">
     <div class="tile t-ink"><span class="mark" data-mark></span></div>
     <div class="tile t-paper"><span class="mark" data-mark></span></div>
@@ -126,7 +129,7 @@
     <span><i class="mark" data-mark style="width:96px;height:96px"></i>96</span>
     <span><i class="mark" data-mark style="width:46px;height:46px"></i>46 · nav</span>
     <span><i class="mark" data-mark style="width:24px;height:24px"></i>24</span>
-    <span><img src="/favicon.svg" width="32" height="32" alt="">favicon</span>
+    <span><img src="/favicon.svg?v=5" width="32" height="32" alt="">favicon</span>
   </div>
   <div class="takes">
     <figure><span class="mark" data-mark="mark1" data-style="line"></span>take 1</figure>
@@ -136,12 +139,12 @@
     <figure><span class="mark" data-mark="mark4" data-style="line"></span>take 5</figure>
   </div>
   <h3 class="sub-h">The logo suite</h3>
-  <p class="note">Mark and lettering, filled and in outline, in six lockups.</p>
+  <p class="note">The mark with the name set in Londrina Solid, filled and in outline, in six lockups. The favicon is the same filled mark.</p>
   <div class="suite">
     <figure><div class="lgs"><span data-logo="horizontal"></span></div><div class="lgs d"><span data-logo="horizontal" data-style="line"></span></div>
-      <figcaption><b>Horizontal</b>Wide spaces: email signatures, headers, decks.<br>SVG: <a href="/brand/chris-kribs-horizontal-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-horizontal-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-horizontal-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-horizontal-line-white.svg" download>white outline</a></figcaption></figure>
+      <figcaption><b>Horizontal</b>The nav. Wide spaces: email signatures, headers, decks.<br>SVG: <a href="/brand/chris-kribs-horizontal-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-horizontal-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-horizontal-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-horizontal-line-white.svg" download>white outline</a></figcaption></figure>
     <figure><div class="lgs"><span data-logo="stacked"></span></div><div class="lgs d"><span data-logo="stacked" data-style="line"></span></div>
-      <figcaption><b>Stacked</b>The nav and footer lockup.<br>SVG: <a href="/brand/chris-kribs-stacked-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-stacked-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-stacked-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-stacked-line-white.svg" download>white outline</a></figcaption></figure>
+      <figcaption><b>Stacked</b>Tighter spaces: cards, footers, slide corners.<br>SVG: <a href="/brand/chris-kribs-stacked-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-stacked-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-stacked-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-stacked-line-white.svg" download>white outline</a></figcaption></figure>
     <figure><div class="lgs"><span data-logo="vertical"></span></div><div class="lgs d"><span data-logo="vertical" data-style="line"></span></div>
       <figcaption><b>Vertical</b>Square and tall spaces: social, covers, stickers.<br>SVG: <a href="/brand/chris-kribs-vertical-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-vertical-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-vertical-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-vertical-line-white.svg" download>white outline</a></figcaption></figure>
     <figure><div class="lgs"><span data-logo="mark"></span></div><div class="lgs d"><span data-logo="mark" data-style="line"></span></div>
@@ -173,8 +176,7 @@
   <span class="kicker"><span class="px">03</span> Type</span>
   <h2>Loud, then <span class="metal">louder.</span></h2>
   <p class="note">Five voices, each with one job.</p>
-  <div class="type-row"><div class="k">My lettering<small>The name, hand-lettered and filled in. Outline as drawn.</small></div><div class="letter2"><span data-name></span><span data-name data-style="line"></span></div></div>
-  <div class="type-row"><div class="k">Londrina Solid 900<small>Headers. Closest type to my lettering.</small></div><div class="s-disp">Marketing that shows up</div></div>
+  <div class="type-row"><div class="k">Londrina Solid 900<small>Headers, and the name in the logo.</small></div><div class="s-disp">Marketing that shows up</div></div>
   <div class="type-row"><div class="k">New Rocker<small>One word per header, the payoff. Hard-rock blackletter, a nod to the Chronic Disorder lettering.</small></div><div class="s-metal">did. vibes. talk</div></div>
   <div class="type-row"><div class="k">Courier Prime 700<small>Labels, kickers, tags. Typed on the page.</small></div><div class="s-type">01 / Selected work · 2026</div></div>
   <div class="type-row"><div class="k">Reenie Beanie<small>Margin notes and captions. One note per screen.</small></div><div class="s-hand">the homies (my beautiful family)</div></div>
@@ -187,7 +189,7 @@
   <p class="note">The working tools of a notebook. Each one does a job: point, circle, underline, hold, separate.</p>
   <div class="drawn">
     <div class="card"><div class="stage"><span class="st-ul"><span class="ul">The pipeline.</span></span></div><b>Underline</b><p>The double pass, under the line that pays off a headline.</p></div>
-    <div class="card"><div class="stage"><span class="st-loop">120%<i data-art="circle1"></i></span></div><b>Red-pen circle</b><p>Around a number that matters. Draws itself on hover.</p></div>
+    <div class="card led-demo"><div class="stage"><span class="st-loop">120%<i data-circle="1"></i></span></div><b>Red-pen circle</b><p>Around a number that matters. Draws itself on hover.</p></div>
     <div class="card"><div class="stage st-arrow" data-art="arrow1"></div><b>Hand arrow</b><p>Replaces every arrow: buttons, next, the career path, the ticker.</p></div>
     <div class="card"><div class="stage"><div class="st-tape"></div></div><b>Tape</b><p>Holds up photos and index cards.</p></div>
     <div class="card"><div class="stage st-torn"></div><b>Torn edge</b><p>Where one section ends and the next begins.</p></div>
@@ -228,8 +230,8 @@
 <script src="/draw-extra.js"></script>
 <script>
   document.querySelectorAll('[data-mark]').forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined, el.dataset.style); });
-  document.querySelectorAll('[data-name]').forEach(el => { el.innerHTML = NB.name(el.dataset.style); });
   document.querySelectorAll('[data-logo]').forEach(el => { el.innerHTML = NB.logo(el.dataset.logo, el.dataset.style); });
+  document.querySelectorAll('[data-circle]').forEach(el => { el.outerHTML = NB.circle(+el.dataset.circle); });
   document.querySelectorAll('[data-art]').forEach(el => { const k = el.dataset.art; el.innerHTML = NB.art(k, { fit: /^(ul|circle)/.test(k) ? 'none' : 'xMidYMid meet' }); if (el.tagName === 'I') { el.style.display = 'block'; el.firstChild.style.cssText = 'width:100%;height:100%'; } });
   const G = [['Video', [['play', 'pen'], ['film', 'ink'], ['wave', 'ball']]], ['Sound', [['faders', 'paper'], ['speaker', 'green'], ['sticks', 'ink']]],
     ['Results', [['chart', 'acid'], ['bolt', 'paper'], ['clip', 'acid']]], ['People', [['envelope', 'acid'], ['sparkle', 'pen'], ['loop', 'ink']]]];
