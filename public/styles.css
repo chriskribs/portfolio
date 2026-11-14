@@ -586,13 +586,11 @@ html[data-q5="4"] .n5 > .f4 { display: inline; }
 html[data-q3="1"] { --ul: var(--ul-g1); --ul-acid: var(--ul-a1); }
 html[data-q3="2"] { --ul: var(--ul-g2); --ul-acid: var(--ul-a2); }
 
-/* client marks: one-colour, they take the colour of the text around them */
-.clogo { display: inline-block; vertical-align: middle; height: var(--lh, 1em); aspect-ratio: var(--ar); background: currentColor; -webkit-mask: var(--u) center / contain no-repeat; mask: var(--u) center / contain no-repeat; }
-.tick-track .clogo { --lh: 46px; margin: -8px 0; }
-.r-title small .clogo { --lh: 22px; }
-.led small .clogo { --lh: 20px; }
-.v-logo { display: block; margin: 10px 0 16px; color: var(--ink); }
-.v-logo .clogo { --lh: 48px; }
-.v-logo:empty { display: none; }
+/* client logo: full colour, blown up and faded, bleeding off the top right of the viewer */
+.viewer-scroll { position: relative; overflow-x: hidden; }
+.v-bglogo { position: absolute; top: -5vw; right: -16vw; width: 64vw; max-width: 1150px; opacity: .14; pointer-events: none; z-index: 0; }
+.v-bglogo img { display: block; width: 100%; height: auto; }
+.v-head, .v-blocks, #vBlocks { position: relative; z-index: 1; }
+@media (max-width: 640px) { .v-bglogo { width: 130vw; top: -8vw; right: -50vw; } }
 .v-prev .chev { transform: scaleX(-1); }
 @media (max-width: 640px) { .v-prev .vp-t, .v-next-t { display: none; } }

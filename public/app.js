@@ -49,10 +49,9 @@
     $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };
 
-  /* client marks (single-colour PNG masks in /media/logo) */
-  const LOGO = { Wellzesta: ['wellzesta', 899 / 251], PTG: ['ptg', 381 / 175], Courser: ['courser', 297 / 145] };
-  const clogo = (name, fallback = name) => { const k = Object.keys(LOGO).find(n => name.startsWith(n)); if (!k) return fallback;
-    const [f, ar] = LOGO[k]; return `<span class="clogo" role="img" aria-label="${k}" style="--u: url(/media/logo/${f}.png); --ar: ${ar.toFixed(3)}"></span>${name.slice(k.length)}`; };
+  /* client logos, full colour (vector, /media/logo), shown big and faded behind the viewer header */
+  const LOGO = { Wellzesta: 'wellzesta', PTG: 'ptg', Courser: 'courser' };
+  const logoFor = name => { const k = Object.keys(LOGO).find(n => (name || '').startsWith(n)); return k ? `/media/logo/${LOGO[k]}-color.svg` : ''; };
 
   /* ================= TICKER ================= */
   const BRANDS = [
@@ -66,7 +65,7 @@
     { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'A destination campaign for a Lake Michigan town, made at WeCreate Media.' },
     { name: 'MaxQ AI', films: ['maxq'], sum: 'An event recap film. Edit, color, sound design and master.' }
   ];
-  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${clogo(b.name)}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
+  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
   $('#ticker').innerHTML = tick + tick;
   $$('#ticker button').slice(0, BRANDS.length).forEach(b => b.removeAttribute('tabindex'));
 
@@ -194,7 +193,7 @@
   idx.innerHTML = P.map((p, i) => `<li>
     <${p.blocks ? 'button type="button"' : 'div'} class="row${p.blocks ? '' : ' static'}" data-i="${i}">
       <span class="r-n px">${String(i + 1).padStart(2, '0')}</span>
-      <span class="r-title"><b>${p.title}</b><small>${clogo(p.co)}</small></span>
+      <span class="r-title"><b>${p.title}</b><small>${p.co}</small></span>
       <span class="r-type">${p.type}</span>
       <span class="r-res">${p.result}</span>
       <span class="r-year">${p.year}</span>
@@ -234,7 +233,7 @@
     ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser', 'courser'],
     ['+1,230%', 'organic web traffic in two years', 'PTG', 'ptg-brand']
   ];
-  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}${loop()}</b><span>${l}</span><small>${clogo(s)}</small><span class="go">See the work <span class="chev">${handArrow()}</span></span></button></div>`).join('');
+  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}${loop()}</b><span>${l}</span><small>${s}</small><span class="go">See the work <span class="chev">${handArrow()}</span></span></button></div>`).join('');
 
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
@@ -463,7 +462,7 @@
   let mode = 'project';
   const render = (v, kicker, count) => {
     cleanups.forEach(f => f()); cleanups = []; closeReader();
-    const lg = clogo(v.brand || '', ''); $('#vLogo').innerHTML = lg ? lg.replace(/<\/span>.*$/, '</span>') : '';
+    const lg = logoFor(v.brand); $('#vLogo').innerHTML = lg ? `<img src="${lg}" alt="">` : '';
     $('#vKicker').innerHTML = kicker;
     $('#vTitle').textContent = v.title;
     $('#vSum').textContent = v.sum;
