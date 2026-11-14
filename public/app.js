@@ -49,20 +49,24 @@
     $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };
 
+  /* client marks (single-colour PNG masks in /media/logo) */
+  const LOGO = { Wellzesta: ['wellzesta', 899 / 251], PTG: ['ptg', 381 / 175], Courser: ['courser', 297 / 145] };
+  const clogo = (name, fallback = name) => { const k = Object.keys(LOGO).find(n => name.startsWith(n)); if (!k) return fallback;
+    const [f, ar] = LOGO[k]; return `<span class="clogo" role="img" aria-label="${k}" style="--u: url(/media/logo/${f}.png); --ar: ${ar.toFixed(3)}"></span>${name.slice(k.length)}`; };
+
   /* ================= TICKER ================= */
   const BRANDS = [
     { name: 'Wellzesta', ids: ['wz-demand', 'wz-social', 'wz-video'], sum: 'Senior living software. As a department of one I ran the pipeline, the launches, the social and the video.' },
     { name: 'PTG', ids: ['ptg-brand', 'ptg-kit', 'ptg-social'], sum: 'A Greenville IT firm. I built the brand, the content engine, the sales kit and the video, solo.' },
     { name: 'Courser', ids: ['courser'], sum: 'Strategy and budget for 11 brands. I ran it behind the scenes, and hired and directed the agencies who made the creative.' },
+    { name: 'White Lodging', ids: ['union'], films: ['brush-creek'], sum: 'Marriott hotels run by White Lodging. At Vast Creative I made the weekly stories and posts for the Union Club Hotel\'s restaurant, coffee shop and whiskey bar. I also edited, colored, sound designed and mastered the Brush Creek Ranch film.' },
     { name: 'Relais & Châteaux', films: ['delicious-journeys'], sum: 'Edit, color, sound design and master. My favorite film I\'ve finished.' },
     { name: 'The Santiago Partnership', films: ['santiago'], sum: 'Edit, color, sound design and master.' },
     { name: 'Weber Family Dentistry', films: ['weber'], sum: 'Edit, color, sound design and master.' },
-    { name: 'Union Club Hotel', ids: ['union'], sum: 'Weekly stories and posts for a university hotel, made at Vast Creative.' },
-    { name: 'Brush Creek Ranch', films: ['brush-creek'], sum: 'Edit, color, sound design and master.' },
     { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'A destination campaign for a Lake Michigan town, made at WeCreate Media.' },
     { name: 'MaxQ AI', films: ['maxq'], sum: 'An event recap film. Edit, color, sound design and master.' }
   ];
-  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
+  const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${clogo(b.name)}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
   $('#ticker').innerHTML = tick + tick;
   $$('#ticker button').slice(0, BRANDS.length).forEach(b => b.removeAttribute('tabindex'));
 
@@ -157,8 +161,8 @@
           { img: 'ptg-essentials-ad', cap: 'IT essentials for growing businesses. A paid social ad for business owners.', tags: '#smallbusiness', when: '2y' }
         ] }
       ] },
-    { id: 'union', co: 'Union Club Hotel · Vast Creative', title: 'Walk-in stories', type: 'Instagram stories · weekly', year: '2021',
-      result: 'Weekly, for 3 outlets', sum: 'Weekly stories for a university hotel\'s restaurant, bar and coffee shop, for Marriott brands at Vast Creative.',
+    { id: 'union', co: 'White Lodging · Vast Creative', title: 'Walk-in stories', type: 'Instagram stories · weekly', year: '2021',
+      result: 'Weekly, for 3 outlets', sum: 'Weekly stories for the Union Club Hotel\'s restaurant, coffee shop and whiskey bar, a White Lodging Marriott hotel, made at Vast Creative.',
       results: [], peek: ['uc-latte', 'uc-cocktails', 'uc-smoothie'],
       blocks: [{ t: 'stories', title: 'Stories', handle: 'Union Club Hotel', imgs: ['uc-latte', 'uc-spirits', 'uc-loyalty', 'uc-smoothie', 'uc-bar-bites', 'uc-green-juice', 'uc-cocktails', 'uc-pastries', 'uc-juices', 'uc-bar-bites-2', 'uc-boiler-up'] },
         { t: 'feed', title: 'Feed posts', role: 'Social Media Manager at Vast Creative', posts: [{ img: 'uc-whiskey', cap: 'Whiskey Wednesday at the hotel bar. One of the weekly posts I made for the Union Club Hotel.', tags: '#hospitality', when: '5y' }, { img: 'uc-chow-now', cap: 'Order ahead, skip the line. Built to get people ordering.', tags: '#socialmedia', when: '5y' }] }] },
@@ -190,7 +194,7 @@
   idx.innerHTML = P.map((p, i) => `<li>
     <${p.blocks ? 'button type="button"' : 'div'} class="row${p.blocks ? '' : ' static'}" data-i="${i}">
       <span class="r-n px">${String(i + 1).padStart(2, '0')}</span>
-      <span class="r-title"><b>${p.title}</b><small>${p.co}</small></span>
+      <span class="r-title"><b>${p.title}</b><small>${clogo(p.co)}</small></span>
       <span class="r-type">${p.type}</span>
       <span class="r-res">${p.result}</span>
       <span class="r-year">${p.year}</span>
@@ -230,7 +234,7 @@
     ['+9%', 'ARR in three months, campaigns across 11 brands', 'Courser', 'courser'],
     ['+1,230%', 'organic web traffic in two years', 'PTG', 'ptg-brand']
   ];
-  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}${loop()}</b><span>${l}</span><small>${s}</small><span class="go">See the work <span class="chev">${handArrow()}</span></span></button></div>`).join('');
+  $('#ledger').innerHTML = L.map(([n, l, s, id]) => `<div><button type="button" class="led" data-project="${id}"><b>${n}${loop()}</b><span>${l}</span><small>${clogo(s)}</small><span class="go">See the work <span class="chev">${handArrow()}</span></span></button></div>`).join('');
 
   /* ================= VIEWER + MOCKUPS ================= */
   const viewer = $('#viewer'), vBlocks = $('#vBlocks');
@@ -459,6 +463,7 @@
   let mode = 'project';
   const render = (v, kicker, count) => {
     cleanups.forEach(f => f()); cleanups = []; closeReader();
+    const lg = clogo(v.brand || '', ''); $('#vLogo').innerHTML = lg ? lg.replace(/<\/span>.*$/, '</span>') : '';
     $('#vKicker').innerHTML = kicker;
     $('#vTitle').textContent = v.title;
     $('#vSum').textContent = v.sum;
@@ -475,17 +480,17 @@
     $('#vScroll').scrollTop = 0; $('#vClose').focus({ preventScroll: true });
   };
   const openProject = i => {
-    mode = 'project'; cur = i; const p = P[i]; linkBase = 'p/' + p.id; $('#vNext').innerHTML = `Next project <span class="chev">${handArrow()}</span>`;
-    render(p, `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`, openable.includes(i) ? `${openable.indexOf(i) + 1} / ${openable.length}` : '');
+    mode = 'project'; cur = i; const p = P[i]; linkBase = 'p/' + p.id; $('#vPrev .vp-t').textContent = 'Previous project'; $('#vNext').innerHTML = `Next project <span class="chev">${handArrow()}</span>`;
+    render({ ...p, brand: p.co }, `<span class="px">${String(i + 1).padStart(2, '0')}</span> ${p.co} · ${p.year}`, openable.includes(i) ? `${openable.indexOf(i) + 1} / ${openable.length}` : '');
   };
   const FILM = Object.fromEntries(P.find(p => p.id === 'films').blocks[0].vids);
   const openBrand = k => {
-    mode = 'brand'; cur = k; const b = BRANDS[k]; linkBase = 'b/' + slug(b.name); $('#vNext').innerHTML = `Next brand <span class="chev">${handArrow()}</span>`;
+    mode = 'brand'; cur = k; const b = BRANDS[k]; linkBase = 'b/' + slug(b.name); $('#vPrev .vp-t').textContent = 'Previous brand'; $('#vNext').innerHTML = `Next brand <span class="chev">${handArrow()}</span>`;
     const ps = (b.ids || []).map(id => P.find(p => p.id === id));
     const blocks = ps.flatMap(p => (p.blocks || []).map(x => ({ ...x, title: ps.length > 1 ? `${p.title} · ${x.title}` : x.title })));
     if (b.films) blocks.push({ t: 'player', title: b.films.length > 1 ? 'Films' : 'Film', vids: b.films.map(f => [f, FILM[f]]) });
     const results = ps.flatMap(p => p.results || []).slice(0, 6);
-    render({ title: b.name, sum: b.sum, results, blocks }, `<span class="px">${String(k + 1).padStart(2, '0')}</span> Brands I've worked with`, `${k + 1} / ${BRANDS.length}`);
+    render({ title: b.name, brand: b.name, sum: b.sum, results, blocks }, `<span class="px">${String(k + 1).padStart(2, '0')}</span> Brands I've worked with`, `${k + 1} / ${BRANDS.length}`);
   };
   const closeProject = () => { closeReader(); linkBase = ''; setLink(); cleanups.forEach(f => f()); cleanups = []; viewer.hidden = true; document.body.classList.remove('lock'); };
   $('#vClose').addEventListener('click', closeProject);
@@ -493,7 +498,7 @@
   const route = () => {
     const [kind, id, sub] = decodeURIComponent(location.hash.slice(1)).split('/');
     if (kind === 'p') { const i = P.findIndex(p => p.id === id); if (i < 0 || !openable.includes(i)) return; openProject(i); }
-    else if (kind === 'b') { const k = BRANDS.findIndex(b => slug(b.name) === id); if (k < 0) return; openBrand(k); }
+    else if (kind === 'b') { const bid = { 'union-club-hotel': 'white-lodging', 'brush-creek-ranch': 'white-lodging' }[id] || id; const k = BRANDS.findIndex(b => slug(b.name) === bid); if (k < 0) return; openBrand(k); }
     else return;
     if (!sub) return;
     const doc = $(`.doc[data-slug="${sub}"]`, vBlocks);
@@ -502,7 +507,9 @@
     if (pl) { pl.loadVid(sub); setTimeout(() => pl.scrollIntoView({ block: 'start' }), 50); }
   };
   addEventListener('hashchange', route);
-  $('#vNext').addEventListener('click', () => (mode === 'brand' ? openBrand((cur + 1) % BRANDS.length) : openProject(openable[(openable.indexOf(cur) + 1) % openable.length])));
+  const step = d => (mode === 'brand' ? openBrand((cur + d + BRANDS.length) % BRANDS.length) : openProject(openable[(openable.indexOf(cur) + d + openable.length) % openable.length]));
+  $('#vNext').addEventListener('click', () => step(1));
+  $('#vPrev').addEventListener('click', () => step(-1));
   $('#ticker').addEventListener('click', e => { const b = e.target.closest('[data-brand]'); if (b) openBrand(+b.dataset.brand); });
   addEventListener('keydown', e => { if (!viewer.hidden && e.key === 'Escape') closeProject(); });
   idx.addEventListener('click', e => { const r = e.target.closest('button.row'); if (r) openProject(+r.dataset.i); });
