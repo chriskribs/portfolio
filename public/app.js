@@ -30,7 +30,7 @@
     return `<svg viewBox="0 0 ${g[0].length} ${g.length}" shape-rendering="crispEdges" fill="currentColor" aria-hidden="true">${r}</svg>`;
   };
 
-  /* ================= DRAWN THINGS (traced from Chris's marker drawings, see /draw.js) ================= */
+  /* ================= DRAWN THINGS (traced from Chris's marker drawings and redrawn for the flip, see /draw.js) ================= */
   let seed = 11;
   const rr = (a, b) => { seed = (seed * 16807) % 2147483647; return a + (seed / 2147483647) * (b - a); };
   const handArrow = () => NB.arrow();
@@ -44,8 +44,8 @@
   };
   const ic = n => `<span class="pi">${svg(ICONS[n])}</span>`;
   const paint = (root = document) => {
-    $$('[data-mark]', root).forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined); });
-    $$('[data-name]', root).forEach(el => { el.innerHTML = NB.name(); });
+    $$('[data-mark]', root).forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined, el.dataset.style); });
+    $$('[data-name]', root).forEach(el => { el.innerHTML = NB.name(el.dataset.style); });
     $$('[data-doodle]', root).forEach(el => { el.innerHTML = NB.doodle(el.dataset.doodle); });
     $$('[data-icon]', root).forEach(el => { el.innerHTML = el.dataset.icon === 'chev' ? handArrow() : svg(ICONS[el.dataset.icon]); });
   };

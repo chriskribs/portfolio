@@ -68,8 +68,21 @@
   .takes figure { background: #fffdf8; padding: 18px 12px 10px; display: grid; justify-items: center; gap: 8px; font: 700 12px/1 var(--type); box-shadow: 0 1px 2px var(--ink-24); }
   .takes figure.on { outline: 3px solid var(--green); }
   .takes .mark { width: 90px; height: 90px; color: var(--ink); }
-  .row3 { display: flex; gap: 22px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 10px; }
-  .row3 svg { color: var(--ink); }
+  .suite { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-top: 22px; }
+  .suite figure { margin: 0; display: grid; box-shadow: 0 1px 2px var(--ink-24), 0 8px 18px rgb(21 24 15 / .08); }
+  .suite .lgs { height: 170px; padding: 26px; display: block; background: #fffdf8; color: var(--ink); }
+  .suite .lgs.d { background: var(--ink); color: var(--acid); }
+  .suite .lgs > span { display: block; width: 100%; height: 118px; }
+  .suite .lgs svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .suite figcaption { background: #fffdf8; padding: 12px 14px; font: 700 12px/1.6 var(--type); border-top: 1px solid var(--ink-12); }
+  .suite figcaption b { display: block; font: 900 22px/1 var(--disp); text-transform: uppercase; margin-bottom: 6px; }
+  .suite figcaption a { color: var(--green-deep); margin-right: 8px; }
+  .sub-h { font: 900 28px/1 var(--disp); text-transform: uppercase; margin: 44px 0 0; }
+  .letter2 { display: flex; gap: 34px; flex-wrap: wrap; }
+  .letter2 span { display: block; width: 190px; height: 146px; color: var(--ink); }
+  .letter2 svg { width: 100%; height: 100%; }
+  .drawn .stage.row3 { display: flex; gap: 22px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 10px; }
+  .row3 { color: var(--ink); }
   .st-name svg { width: 190px; height: 130px; color: var(--ink); }
   .dz-h { grid-column: 1 / -1; font: 700 13px/1 var(--type); text-transform: uppercase; letter-spacing: .05em; margin-top: 10px; }
   @media (max-width: 800px) { .takes { grid-template-columns: repeat(3, 1fr); } }
@@ -103,7 +116,7 @@
 <section class="bs-sec">
   <span class="kicker"><span class="px">01</span> The mark</span>
   <h2>The split <span class="metal">diamond.</span></h2>
-  <p class="note">C and K cut into a diamond split down the middle, after the Chronic Disorder tape logo. The C is the left half. The K stem runs down the split, and its short arms are cut flush with the diamond's edge, so their ends make the arrow point. Spiky edges, a little drippy. Drawn by hand in black marker, five takes. Take 3 is the mark; the cleanest one, take 5, thickened, is the favicon. Every drawn line on the site boils: three slightly different frames swap about eight times a second, like cheap cel animation.</p>
+  <p class="note">C and K cut into a diamond split down the middle, after the Chronic Disorder tape logo. The C is the left half. The K stem runs down the split, and its short arms are cut flush with the diamond's edge, so their ends make the arrow point. Spiky edges, a little drippy. Drawn by hand in black marker, five takes. Take 3 is the mark, filled in solid, with the outline as drawn kept as an alternate. Every drawing on the site was redrawn several times, and the page flips through the redraws about eight times a second, like Squigglevision and the animated holds in late-90s cartoons. Now and then a doodle does a rubber-hose take.</p>
   <div class="marks">
     <div class="tile t-ink"><span class="mark" data-mark></span></div>
     <div class="tile t-paper"><span class="mark" data-mark></span></div>
@@ -116,11 +129,27 @@
     <span><img src="/favicon.svg" width="32" height="32" alt="">favicon</span>
   </div>
   <div class="takes">
-    <figure><span class="mark" data-mark="mark1"></span>take 1</figure>
-    <figure><span class="mark" data-mark="mark2"></span>take 2</figure>
-    <figure class="on"><span class="mark" data-mark="mark3"></span>take 3 · the mark</figure>
-    <figure><span class="mark" data-mark="mark5"></span>take 4</figure>
-    <figure><span class="mark" data-mark="mark4"></span>take 5 · favicon</figure>
+    <figure data-take-hover><span class="mark" data-mark="mark1" data-style="line"></span>take 1</figure>
+    <figure data-take-hover><span class="mark" data-mark="mark2" data-style="line"></span>take 2</figure>
+    <figure class="on" data-take-hover><span class="mark" data-mark="mark3" data-style="line"></span>take 3 · the mark</figure>
+    <figure data-take-hover><span class="mark" data-mark="mark5" data-style="line"></span>take 4</figure>
+    <figure data-take-hover><span class="mark" data-mark="mark4" data-style="line"></span>take 5</figure>
+  </div>
+  <h3 class="sub-h">The logo suite</h3>
+  <p class="note">Mark and lettering, filled and in outline, in six lockups. Hover one for a take.</p>
+  <div class="suite">
+    <figure data-take-hover><div class="lgs"><span data-logo="horizontal"></span></div><div class="lgs d"><span data-logo="horizontal" data-style="line"></span></div>
+      <figcaption><b>Horizontal</b>Wide spaces: email signatures, headers, decks.<br>SVG: <a href="/brand/chris-kribs-horizontal-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-horizontal-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-horizontal-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-horizontal-line-white.svg" download>white outline</a></figcaption></figure>
+    <figure data-take-hover><div class="lgs"><span data-logo="stacked"></span></div><div class="lgs d"><span data-logo="stacked" data-style="line"></span></div>
+      <figcaption><b>Stacked</b>The nav and footer lockup.<br>SVG: <a href="/brand/chris-kribs-stacked-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-stacked-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-stacked-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-stacked-line-white.svg" download>white outline</a></figcaption></figure>
+    <figure data-take-hover><div class="lgs"><span data-logo="vertical"></span></div><div class="lgs d"><span data-logo="vertical" data-style="line"></span></div>
+      <figcaption><b>Vertical</b>Square and tall spaces: social, covers, stickers.<br>SVG: <a href="/brand/chris-kribs-vertical-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-vertical-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-vertical-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-vertical-line-white.svg" download>white outline</a></figcaption></figure>
+    <figure data-take-hover><div class="lgs"><span data-logo="mark"></span></div><div class="lgs d"><span data-logo="mark" data-style="line"></span></div>
+      <figcaption><b>Mark</b>Avatar, favicon, sign-offs.<br>SVG: <a href="/brand/chris-kribs-mark-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-mark-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-mark-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-mark-line-white.svg" download>white outline</a></figcaption></figure>
+    <figure data-take-hover><div class="lgs"><span data-logo="wordmark"></span></div><div class="lgs d"><span data-logo="wordmark" data-style="line"></span></div>
+      <figcaption><b>Wordmark</b>The name on its own, stacked.<br>SVG: <a href="/brand/chris-kribs-wordmark-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-wordmark-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-wordmark-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-wordmark-line-white.svg" download>white outline</a></figcaption></figure>
+    <figure data-take-hover><div class="lgs"><span data-logo="wordline"></span></div><div class="lgs d"><span data-logo="wordline" data-style="line"></span></div>
+      <figcaption><b>Wordmark, one line</b>The name on its own, in a line.<br>SVG: <a href="/brand/chris-kribs-wordline-fill-ink.svg" download>fill</a><a href="/brand/chris-kribs-wordline-line-ink.svg" download>outline</a><a href="/brand/chris-kribs-wordline-fill-white.svg" download>white fill</a><a href="/brand/chris-kribs-wordline-line-white.svg" download>white outline</a></figcaption></figure>
   </div>
 </section>
 
@@ -144,7 +173,7 @@
   <span class="kicker"><span class="px">03</span> Type</span>
   <h2>Loud, then <span class="metal">louder.</span></h2>
   <p class="note">Five voices, each with one job.</p>
-  <div class="type-row"><div class="k">My lettering<small>The name, hand-lettered. Nav and footer.</small></div><div class="stage st-name" style="height:auto;background:none;justify-items:start;display:grid" data-name></div></div>
+  <div class="type-row"><div class="k">My lettering<small>The name, hand-lettered and filled in. Outline as drawn.</small></div><div class="letter2"><span data-name data-take-hover></span><span data-name data-style="line" data-take-hover></span></div></div>
   <div class="type-row"><div class="k">Londrina Solid 900<small>Headers. Closest type to my lettering.</small></div><div class="s-disp">Marketing that shows up</div></div>
   <div class="type-row"><div class="k">New Rocker<small>One word per header, the payoff. Hard-rock blackletter, a nod to the Chronic Disorder lettering.</small></div><div class="s-metal">did. vibes. talk</div></div>
   <div class="type-row"><div class="k">Courier Prime 700<small>Labels, kickers, tags. Typed on the page.</small></div><div class="s-type">01 / Selected work · 2026</div></div>
@@ -166,16 +195,16 @@
   </div>
   <p class="note" style="margin-top:34px">All of them, as drawn. The site rotates through the takes so no two arrows or circles in a row match.</p>
   <div class="drawn">
-    <div class="card"><div class="stage row3"><i data-art="arrow1" style="width:150px;height:30px"></i><i data-art="arrow2" style="width:150px;height:30px"></i><i data-art="arrow3" style="width:150px;height:30px"></i><i data-art="arrow4" style="width:150px;height:30px"></i><i data-art="arrow5" style="width:150px;height:30px"></i></div><b>Five arrows</b><p>Open heads and one filled.</p></div>
+    <div class="card"><div class="stage row3"><i data-art="arrow1" style="width:96px;height:22px"></i><i data-art="arrow2" style="width:96px;height:22px"></i><i data-art="arrow3" style="width:96px;height:22px"></i><i data-art="arrow4" style="width:96px;height:22px"></i><i data-art="arrow5" style="width:96px;height:22px"></i></div><b>Five arrows</b><p>Open heads and one filled.</p></div>
     <div class="card"><div class="stage row3"><i data-art="ul1" style="width:200px;height:12px"></i><i data-art="ul2" style="width:200px;height:20px"></i><i data-art="ul3" style="width:200px;height:18px"></i></div><b>Three underlines</b><p>Fast, double, wobbly.</p></div>
-    <div class="card"><div class="stage row3"><i data-art="circle1" style="width:90px;height:60px;color:var(--pen)"></i><i data-art="circle2" style="width:100px;height:60px;color:var(--ball)"></i><i data-art="circle3" style="width:100px;height:55px;color:var(--green)"></i></div><b>Three circles</b><p>Red pen, ballpoint, marker.</p></div>
+    <div class="card"><div class="stage row3"><i data-art="circle1" style="width:68px;height:46px;color:var(--pen)"></i><i data-art="circle2" style="width:72px;height:44px;color:var(--ball)"></i><i data-art="circle3" style="width:72px;height:40px;color:var(--green)"></i></div><b>Three circles</b><p>Red pen, ballpoint, marker.</p></div>
   </div>
 </section>
 
 <section class="bs-sec">
   <span class="kicker"><span class="px">05</span> Doodles</span>
   <h2>In the <span class="metal">margins.</span></h2>
-  <p class="note">Small drawings of the work itself: video, sound, results, the people. They pop in as they scroll into view, then boil.</p>
+  <p class="note">Small drawings of the work itself: video, sound, results, the people. They pop in as they scroll into view with a rubber-hose take, then keep flipping between redraws.</p>
   <div class="dz-grid" id="dz"></div>
 </section>
 
@@ -208,15 +237,17 @@
 </div>
 
 <script src="/draw.js"></script>
+<script src="/draw-extra.js"></script>
 <script>
-  document.querySelectorAll('[data-mark]').forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined); });
-  document.querySelectorAll('[data-name]').forEach(el => { el.innerHTML = NB.name(); });
+  document.querySelectorAll('[data-mark]').forEach(el => { el.innerHTML = NB.mark('', el.dataset.mark || undefined, el.dataset.style); });
+  document.querySelectorAll('[data-name]').forEach(el => { el.innerHTML = NB.name(el.dataset.style); });
+  document.querySelectorAll('[data-logo]').forEach(el => { el.innerHTML = NB.logo(el.dataset.logo, el.dataset.style); });
   document.querySelectorAll('[data-art]').forEach(el => { const k = el.dataset.art; el.innerHTML = NB.art(k, { fit: /^(ul|circle)/.test(k) ? 'none' : 'xMidYMid meet' }); if (el.tagName === 'I') { el.style.display = 'block'; el.firstChild.style.cssText = 'width:100%;height:100%'; } });
   const G = [['Video', [['play', 'pen'], ['film', 'ink'], ['wave', 'ball']]], ['Sound', [['faders', 'paper'], ['speaker', 'green'], ['sticks', 'ink']]],
     ['Results', [['chart', 'acid'], ['bolt', 'paper'], ['clip', 'acid']]], ['People', [['envelope', 'acid'], ['sparkle', 'pen'], ['loop', 'ink']]]];
   document.getElementById('dz').innerHTML = G.map(([h, xs]) => `<span class="dz-h">${h}</span>` + xs.map(([n, c]) => {
     const bg = c === 'paper' || c === 'acid' ? (h === 'Results' ? 'grn' : 'dark') : '';
-    return `<div class="dz ${bg}"><i style="--dc: var(--${c})">${NB.doodle(n)}</i>${n}</div>`;
+    return `<div class="dz ${bg}" data-take-hover><i style="--dc: var(--${c})">${NB.doodle(n)}</i>${n}</div>`;
   }).join('')).join('');
 </script>
 </body>
