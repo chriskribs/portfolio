@@ -50,7 +50,7 @@
   };
 
   /* client logos, full colour (vector, /media/logo), shown big and faded behind the viewer header */
-  const LOGO = { Wellzesta: 'wellzesta', PTG: 'ptg', Courser: 'courser', 'White Lodging': 'whitelodging', 'Relais & Châteaux': 'relais' };
+  const LOGO = { Wellzesta: 'wellzesta', PTG: 'ptg', Courser: 'courser', 'Michigan City': 'michigancity', 'White Lodging': 'whitelodging', 'Relais & Châteaux': 'relais' };
   const logoFor = name => { const k = Object.keys(LOGO).find(n => (name || '').startsWith(n)); return k ? `/media/logo/${LOGO[k]}-color.svg` : ''; };
 
   /* ================= TICKER ================= */
@@ -62,7 +62,7 @@
     { name: 'Relais & Châteaux', films: ['delicious-journeys'], sum: 'Edit, color, sound design and master. My favorite film I\'ve finished.' },
     { name: 'The Santiago Partnership', films: ['santiago'], sum: 'Edit, color, sound design and master.' },
     { name: 'Weber Family Dentistry', films: ['weber'], sum: 'Edit, color, sound design and master.' },
-    { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'A destination campaign for a Lake Michigan town, made at WeCreate Media.' },
+    { name: 'Michigan City', ids: ['mc'], films: ['michigan-city'], sum: 'Destination marketing for a Lake Michigan town, made at WeCreate Media: social, email, the website, print, merch, radio and TV. I was part of the team on all of it.' },
     { name: 'MaxQ AI', films: ['maxq'], sum: 'An event recap film. Edit, color, sound design and master.' }
   ];
   const tick = BRANDS.map((b, k) => `<button type="button" data-brand="${k}" tabindex="-1">${b.name}</button><span class="chev" aria-hidden="true">${handArrow()}</span>`).join('');
@@ -165,13 +165,19 @@
       results: [], peek: ['uc-latte', 'uc-cocktails', 'uc-smoothie'],
       blocks: [{ t: 'stories', title: 'Stories', handle: 'Union Club Hotel', imgs: ['uc-latte', 'uc-spirits', 'uc-loyalty', 'uc-smoothie', 'uc-bar-bites', 'uc-green-juice', 'uc-cocktails', 'uc-pastries', 'uc-juices', 'uc-bar-bites-2', 'uc-boiler-up'] },
         { t: 'feed', title: 'Feed posts', role: 'Social Media Manager at Vast Creative', posts: [{ img: 'uc-whiskey', cap: 'Whiskey Wednesday at the hotel bar. One of the weekly posts I made for the Union Club Hotel.', tags: '#hospitality', when: '5y' }, { img: 'uc-chow-now', cap: 'Order ahead, skip the line. Built to get people ordering.', tags: '#socialmedia', when: '5y' }] }] },
-    { id: 'mc', co: 'Michigan City · WeCreate Media', title: 'Destination campaign', type: 'Social · posters · city guide', year: '2019',
-      result: 'Restaurants, events, city guide', sum: 'A restaurant series, event posters and a pocket city guide for a Lake Michigan town.',
-      results: [], peek: ['mc-discover-1', 'mc-stpats', 'mc-guide-1'],
+    { id: 'mc', co: 'Michigan City · WeCreate Media', title: 'Destination campaign', type: 'Social · email · print · merch · ads', year: '2019',
+      result: '2M+ views in six months', sum: 'WeCreate took over Michigan City\'s marketing: the digital ads, social, the website and email, plus radio and TV spots, print and merch. I was part of the team on all of it.',
+      results: ['2M+ views on videos and posts in six months', '35,000+ likes, shares and comments', '85+ promo videos', '177+ local business listings kept up to date', 'Ads in every South Shore train car'], peek: ['mc-photo-2', 'mc-discover-1', 'mc-guide-print-3'],
       blocks: [
+        { t: 'board', title: 'On the ground', imgs: ['mc-photo-2', 'mc-photo-3', 'mc-photo-1'] },
         { t: 'feed', title: 'Discover series', role: 'Account Manager at WeCreate Media', posts: [{ carousel: ['mc-discover-1', 'mc-discover-2', 'mc-discover-3', 'mc-discover-4', 'mc-discover-5'], square: true, cap: 'The Discover series: one local restaurant at a time, so a weekend visit has a plan before anyone leaves home.', tags: '#destinationmarketing', when: '6y' }] },
         { t: 'board', title: 'Event posters', imgs: ['mc-stpats', 'mc-farmers', 'mc-arts'] },
-        { t: 'deck', title: 'Pocket city guide', slides: ['mc-guide-1', 'mc-guide-2'] },
+        { t: 'feed', title: 'Social, email and merch', role: 'Account Manager at WeCreate Media', posts: [
+          { img: 'mc-social', cap: 'The city\'s social, revamped. Michigan City\'s Instagram after the rebuild.', tags: '#destinationmarketing', when: '6y' },
+          { img: 'mc-eblast', cap: 'The eBlast, with a featured video in every issue.', tags: '#emailmarketing', when: '6y' },
+          { img: 'mc-shirts', cap: 'Hello Summer shirts for the city.', tags: '#merch', when: '6y' }
+        ] },
+        { t: 'board', title: 'Pocket city guide', imgs: ['mc-guide-print-3', 'mc-guide-print-2', 'mc-guide-print-1'] },
       ] },
     { id: 'films', co: 'WeCreate Media', title: 'Films I finished', type: 'Edit · color · sound design · mastering', year: '2018–20',
       result: 'Edited, colored + mixed', sum: 'I don\'t shoot. I take the footage and do everything after: the edit, the color grade, the sound design and the master. The first three are the ones I\'m proudest of.',
@@ -185,7 +191,8 @@
         ['venue-nd', 'Venue ND :30'],
         ['michigan-city', 'Michigan City summer'],
         ['better-than-rich', 'Better Than Rich · logo animation']
-      ] }] }
+      ] },
+      { t: 'vimeo', title: 'Edits I helped on', vids: [['310647819?h=bfba557fec', 'Brand anthem · Crimson Trace']] }] }
   ];
 
   /* index rows */
@@ -422,6 +429,11 @@
       const show = k => { const [n, s] = b.mails[k]; const sc = $('.mail-scroll', el); sc.classList.toggle('live', /\.html$/.test(n)); sc.innerHTML = /\.html$/.test(n) ? `<iframe src="${n}" title="${s}" loading="lazy"></iframe>` : [].concat(n).map(x => `<img src="${I(x)}" alt="">`).join(''); $('.mail-subj', el).textContent = s; $('.mail-scroll', el).scrollTop = 0; $$('.mail-list button', el).forEach((x, j) => x.classList.toggle('on', j === k)); };
       $$('.mail-list button', el).forEach(x => x.addEventListener('click', () => show(+x.dataset.k)));
       show(0);
+      return el;
+    },
+    vimeo(b) {
+      const el = document.createElement('div'); el.className = 'm-vimeo';
+      el.innerHTML = b.vids.map(([id, t]) => `<figure><div class="vm-frame"><iframe src="https://player.vimeo.com/video/${id.replace('?', '?dnt=1&').replace(/^(\d+)$/, '$1?dnt=1')}" title="${t}" allow="fullscreen; picture-in-picture" loading="lazy"></iframe></div><figcaption>${t}</figcaption></figure>`).join('');
       return el;
     },
     board(b) {

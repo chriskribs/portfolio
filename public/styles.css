@@ -590,10 +590,17 @@ html[data-q3="2"] { --ul: var(--ul-g2); --ul-acid: var(--ul-a2); }
 .viewer-scroll { position: relative; overflow-x: hidden; }
 .v-bglogo { position: absolute; top: calc(var(--lw, 52vw) * .15); right: -3vw; width: var(--lw, 52vw); opacity: .16; rotate: 10deg; transform-origin: 100% 0; pointer-events: none; z-index: 0; }
 .v-bglogo[data-l="whitelodging"], .v-bglogo[data-l="relais"] { --lw: 70vw; }
-.v-bglogo[data-l="wellzesta"] { --lw: 62vw; }
+.v-bglogo[data-l="wellzesta"], .v-bglogo[data-l="michigancity"] { --lw: 62vw; }
 .v-bglogo[data-l="courser"] { --lw: 40vw; }
 .v-bglogo img { display: block; width: 100%; height: auto; }
 .v-head, .v-blocks, #vBlocks { position: relative; z-index: 1; }
 @media (max-width: 640px) { .v-bglogo { --lw: 96vw; right: -12vw; } .v-bglogo[data-l="whitelodging"], .v-bglogo[data-l="relais"] { --lw: 120vw; } }
 .v-prev .chev { transform: scaleX(-1); }
 @media (max-width: 640px) { .v-prev .vp-t, .v-next-t { display: none; } }
+
+/* embedded Vimeo edits */
+.m-vimeo { display: grid; gap: 22px; max-width: 900px; }
+.m-vimeo figure { margin: 0; }
+.m-vimeo .vm-frame { position: relative; aspect-ratio: 16 / 9; background: var(--ink); box-shadow: var(--doc-sh); }
+.m-vimeo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.m-vimeo figcaption { margin-top: 10px; font: 700 14px var(--type); }
