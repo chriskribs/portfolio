@@ -220,7 +220,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pola img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--ink-12); }
 .pola figcaption { padding: 14px 6px 16px; font: 400 26px/1 var(--hand); white-space: nowrap; color: var(--ball); text-align: center; }
 .pola.out { transform: translate(120%, -6%) rotate(18deg); opacity: 0; }
-.polas-hint { display: flex; align-items: center; gap: 12px; margin-left: 10px; font: 400 28px/1 var(--hand); color: var(--pen); }
+.polas-hint { display: flex; align-items: center; gap: 12px; margin-left: 10px; font: 700 14px/1 var(--type); letter-spacing: .02em; color: var(--pen); }
 .polas-hint i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-24); } .polas-hint i.on { background: var(--pen); }
 
 /* CONTACT: the flyer */
@@ -440,8 +440,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ================= DRAWN THINGS: Chris's marker drawings, traced ================= */
 .doodle { position: absolute; z-index: 2; width: calc(var(--s, 90px) * 1.2); height: calc(var(--s, 90px) * 1.2); rotate: var(--r, 0deg); color: var(--dc, var(--ink)); pointer-events: none; }
 .doodle svg { width: 100%; height: 100%; overflow: visible; }
-.doodle.undrawn svg { opacity: 0; }
-.doodle.drawn svg { opacity: 1; animation: nb-pop .5s steps(1, end) both; transform-origin: 50% 80%; }
 .sec-head { position: relative; }
 .dd-play { right: 6%; top: -10px; }
 .dd-film { right: calc(6% + 120px); top: 70px; }
@@ -583,8 +581,3 @@ html[data-q5="3"] .n5 > .f3 { display: inline; }
 html[data-q5="4"] .n5 > .f4 { display: inline; }
 html[data-q3="1"] { --ul: var(--ul-g1); --ul-acid: var(--ul-a1); }
 html[data-q3="2"] { --ul: var(--ul-g2); --ul-acid: var(--ul-a2); }
-/* rubber-hose takes: frame-by-frame squash and stretch, no tweening */
-@keyframes nb-pop { 0% { transform: scale(.3); opacity: 0; } 20% { transform: scale(1.32, .72); opacity: 1; } 40% { transform: scale(.82, 1.22) rotate(4deg); } 60% { transform: scale(1.08, .93) rotate(-3deg); } 80%, 100% { transform: none; opacity: 1; } }
-@keyframes nb-take { 0% { transform: none; } 14% { transform: scale(1.3, .7); } 28% { transform: scale(.76, 1.32) rotate(6deg); } 42% { transform: scale(1.16, .86) rotate(-5deg); } 57% { transform: scale(.92, 1.08) rotate(2deg); } 71% { transform: scale(1.04, .97); } 85%, 100% { transform: none; } }
-.take .bl, .doodle.take .bl { animation: nb-take .62s steps(1, end) both; transform-origin: 50% 85%; }
-@media (prefers-reduced-motion: reduce) { .doodle.drawn svg, .take .bl { animation: none; } }

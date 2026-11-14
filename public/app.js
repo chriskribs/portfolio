@@ -549,9 +549,35 @@
 
   paint();
   if (location.hash.length > 2) route();
-  /* doodles draw themselves in when they scroll into view */
-  if ('IntersectionObserver' in window && !reduce) {
-    const dio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); dio.unobserve(e.target); } }), { threshold: .4 });
-    $$('.doodle').forEach(d => { d.classList.add('undrawn'); dio.observe(d); });
-  }
+  /* doodles live in the margins: if one would land on text or a photo at this screen size,
+     nudge it to the nearest clear spot, or leave it out */
+  const placeDoodles = () => {
+    const ds = $$('.doodle');
+    ds.forEach(d => { d.style.translate = ''; d.style.visibility = ''; });
+    const sy = scrollY, W = document.documentElement.clientWidth, obs = [];
+    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: n => n.nodeValue.trim() && !n.parentElement.closest('.doodle, script, style, .nav') ? 1 : 3 });
+    const rg = document.createRange();
+    for (let n; (n = tw.nextNode());) { rg.selectNodeContents(n); for (const r of rg.getClientRects()) if (r.width) obs.push([r.left - 6, r.top + sy - 6, r.right + 6, r.bottom + sy + 6]); }
+    $$('img, video, iframe, .btn, .pola, .led, .row').forEach(e => { if (e.closest('.doodle, .nav')) return; const r = e.getBoundingClientRect(); if (r.width) obs.push([r.left - 4, r.top + sy - 4, r.right + 4, r.bottom + sy + 4]); });
+    const hit = b => obs.some(o => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+    for (const d of ds) {
+      if (!d.offsetParent) continue;
+      const ink = [...d.querySelectorAll('path')].map(p => p.getBoundingClientRect()).find(r => r.width);
+      if (!ink) continue;
+      const box = [ink.left, ink.top + sy, ink.right, ink.bottom + sy];
+      let best = hit(box) ? null : [0, 0];
+      for (let rad = 16; rad <= 260 && !best; rad += 12) for (let a = 0; a < 24 && !best; a++) {
+        const dx = Math.round(Math.cos(a * Math.PI / 12) * rad), dy = Math.round(Math.sin(a * Math.PI / 12) * rad);
+        const b = [box[0] + dx, box[1] + dy, box[2] + dx, box[3] + dy];
+        if (b[0] >= 4 && b[2] <= W - 4 && !hit(b)) best = [dx, dy];
+      }
+      if (!best) { d.style.visibility = 'hidden'; continue; }
+      if (best[0] || best[1]) d.style.translate = `${best[0]}px ${best[1]}px`;
+      obs.push([box[0] + best[0], box[1] + best[1], box[2] + best[0], box[3] + best[1]]);
+    }
+  };
+  placeDoodles();
+  if (document.fonts) document.fonts.ready.then(placeDoodles);
+  addEventListener('load', placeDoodles);
+  let pdT; addEventListener('resize', () => { clearTimeout(pdT); pdT = setTimeout(placeDoodles, 150); });
 })();
